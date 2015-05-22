@@ -44,6 +44,7 @@ public class LoginAction extends Action{
 	}
 	
 	public String perform(HttpServletRequest request) {
+		
 //		LoginForm form = null;
 //		try{
 //			form = formBeanFactory.create(request);
