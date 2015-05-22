@@ -1,8 +1,4 @@
-/*
- *  Team 14 Infinity
- *  Task 7
- *  CMU - eBiz
- */
+
 package form;
 
 import java.util.ArrayList;
