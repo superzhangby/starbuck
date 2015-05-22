@@ -1,6 +1,7 @@
 package form;
 
 public class DataForm {
+	private String action;
 	private String name;
 	private String phone;
 	private String q3;
@@ -39,6 +40,15 @@ public class DataForm {
 	private String q23other;
 	private String nonAffi;
 	private String joint;
+	
+	public String getAction() {
+		return action;
+	}
+	
+	public void setAction(String action) {
+		this.action = action;
+	}
+
 	public String getName() {
 		return name;
 	}
