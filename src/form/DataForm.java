@@ -1,6 +1,10 @@
 package form;
 
-public class DataForm {
+import org.mybeans.form.FormBean;
+
+import com.google.gson.JsonObject;
+
+public class DataForm extends FormBean {
 	private String name;
 	private String phone;
 	private String q3;
@@ -39,6 +43,14 @@ public class DataForm {
 	private String q23other;
 	private String nonAffi;
 	private String joint;
+	private String action;
+	
+	public String getAction() {
+		return action;
+	}
+	public void setAction(String action) {
+		this.action = action;
+	}
 	public String getName() {
 		return name;
 	}
@@ -268,5 +280,50 @@ public class DataForm {
 		this.joint = joint;
 	}
 
+	public JsonObject getJson() {
+		JsonObject object = new JsonObject();
+		object.addProperty("name", name);
+		object.addProperty("phone", phone);
+		object.addProperty("q3", q3);
+		object.addProperty("website", website);
+		object.addProperty("q5", q5);
+		object.addProperty("q6whatData", q6whatData);
+		object.addProperty("q7", q7);
+		object.addProperty("q8", q8);
+		object.addProperty("q8_1", q8_1);
+		object.addProperty("q9", q9);
+		object.addProperty("q9_1", q9_1);
+		object.addProperty("q10", q10);
+		object.addProperty("q10_1", q10_1);
+		object.addProperty("q11", q11);
+		object.addProperty("q12", q12);
+		object.addProperty("q12_1", q12_1);
+		object.addProperty("q12_2", q12_2);
+		object.addProperty("q13", q13);
+		object.addProperty("q14", q14);		
+		object.addProperty("q15", q15);		
+		object.addProperty("q15_1", q15_1);
+		object.addProperty("q16", q16);
+		object.addProperty("q16_1", q16_1);
+		object.addProperty("q17whatWay", q17whatWay);
+		object.addProperty("q18", q18);
+		object.addProperty("q19", q19);
+		object.addProperty("q19_1", q19_1);
+		object.addProperty("q19_1recept", q19_1recept);
+		object.addProperty("q20", q20);
+		object.addProperty("q20_common", q20_common);
+		object.addProperty("q21", q21);
+		object.addProperty("q21finance", q21finance);
+		object.addProperty("q22", q22);
+		object.addProperty("q22nonfin", q22nonfin);
+		object.addProperty("q23", q23);
+		object.addProperty("q23other", q23other);
+		object.addProperty("nonAffi", nonAffi);
+		object.addProperty("joint", joint);
+		return object;
+	}
+	
+	
+	
 	
 }

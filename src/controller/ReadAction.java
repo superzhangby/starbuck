@@ -1,13 +1,4 @@
-/*
- *  Team 14 Infinity
- *  Task 7
- *  CMU - eBiz
- *
- * Carnegie Finance Service 
- * Author: Xiaodong Zhou (AndrewID: xiaodonz) 
- * Date: Jan. 18th, 2015
- * Copyright(C) 2015 All rights reserved.  
- */
+
 package controller;
 
 import java.io.BufferedReader;
@@ -31,11 +22,10 @@ import com.google.gson.JsonObject;
 
 import databean.CustomerBean;
 import databean.EmployeeBean;
+import form.DataForm;
 import form.LoginForm;
 
 public class ReadAction extends Action {
-	private FormBeanFactory<LoginForm> formBeanFactory = FormBeanFactory
-			.getInstance(LoginForm.class);
 
 	public ReadAction(Model model) {
 
@@ -46,24 +36,11 @@ public class ReadAction extends Action {
 	}
 
 	public String perform(HttpServletRequest request) {
-		LoginForm form = null;
-		try {
-			form = formBeanFactory.create(request);
-		} catch (FormBeanException e1) {
-			e1.printStackTrace();
-		}
-		request.setAttribute("form", form);
+	
 
 		HttpSession session = request.getSession(true);
 
-		if (session.getAttribute("user") != null) {
-			return "homepage.jsp";
-		}
-
-		if (!form.isPresent()) {
-			return "login.jsp";
-		}
-
+	
 		List<String> errors = new ArrayList<String>();
 		errors.addAll(form.getValidationErrors());
 
