@@ -1,5 +1,4 @@
 package form;
-
 import org.mybeans.form.FormBean;
 
 import com.google.gson.JsonObject;
@@ -44,13 +43,16 @@ public class DataForm extends FormBean {
 	private String nonAffi;
 	private String joint;
 	private String action;
+
 	
 	public String getAction() {
 		return action;
 	}
+	
 	public void setAction(String action) {
 		this.action = action;
 	}
+
 	public String getName() {
 		return name;
 	}
