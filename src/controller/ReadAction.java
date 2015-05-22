@@ -27,6 +27,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
+import com.google.gson.JsonObject;
+
 import databean.CustomerBean;
 import databean.EmployeeBean;
 import form.LoginForm;
@@ -115,6 +117,8 @@ public class ReadAction extends Action {
 					String tempString = null;
 					while ((tempString = reader.readLine()) != null) {
 						// TODO 将内容转化成JSON
+						JsonObject readInFile = new JsonObject();
+						readInFile.addProperty("aaa", "vaaa");
 
 						System.out.println(tempString);
 					}
