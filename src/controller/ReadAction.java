@@ -112,9 +112,7 @@ public class ReadAction extends Action {
 
 			return "index.html";
 		}
-		if (form.getAction().equals("Login as Employee")) {
-
-		}
+		
 		return "login.jsp";
 	}
 }
