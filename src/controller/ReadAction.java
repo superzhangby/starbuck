@@ -37,19 +37,6 @@ public class ReadAction extends Action {
 
 	public String perform(HttpServletRequest request) {
 	
-
-		HttpSession session = request.getSession(true);
-
-	
-		List<String> errors = new ArrayList<String>();
-		errors.addAll(form.getValidationErrors());
-
-		if (errors.size() > 0) {
-			request.setAttribute("errors", errors);
-			return "login.jsp";
-		}
-
-		if (form.getAction().equals("readin")) {
 			File file = null;
 			int maxFileSize = 5000 * 1024;
 			int maxMemSize = 5000 * 1024;
@@ -111,8 +98,6 @@ public class ReadAction extends Action {
 			}
 
 			return "index.html";
-		}
 		
-		return "login.jsp";
 	}
 }

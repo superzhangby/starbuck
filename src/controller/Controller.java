@@ -1,23 +1,13 @@
-/*
-/*
- *  Team 14 Infinity
- *  Task 7
- *  CMU - eBiz
- *
- * Name: Dean Wen
- * Date: 1/16/2015
- */
+
 package controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +22,7 @@ import model.Model;
 
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final String PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/hi.txt";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -80,10 +71,6 @@ public class Controller extends HttpServlet {
 		}
 
 		if (nextPage.equals("save")) {
-			String path = "/Users/LEE45/Desktop/eBusiness/Task_14/hi.txt";
-			// String path =
-			// this.getServletContext().getRealPath("/Users/LEE45/Desktop/eBusiness/Task_14/hi.txt");
-			// String filename = path.substring(path.lastIndexOf("\\") + 1);
 
 			response.setHeader("content-disposition", "attachment;filename=HTML_Form");
 
@@ -91,10 +78,10 @@ public class Controller extends HttpServlet {
 			OutputStream out = response.getOutputStream();
 
 			try {
-				in = new FileInputStream(path);
+				in = new FileInputStream(PATH);
 				int len = 0;
 				byte[] buffer = new byte[1024];
-				// out = response.getOutputStream();
+				
 				while ((len = in.read(buffer)) > 0) {
 					out.write(buffer, 0, len);
 				}
@@ -111,9 +98,11 @@ public class Controller extends HttpServlet {
 
 				}
 			}
-			out.close();
 			
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("WEB-INF/index.jsp");
+			out.close();
+
+			return;
 		}
 
 		if (nextPage.endsWith(".do")) {

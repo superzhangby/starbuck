@@ -1,13 +1,4 @@
-/*
- *  Team 14 Infinity
- *  Task 7
- *  CMU - eBiz
- */
 
-/*
- * Name: Dean Wen
- * Date: 1/16/2015
- */
 package controller;
 
 import java.util.*;
