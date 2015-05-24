@@ -25,6 +25,6 @@ public class DataFormAction extends Action{
 	@Override
 	public String perform(HttpServletRequest request) {
 		// TODO Auto-generated method stub
-		return "index.jsp";
+		return "dataForm.do";
 	}
 }
