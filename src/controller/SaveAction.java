@@ -1,29 +1,27 @@
-
 package controller;
 
-import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Model;
-import model.MyDAOException;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
 import com.google.gson.JsonObject;
 
-import databean.CustomerBean;
-import databean.EmployeeBean;
 import form.DataForm;
-import form.LoginForm;
 
 public class SaveAction extends Action {
 	private FormBeanFactory<DataForm> formBeanFactory = FormBeanFactory
@@ -34,7 +32,7 @@ public class SaveAction extends Action {
 	}
 
 	public String getName() {
-		return "read.do";
+		return "save.do";
 	}
 
 	public String perform(HttpServletRequest request) {
@@ -48,12 +46,8 @@ public class SaveAction extends Action {
 
 		HttpSession session = request.getSession(true);
 
-		if (session.getAttribute("user") != null) {
-			return "homepage.jsp";
-		}
-
 		if (!form.isPresent()) {
-			return "login.jsp";
+			return "index.jsp";
 		}
 
 		List<String> errors = new ArrayList<String>();
@@ -64,10 +58,60 @@ public class SaveAction extends Action {
 			return "login.jsp";
 		}
 
-			
-		if (form.getAction().equals("Login as Employee")) {
+		if (form.getAction().equals("save")) {
+			JsonObject jobject = new JsonObject();
+			jobject.addProperty("name", form.getName());
+			jobject.addProperty("phone", form.getPhone());
+			jobject.addProperty("q3", form.getQ3());
+			jobject.addProperty("website", form.getWebsite());
+			jobject.addProperty("q5", form.getQ5());
+			System.out.println(jobject.toString());
 
-		}
-		return "login.jsp";
+			try {
+				FileWriter fw = new FileWriter(
+						"/Users/Bingyu/Desktop/temp/test.txt");
+				fw.write(jobject.toString());
+				fw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			
+
+//	        File file = new File("/Users/Bingyu/Desktop/temp/test.txt");
+//	        //如果文件不存在
+//	        if(!file.exists()){
+//	            return "index.jsp";
+//	        }
+//	        
+//	        //处理文件名
+//	        String realname = "test.txt";
+//	        //设置响应头，控制浏览器下载该文件
+//	        response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(realname, "UTF-8"));
+//	        //读取要下载的文件，保存到文件输入流
+//	        FileInputStream in;
+//			try {
+//				in = new FileInputStream("/Users/Bingyu/Desktop/temp/test.txt");
+//			} catch (FileNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//	        //创建输出流
+//	        OutputStream out = response.getOutputStream();//创建缓冲区
+//	        byte buffer[] = new byte[1024];
+//	        int len = 0;
+//	        //循环将输入流中的内容读取到缓冲区当中
+//	        while((len=in.read(buffer))>0){
+//	            //输出缓冲区的内容到浏览器，实现文件下载
+//	            out.write(buffer, 0, len);
+//	        }
+//	        //关闭文件输入流
+//	        in.close();
+//	        //关闭输出流
+//	        out.close();
+	    }
+				
+		return "index.jsp";
+
 	}
 }

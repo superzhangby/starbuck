@@ -35,6 +35,7 @@ public class Controller extends HttpServlet {
 	public void init() throws ServletException {
 		Model model = new Model(getServletConfig());
 		Action.add(new LoginAction(model));
+		Action.add(new SaveAction(model));
 
 	}
 
@@ -62,14 +63,7 @@ public class Controller extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String servletPath = request.getServletPath();
 		String action = getActionName(servletPath);
-		CustomerBean customer = (CustomerBean) session.getAttribute("customer");
-		EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 		
-		if (customer == null && employee == null) {
-			// If the user hasn't logged in, direct him to the login page
-			return Action.perform("login.do", request);
-		}
-
 		return Action.perform(action, request);
 	}
 
