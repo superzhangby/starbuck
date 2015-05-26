@@ -124,7 +124,7 @@ public class ReadAction extends Action {
 		return "login.jsp";
 	}
 	
-	public DataForm generateForm(JSONObject jobject) throws JSONException {
+	public static DataForm generateForm(JSONObject jobject) throws JSONException {
 		DataForm form = new DataForm();
 		form.setName(jobject.optString("name"));
 		form.setPhone(jobject.optString("phone"));

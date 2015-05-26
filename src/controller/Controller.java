@@ -26,6 +26,8 @@ import model.Model;
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static final String PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/hi.txt";
+	static final String HTML_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/html.txt";
+
 	static final String TEMP_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/";
 
 
@@ -37,6 +39,8 @@ public class Controller extends HttpServlet {
 		Action.add(new IndexAction(model));
 		Action.add(new SaveAction(model));
 		Action.add(new ReadAction(model));
+		Action.add(new HTMLAction(model));
+
 
 	}
 
@@ -114,6 +118,45 @@ public class Controller extends HttpServlet {
 
 			return;
 		}
+		
+		if (nextPage.equals("html")) {
+
+			Date date = Calendar.getInstance().getTime();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-dd-HH:mm:ss");
+			String time = dateFormat.format(date);
+			 
+			response.setHeader("content-disposition", "attachment;filename=Privacy-HTML-" + time);
+
+			InputStream in = null;
+			OutputStream out = response.getOutputStream();
+
+			try {
+				in = new FileInputStream(HTML_PATH);
+				int len = 0;
+				byte[] buffer = new byte[1024];
+				
+				while ((len = in.read(buffer)) > 0) {
+					out.write(buffer, 0, len);
+				}
+
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			} finally {
+				if (in != null) {
+					try {
+						in.close();
+					} catch (Exception e) {
+						throw new RuntimeException(e);
+					}
+
+				}
+			}
+			
+			out.close();
+			//response.sendRedirect("save.do?saveok=ok");
+
+			return;
+		}
 
 		if (nextPage.endsWith(".do")) {
 			response.sendRedirect(nextPage);
@@ -121,8 +164,6 @@ public class Controller extends HttpServlet {
 		}
 
 		if (nextPage.endsWith(".jsp")) {
-			System.out.println("into .jsp");
-
 			RequestDispatcher d = request.getRequestDispatcher("WEB-INF/"
 					+ nextPage);
 			d.forward(request, response);
