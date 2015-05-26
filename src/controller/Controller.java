@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,14 +26,17 @@ import model.Model;
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static final String PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/hi.txt";
+	static final String TEMP_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/";
+
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public void init() throws ServletException {
 		Model model = new Model(getServletConfig());
-		Action.add(new LoginAction(model));
+		Action.add(new IndexAction(model));
 		Action.add(new SaveAction(model));
+		Action.add(new ReadAction(model));
 
 	}
 
@@ -72,7 +78,11 @@ public class Controller extends HttpServlet {
 
 		if (nextPage.equals("save")) {
 
-			response.setHeader("content-disposition", "attachment;filename=HTML_Form");
+			Date date = Calendar.getInstance().getTime();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-dd-HH:mm:ss");
+			String time = dateFormat.format(date);
+			 
+			response.setHeader("content-disposition", "attachment;filename=Privacy-Form-" + time);
 
 			InputStream in = null;
 			OutputStream out = response.getOutputStream();
@@ -99,8 +109,8 @@ public class Controller extends HttpServlet {
 				}
 			}
 			
-			response.sendRedirect("WEB-INF/index.jsp");
 			out.close();
+			//response.sendRedirect("save.do?saveok=ok");
 
 			return;
 		}
@@ -111,6 +121,8 @@ public class Controller extends HttpServlet {
 		}
 
 		if (nextPage.endsWith(".jsp")) {
+			System.out.println("into .jsp");
+
 			RequestDispatcher d = request.getRequestDispatcher("WEB-INF/"
 					+ nextPage);
 			d.forward(request, response);

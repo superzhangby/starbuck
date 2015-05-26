@@ -24,27 +24,37 @@ public class SaveAction extends Action {
 	}
 
 	public String perform(HttpServletRequest request) {
+		/*
+		if (request.getAttribute("saveok") == null){
+			System.out.println("not save yet");
+		} else {
+			System.out.println("Yeah we save");
+		}
+		*/
 		DataForm form = null;
 		try {
 			form = formBeanFactory.create(request);
 		} catch (FormBeanException e1) {
 			e1.printStackTrace();
 		}
-		request.setAttribute("form", form);
+		//request.setAttribute("form", form);
 
 		if (!form.isPresent()) {
-			return "index.jsp";
+			System.out.println("Yeah no form");
+			return "new-form.jsp";
 		}
+		/*
 
 		List<String> errors = new ArrayList<String>();
 		errors.addAll(form.getValidationErrors());
 
 		if (errors.size() > 0) {
 			request.setAttribute("errors", errors);
-			return "login.jsp";
+			return "new-form.jsp";
 		}
+		*/
 
-		if (form.getAction().equals("save")) {
+		if (form.getAction().equals("Save Application")) {
 			JsonObject obj = form.getJson();
 			System.out.println(obj.toString());
 
@@ -57,7 +67,7 @@ public class SaveAction extends Action {
 			}
 
 		}
-
+		System.out.println("Yeah there is a form");
 		return "save";
 
 	}
