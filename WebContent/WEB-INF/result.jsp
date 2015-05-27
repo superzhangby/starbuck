@@ -67,6 +67,10 @@
 						<h2>U.S. Consumer Privacy Notice<h2>
 					</header>
 
+					<div class="row" style="text-align:right">
+						Rev. ${ XXX }   <!-- the time of submission -->
+					</div>
+
 					<table class="default">
 						<thead>
 							<tr>
@@ -201,8 +205,8 @@
 
 					</table>
 
+					<!-- if all column of "can you limit this sharing" is either NO or We don't share, the following table should be omitted -->
 					<table class="default">
-
 						<tbody>
 							<tr>
 								<td id="color">To limit our sharing</td>
@@ -216,16 +220,19 @@
 									<br>However, you can contact us at any time to limit our sharing.
 								</td>
 							</tr>
+						</tbody>
+					</table>
 
+
+					<table class="default">
+						<tbody>
 							<tr>
 								<td id="color">Questions?</td>
 								<td>
 									Call ${form.getPhone()} or go to ${form.getWebsite()}
 								</td>
 							</tr>
-
 						</tbody>
-
 					</table>
 
 
