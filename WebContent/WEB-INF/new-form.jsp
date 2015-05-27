@@ -1028,17 +1028,17 @@
 							</div>
 
 							<div class="8u 12u$(mobile)">
-								City
+								<label for="t17333">City</label>
 								<input type="text" id="t17333" name="city" placeholder="Enter City Name" value=${form.getCity()} >
 							</div>
 
 							<div class="8u 12u$(mobile)">
-								State
+								<label for="t17334">State</label>
 								<input type="text" id="t17334" name="state" placeholder="Enter State Name" value=${form.getState()} >
 							</div>
 
 							<div class="8u 12u$(mobile)">
-								Zipcode
+								<label for="t17335">Zipcode</label>
 								<input type="text" id="t17335" name="zipcode" placeholder="Enter Zipcode" value=${form.getZipcode()} >
 							</div>
 
@@ -1049,7 +1049,7 @@
 								<a href="#disclosure" class="button scrolly">&#60;&#60; Disclosure Info</a>
 							</div>
 							<div id="next" class="6u 6u$(mobile)">
-							<input id="save" class="button scrolly" type="submit" name="action" value="Complete" />
+							<input id="start" class="button scrolly" type="submit" name="action" value="Complete" />
 					
 							</div>
 						</div>
