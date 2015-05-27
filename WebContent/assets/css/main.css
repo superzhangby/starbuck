@@ -1554,7 +1554,7 @@
 		font-size: 19pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #666;
+		color: #444;
 	}
 
 
@@ -1575,12 +1575,12 @@
 		font-size: 19pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #888;
+		color: #555;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 300;
-		color: #666;
+		color: #444;
 		line-height: 1.5em;
 	}
 
@@ -1624,7 +1624,7 @@
 
 	strong, b {
 		font-weight: 600;
-		color: #666;
+		color: #444;
 	}
 
 	em, i {
@@ -1867,7 +1867,7 @@
 		line-height: 1.4em;
 	}
 
-		table.default tr {
+		table.default tr{
 				border:1px solid #333;
 			}
 
@@ -1885,6 +1885,7 @@
 
 			table.default td {
 				padding: 0.5em 1em 0.5em 1em;
+				border:1px solid #333;
 				
 			}
 
@@ -1922,6 +1923,14 @@
 				background: #e8908a;
 				color: #fff;
 				width:7.5em;
+			}
+
+			table.default #smaller {
+				font-size:1em;
+				font-weight: 550;
+				background: #e8908a;
+				color: #fff;
+				width:9em;
 			}
 
 			table.default #wider {
@@ -2120,7 +2129,7 @@
 			position: relative;
 			display: block;
 			font-size: 1em;
-			color: rgba(255, 255, 255, 0.5);
+			color: rgba(255, 255, 255, 0.85);
 			line-height: 1.25em;
 			margin: 0.5em 0 0 0;
 		}
@@ -2133,7 +2142,7 @@
 	#nav ul li a {
 		display: block;
 		padding: 0.5em 1.5em 0.5em 1.5em;
-		color: rgba(255, 255, 255, 0.5);
+		color: rgba(255, 255, 255, 0.85);
 		text-decoration: none;
 		outline: 0;
 		border: 0;

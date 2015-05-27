@@ -93,10 +93,10 @@
                             <div class="3u 12u$(mobile)">
                                 <input type="file" class="file" name="file" size="30"/>
                             </div>
-                            <div class="3u 12u$(mobile)">
+                            <div class="5u 12u$(mobile)">
                                 <input id="upload" type="submit" class="button" name="action" value="Upload File" />
                             </div>
-                            <div class="3u 12u$(mobile)"></div>
+                            <div class="1u 12u$(mobile)"></div>
                         </div>
                     </form>
 

@@ -378,10 +378,14 @@
 						<div class="row">
 							<div class="12u 12u$(mobile)">
 								<p>8. Does your institution engage in joint marketing with other companies?
-									
+									<a rel="balloonq8" class="icon fa-question-circle"></a>
 								</p>
+
+								<div id="balloonq8" class="balloonstyle">
+									<p>It is joint marketing agreements between two or more financial institutions and with any service provider.</p>
+								</div>
+								
 							</div>
-							This reason incorporates sharing information under joint marketing agreements between two or more financial institutions and with any service provider used in connection with such agreements pursuant to
 
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q8" value="yes" onchange="show81(this,'yes')" 
@@ -396,10 +400,10 @@
 
 						<div id="8_1" class="row" style="margin-left:1em;display:none">
 							<p>8.1. Does your institution share customer's personal information for joint marketing with other financial companies?
-								<a rel="balloonq8" class="icon fa-question-circle"></a>
+								<a rel="balloonq81" class="icon fa-question-circle"></a>
 							</p>
 
-								<div id="balloonq8" class="balloonstyle">
+								<div id="balloonq81" class="balloonstyle">
 									<p>It incorporates sharing information under joint marketing agreements between two or more financial institutions and with any service provider used in connection with such agreements.</p>
 								</div>
 							

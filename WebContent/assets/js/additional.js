@@ -19,7 +19,8 @@
 	function hideDivT(elem, ans, id) {
 		if(elem.value == ans) {
 			var text = document.getElementById('t'+id);
-			text.value = '';
+			if(text != null)
+				text.value = '';
 		}
 	}
 
