@@ -34,8 +34,10 @@
 	function hideAffi(elem, ans){
 		hideDiv(elem, ans, '9_1');
 		hideDiv(elem, ans, '9_1_1');
-		hideText(elem, ans, '9_2_1');
-		hideText(elem, ans, '9_2_2');
+		hideDivT(elem, ans, '9_2_1_1');
+		hideDivT(elem, ans, '9_2_2_1');
+		hideDiv(elem, ans, '9_2_1');
+		hideDiv(elem, ans, '9_2_2');
 		hideDiv(elem, ans, '9_2');
 		hideDiv(elem, ans, '9_3');
 		hideDiv(elem, ans, '9_4');
@@ -87,8 +89,10 @@
 			hideDiv(elem, 'no', '9_3');
 			hideDiv(elem, 'no', '9_4');
 			hideDiv(elem, 'no', '9_5');
-			hideText(elem, 'no', '9_2_1');
-			hideText(elem, 'no', '9_2_2');
+			hideDivT(elem, ans, '9_2_1_1');
+			hideDivT(elem, ans, '9_2_2_1');
+			hideDiv(elem, ans, '9_2_1');
+			hideDiv(elem, ans, '9_2_2');
 		}
 	}
 
@@ -120,6 +124,29 @@
 		hideDiv(elem, ans, id);
 	}
 
+
+/* show or hide questions about Opt-out based on q17 */
+	function show17(elem, ans){
+		showDiv(elem, ans, '17_1');
+		showDiv(elem, ans, '17_2');
+		showDiv(elem, ans, '17_3');
+	}
+
+	function hide17(elem, ans) {
+		hideDivT(elem, ans, '17331');
+		hideDivT(elem, ans, '17332');
+		hideDivT(elem, ans, '17333');
+		hideDivT(elem, ans, '17334');
+		hideDivT(elem, ans, '17335');
+		hideDiv(elem, ans, '17_3_1');
+		hideDiv(elem, ans, '17_3_2');
+		hideDiv(elem, ans, '17_3_3');
+		hideDiv(elem, ans, '17_1');
+		hideDiv(elem, ans, '17_2');
+		hideDiv(elem, ans, '17_3');
+	}
+
+
 /* show or hide questions about mail-in options based on q17.3 */
 	function showMail(elem, ans){
 		showDiv(elem, ans, '17_3_1');
@@ -137,6 +164,8 @@
 		hideDiv(elem, ans, '17_3_2');
 		hideDiv(elem, ans, '17_3_3');
 	}
+
+
 
 
 

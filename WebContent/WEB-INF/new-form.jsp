@@ -914,11 +914,21 @@
 
 						<div class="row">
 							<div class="12u 12u$(mobile)">
-								<p>17. If your institution allows customers to limit sharing personal information of any kind above, please answer the following 3 questions.</p>
+								<p>17. Based on above questions, if applicable, does your institution allows customers to limit sharing personal information of any kind above?</p>
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17" value="yes" onchange="show17(this,'yes')"
+								<c:if test="${fn:contains(form.getQ17(),'yes')}"> checked </c:if>/>Yes
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17" value="no" onchange="hide17(this,'no')"
+								<c:if test="${fn:contains(form.getQ17(),'no')}"> checked </c:if>/>No
 							</div>
 						</div>
 
-						<div class="row" style="margin-left:1em">
+						<div id="17_1" class="row" style="margin-left:1em;display:none">
 							<div class="12u 12u$(mobile)">
 								<p>17.1. Does your institution enable Opt-Out by telphone?</p>
 							</div>
@@ -933,7 +943,7 @@
 							</div>
 						</div>
 
-						<div class="row" style="margin-left:1em">
+						<div id="17_2" class="row" style="margin-left:1em;display:none">
 							<div class="12u 12u$(mobile)">
 								<p>17.2. Does your institution enable Opt-Out Online?</p>
 							</div>
@@ -948,7 +958,7 @@
 							</div>
 						</div>
 
-						<div class="row" style="margin-left:1em">
+						<div id="17_3" class="row" style="margin-left:1em;display:none">
 							<div class="12u 12u$(mobile)">
 								<p>17.3. Does your institution enable Opt-Out with Mail-In Form?</p>
 							</div>
@@ -977,26 +987,26 @@
 								<c:if test="${fn:contains(form.getQ17_3_1(),'no')}"> checked="true" </c:if>/>No
 							</div>
 						</div>
-Institutions that 
+
 						<div class="row" id="17_3_2" style="margin-left:3em;display:none">
 							<div class="12u 12u$(mobile)">
 								<p>17.3.2. Does your institution require customers to provide additional or different information other than name and address, such as a random opt-out number or a truncated account number?</p>
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="checkbox" name="q17_3_2" id="17321" value="random opt-out" 
+								<input type="radio" name="q17_3_2" id="17321" value="random opt-out" 
 								<c:if test="${fn:contains(form.getQ17_3_2(),'random opt-out')}"> checked </c:if>/>
 								<label for="17321">random opt-out number</label>
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="checkbox" name="q17_3_2" id="17322" value="truncated account" 
+								<input type="radio" name="q17_3_2" id="17322" value="truncated account" 
 								<c:if test="${fn:contains(form.getQ17_3_2(),'truncated account')}"> checked </c:if>/>
 								<label for="17321">truncated account number</label>
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="checkbox" name="q17_3_2" id="17323" value="none" 
+								<input type="radio" name="q17_3_2" id="17323" value="none" 
 								<c:if test="${fn:contains(form.getQ17_3_2(),'none')}"> checked </c:if>/>
 								<label for="17321">neither of the above</label>
 							</div>
@@ -1009,27 +1019,27 @@ Institutions that
 
 							<div class="8u 12u$(mobile)">
 								<label for="t17331">Street Address 1</label>
-								<input type="text" id="t17331" name="address1" value=${form.getAddress1()} placeholder="Enter Street Name and Number"/>
+								<input type="text" id="t17331" name="address1" placeholder="Enter Street Name and Number" value=${form.getAddress1()} >
 							</div>
 
 							<div class="8u 12u$(mobile)">
 								<label for="t17332">Street Address 2</label>
-								<input type="text" id="t17332" name="address2" value=${form.getAddress2()} placeholder="Enter Apt Number or Building Name"/>
+								<input type="text" id="t17332" name="address2" placeholder="Enter Apt Number or Building Name" value=${form.getAddress2()} >
 							</div>
 
 							<div class="8u 12u$(mobile)">
-								<label for="t17333">City</label>
-								<input type="text" id="t17333" name="city" value=${form.getCity()} placeholder="Enter City Name"/>
+								City
+								<input type="text" id="t17333" name="city" placeholder="Enter City Name" value=${form.getCity()} >
 							</div>
 
 							<div class="8u 12u$(mobile)">
-								<label for="t17334">City</label>
-								<input type="text" id="t17334" name="state" value=${form.getState()} placeholder="Enter State Name"/>
+								State
+								<input type="text" id="t17334" name="state" placeholder="Enter State Name" value=${form.getState()} >
 							</div>
 
 							<div class="8u 12u$(mobile)">
-								<label for="t17335">Zipcode</label>
-								<input type="text" id="t17335" name="zipcode" value=${form.getZipcode()} placeholder="Enter Zipcode"/>
+								Zipcode
+								<input type="text" id="t17335" name="zipcode" placeholder="Enter Zipcode" value=${form.getZipcode()} >
 							</div>
 
 						</div>
