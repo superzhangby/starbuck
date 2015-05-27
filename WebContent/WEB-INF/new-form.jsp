@@ -619,26 +619,6 @@
 						</div>
 
 						<div class="row">
-							<div class="12u 12u$(mobile)">
-								<p>11.1. If your institution allows customers to limit sharing personal information of any kind above, </p>
-							</div>
-							<div class="6u 12u$(mobile)">
-								<input type="text" name="q11_1" placeholder="Input a number equal to or bigger than 30" value=${form.getQ11()}>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="12u 12u$(mobile)">
-								<p>11.1. If your institution allows customers to limit sharing personal information of any kind above,  ?</p>
-							</div>
-							<div class="6u 12u$(mobile)">
-								<input type="text" name="q11_1" placeholder="Input a number equal to or bigger than 30" value=${form.getQ11()}>
-							</div>
-						</div>
-
-						do you enable Opt-Out by telphone and Online
-
-						<div class="row">
 							<div id="prev" class="6u 6u$(mobile)">
 								<a href="#basic" class="button scrolly">&#60;&#60; Basic Info</a>
 							</div>
@@ -929,20 +909,123 @@
 						</div>
 
 						<div class="row">
-							<p>17. Will your institution provide other important information such as Acknowledgment of receipt form?</p>
+							<div class="12u 12u$(mobile)">
+								<p>17. If your institution allows customers to limit sharing personal information of any kind above, please answer the following 3 questions.</p>
+							</div>
+						</div>
 
+						<div class="row" style="margin-left:1em">
+							<div class="12u 12u$(mobile)">
+								<p>17.1. Does your institution enable Opt-Out by telphone?</p>
+							</div>
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q17" value="yes" onchange="showDiv(this,'yes','17recept')"
-								<c:if test="${fn:contains(form.getQ17(),'yes')}"> checked </c:if>/>Yes
+								<input type="radio" name="q17_1" value="yes"
+								<c:if test="${fn:contains(form.getQ17_1(),'yes')}"> checked </c:if>/>Yes
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q17" value="no" onchange="hideText(this,'no','17recept')"
-								<c:if test="${fn:contains(form.getQ17(),'no')}"> checked </c:if>/>No
+								<input type="radio" name="q17_1" value="no"
+								<c:if test="${fn:contains(form.getQ17_1(),'no')}"> checked="true" </c:if>/>No
+							</div>
+						</div>
+
+						<div class="row" style="margin-left:1em">
+							<div class="12u 12u$(mobile)">
+								<p>17.2. Does your institution enable Opt-Out Online?</p>
+							</div>
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_2" value="yes"
+								<c:if test="${fn:contains(form.getQ17_2(),'yes')}"> checked </c:if>/>Yes
 							</div>
 
-							<div id="17recept" class="12u 12u$(mobile)" style="display:none">
-								<textarea id="t17recept" name="q17recept" placeholder="Describe state and/or international privacy law provisions" value=${form.getQ17recept()}/></textarea>
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_2" value="no"
+								<c:if test="${fn:contains(form.getQ17_2(),'no')}"> checked="true" </c:if>/>No
+							</div>
+						</div>
+
+						<div class="row" style="margin-left:1em">
+							<div class="12u 12u$(mobile)">
+								<p>17.3. Does your institution enable Opt-Out with Mail-In Form?</p>
+							</div>
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3" value="yes" onchange="showMail(this,'yes')"
+								<c:if test="${fn:contains(form.getQ17_3(),'yes')}"> checked </c:if>/>Yes
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3" value="no" onchange="hideMail(this,'no')"
+								<c:if test="${fn:contains(form.getQ17_3(),'no')}"> checked="true" </c:if>/>No
+							</div>
+						</div>
+
+						<div class="row" id="17_3_1" style="margin-left:3em;display:none">
+							<div class="12u 12u$(mobile)">
+								<p>17.3.1. Does your institution provide your joint accountholders the choice to opt-out for only one accountholder?</p>
+							</div>
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3_1" value="yes"
+								<c:if test="${fn:contains(form.getQ17_3_1(),'yes')}"> checked </c:if>/>Yes
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3_1" value="no"
+								<c:if test="${fn:contains(form.getQ17_3_1(),'no')}"> checked="true" </c:if>/>No
+							</div>
+						</div>
+Institutions that 
+						<div class="row" id="17_3_2" style="margin-left:3em;display:none">
+							<div class="12u 12u$(mobile)">
+								<p>17.3.2. Does your institution require customers to provide additional or different information other than name and address, such as a random opt-out number or a truncated account number?</p>
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="checkbox" name="q17_3_2" id="17321" value="random opt-out" 
+								<c:if test="${fn:contains(form.getQ17_3_2(),'random opt-out')}"> checked </c:if>/>
+								<label for="17321">random opt-out number</label>
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="checkbox" name="q17_3_2" id="17322" value="truncated account" 
+								<c:if test="${fn:contains(form.getQ17_3_2(),'truncated account')}"> checked </c:if>/>
+								<label for="17321">truncated account number</label>
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="checkbox" name="q17_3_2" id="17323" value="none" 
+								<c:if test="${fn:contains(form.getQ17_3_2(),'none')}"> checked </c:if>/>
+								<label for="17321">neither of the above</label>
+							</div>
+						</div>
+
+						<div class="row" id="17_3_3" style="margin-left:3em;display:none">
+							<div class="12u 12u$(mobile)">
+								<p>17.3.3. What is your institution's mailing address?</p>
+							</div>
+
+							<div class="8u 12u$(mobile)">
+								<label for="t17331">Street Address 1</label>
+								<input type="text" id="t17331" name="address1" value=${form.getAddress1()} placeholder="Enter Street Name and Number"/>
+							</div>
+
+							<div class="8u 12u$(mobile)">
+								<label for="t17332">Street Address 2</label>
+								<input type="text" id="t17332" name="address2" value=${form.getAddress2()} placeholder="Enter Apt Number or Building Name"/>
+							</div>
+
+							<div class="8u 12u$(mobile)">
+								<label for="t17333">City</label>
+								<input type="text" id="t17333" name="city" value=${form.getCity()} placeholder="Enter City Name"/>
+							</div>
+
+							<div class="8u 12u$(mobile)">
+								<label for="t17334">City</label>
+								<input type="text" id="t17334" name="state" value=${form.getState()} placeholder="Enter State Name"/>
+							</div>
+
+							<div class="8u 12u$(mobile)">
+								<label for="t17335">Zipcode</label>
+								<input type="text" id="t17335" name="zipcode" value=${form.getZipcode()} placeholder="Enter Zipcode"/>
 							</div>
 
 						</div>
