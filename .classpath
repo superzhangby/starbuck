@@ -14,5 +14,26 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/Users/LEE45/git/Task7/WebContent/WEB-INF/lib/java-json.jar"/>
 	<classpathentry kind="lib" path="/Users/LEE45/Downloads/jsoup-1.8.2.jar"/>
+	<classpathentry kind="lib" path="/Users/LEE45/Documents/workspace/Task113/WebContent/WEB-INF/lib/okhttp-2.3.0.jar"/>
+	<classpathentry kind="lib" path="/Task13/WebContent/WEB-INF/lib/okio-1.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/LEE45/.m2/repository/org/apache/httpcomponents/httpcore/4.2/httpcore-4.2.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.apache.httpcomponents"/>
+			<attribute name="maven.artifactId" value="httpcore"/>
+			<attribute name="maven.version" value="4.2"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/LEE45/.m2/repository/org/apache/httpcomponents/httpclient/4.4/httpclient-4.4.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.apache.httpcomponents"/>
+			<attribute name="maven.artifactId" value="httpclient"/>
+			<attribute name="maven.version" value="4.4"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/LEE45/Downloads/httpcomponents-client-4.4/lib/httpclient-4.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

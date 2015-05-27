@@ -2,6 +2,7 @@ package form;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.json.JSONException;
@@ -59,6 +60,9 @@ public class DataForm extends FormBean {
 	public void setArray1(String s) {
 		this.array1 = s.trim();
 	}
+	public void setArray1() {
+		this.array1 = Arrays.toString(q5whatData);
+	}
 
 	public String getArray2() {
 		return array2;
@@ -66,6 +70,9 @@ public class DataForm extends FormBean {
 
 	public void setArray2(String s) {
 		this.array2 = s.trim();
+	}
+	public void setArray2() {
+		this.array2 = Arrays.toString(q14whatWay);
 	}
 
 	public String getName() {
@@ -419,21 +426,21 @@ public class DataForm extends FormBean {
 		List<String> errors = new ArrayList<String>();
 
 		if (name == null || name.trim().length() == 0)
-			errors.add("Name is required.");
+			errors.add("Question 1: Name is required.");
 
 		if (phone == null || phone.trim().length() == 0)
-			errors.add("Phone number is required.");
+			errors.add("Question 2: Phone number is required.");
 
 		for (int i = 0; i < phone.length(); i++) {
 			if (phone.charAt(i) > '9' || phone.charAt(i) < '0')
-				errors.add("Invalid Phone Number!");
+				errors.add("Question 2: Invalid Phone Number!");
 		}
 
 		if (q3 == null)
-			errors.add("Question3 is required!");
+			errors.add("Question 3 is required!");
 
 		if (website == null || website.trim().length() == 0)
-			errors.add("Website name is required!");
+			errors.add("Question 4: Website name is required!");
 
 		if (q5whatData == null || q5whatData.length == 0) {
 			errors.add("Question 5 is required!");
@@ -444,126 +451,123 @@ public class DataForm extends FormBean {
 		if (q6 == null)
 			errors.add("Question 6 is required!");
 
-		if (q7 == null)
-			errors.add("Question7 is required!");
-
-		if (q7 == "yes") {
+		if (q7 == null) {
+			errors.add("Question 7 is required!");
+		} else if (q7.equals("yes") ) {
 			if (q7_1 == null)
 				errors.add("Question 7.1 is required!");
 		}
 
-		if (q8 == null)
-			errors.add("Question8 is required!");
-
-		if (q8 == "yes") {
-			if (q8_1 == null)
+		if (q8 == null) {
+			errors.add("Question 8 is required!");
+		} else if (q8.equals("yes")) {
+			if (q8_1 == null) {
 				errors.add("Question 8.1 is required!");
+			} else if(q8_1.equals("yes")) {
+				if(q8_1_1 == null) {
+					errors.add("Question 8.1.1 is required!");
+				}
+			}
 		}
 
-		if (q9 == null)
-			errors.add("Question9 is required!");
-
-		if (q9 == "yes") {
+		if (q9 == null) {
+			errors.add("Question 9 is required!");
+		} else if (q9.equals("yes")) {
+			System.out.println("+++++what happened in q9" );
 			if (q9_1 == null) {
 				errors.add("Question 9.1 is required!");
-			} else if (q9_1 == "yes") {
+			} else if (q9_1.equals("yes")) {
 				if (q9_1_1 == null)
 					errors.add("Question 9.1.1 is required!");
 
 				if (q9_2_1 == null) {
-					errors.add("Question 9.1.1 is required!");
-				} else if (q9_2_1 == "yes") {
+					errors.add("Question 9.2.1 is required!");
+				} else if (q9_2_1.equals("yes")) {
 					if (q9_2_1_1 == null || q9_2_1_1.trim().length() == 0)
-						errors.add("For question 9.2.1, you must list the financial institution of your institution's affiliates!");
+						errors.add("Question 9.2.1, you must list the financial institution of your institution's affiliates!");
 				}
 
 				if (q9_2_2 == null) {
-					errors.add("Question 9.1.2 is required!");
-				} else if (q9_2_2 == "yes") {
+					errors.add("Question 9.2.2 is required!");
+				} else if (q9_2_2.equals("yes")) {
 					if (q9_2_2_1 == null || q9_2_2_1.trim().length() == 0)
-						errors.add("For question 9.2.2, you must List other companies of your institution's affiliates!");
+						errors.add("Question 9.2.2, you must List other companies of your institution's affiliates!");
 				}
 
 				if (q9_3 == null) {
 					errors.add("Question 9.3 is required!");
-				} else if (q9_3 == "yes") {
+				} else if (q9_3.equals("yes")) {
 					if (q9_4 == null) {
 						errors.add("Question 9.4 is required!");
-					} else if (q9_4 == "no") {
+					} else if (q9_4.equals("no")) {
 						if (q9_5 == null) {
 							errors.add("Question 9.5 is required!");
 						}
 					}
 				}
-
 			}
 
 			if (q9_2 == null) {
 				errors.add("Question 9.2 is required!");
-			} else if (q9_2 == "yes") {
+			} else if (q9_2.equals("yes")) {
 				if (q9_2_1 == null) {
-					errors.add("Question 9.1.1 is required!");
-				} else if (q9_2_1 == "yes") {
-					if (q9_2_1_1 == null || q9_2_1_1.trim().length() == 0)
-						errors.add("For question 9.2.1, you must list the financial institution of your institution's affiliates!");
+					errors.add("Question 9.2.1 is required!");
+				} else if (q9_2_1.equals("yes")) {
+					if (q9_2_1_1 == null || q9_2_1_1.trim().length() == 0) {
+						errors.add("Question 9.2.1, you must list the financial institution of your institution's affiliates!");					
+					}
 				}
 
 				if (q9_2_2 == null) {
 					errors.add("Question 9.1.2 is required!");
-				} else if (q9_2_2 == "yes") {
+				} else if (q9_2_2.equals("yes")) {
 					if (q9_2_2_1 == null || q9_2_2_1.trim().length() == 0)
-						errors.add("For question 9.2.2, you must List other companies of your institution's affiliates!");
+						errors.add("Question 9.2.2, you must List other companies of your institution's affiliates!");
 				}
 
 				if (q9_3 == null) {
 					errors.add("Question 9.3 is required!");
-				} else if (q9_3 == "yes") {
+				} else if (q9_3.equals("yes")) {
 					if (q9_4 == null) {
 						errors.add("Question 9.4 is required!");
-					} else if (q9_4 == "no") {
+					} else if (q9_4.equals("no")) {
 						if (q9_5 == null) {
 							errors.add("Question 9.5 is required!");
 						}
 					}
 				}
 			}
-
 		}
 
 		if (q10 == null)
 			errors.add("Question 10 is required!");
 
-		if (q11 == null || q11.trim().length() == 0)
+		if (q11 == null || q11.length() == 0)
 			errors.add("Question 11 is required!");
 
 		for (int i = 0; i < q11.length(); i++) {
-			if (q11.charAt(i) > '9' || q11.charAt(i) < '0')
-				errors.add("Invalid Number input!");
-		}
-
-		if (q11 != null) {
-			int res = 0;
-			try {
-				res = Integer.parseInt("q11");
-			} catch (NumberFormatException e) {
-				errors.add("Please input number.");
+			if (q11.charAt(i) > '9' || q11.charAt(i) < '0') {
+				errors.add("Question 11: Invalid Number input!");
+				break;
 			}
-			if (res < 30)
-				errors.add("Input number must equal to bigger than 30!");
 		}
 
-		if (q12 == null)
-			errors.add("Question 12 is required!");
+		if (q11 != null && q11.length() != 0) {
+			int res = Integer.parseInt(q11);
+			if (res < 30)
+				errors.add("Question 11: Input number must equal to bigger than 30!");
+		}
 
-		if (q12 == "no") {
+		if (q12 == null) {
+			errors.add("Question 12 is required!");
+		} else if (q12.equals("no")) {
 			if (q12_1 == null || q12_1.trim().length() == 0)
 				errors.add("Question 12.1 is required!");
 		}
 
-		if (q13 == null)
+		if (q13 == null) {
 			errors.add("Question 13 is required!");
-
-		if (q13 == "yes") {
+		} else if (q13.equals("yes")) {
 			if (q13_1 == null || q13_1.trim().length() == 0)
 				errors.add("Additional information for Question 13 is required!");
 
@@ -580,26 +584,23 @@ public class DataForm extends FormBean {
 			}
 		}
 
-		if (q15 == null)
+		if (q15 == null) {
 			errors.add("Question 15 is required!");
-
-		if (q15 == "no") {
+		} else if (q15.equals("no")) {
 			if (q15_1 == null)
 				errors.add("Question 15.1 is required!");
 		}
 
-		if (q16 == null)
+		if (q16 == null) {
 			errors.add("Question 16 is required!");
-
-		if (q16 == "yes") {
+		} else if (q16.equals("yes")) {
 			if (q16_1 == null || q16_1.trim().length() == 0)
 				errors.add("Question 16.1 is required!");
 		}
 
-		if (q17 == null)
+		if (q17 == null) {
 			errors.add("Question 17 is required!");
-
-		if (q17 == "yes") {
+		} else if (q17.equals("yes")) {
 			if (q17recept == null || q17recept.trim().length() == 0)
 				errors.add("Question 17.1 is required!");
 		}
@@ -611,8 +612,18 @@ public class DataForm extends FormBean {
 		if (errors.size() > 0)
 			return errors;
 
-		if (!action.equals("save") || !action.equals("read"))
+		if (action.equals("Save Application") || action.equals("read")|| action.equals("Complete")){
+			System.out.print(action);
+		} else{
 			errors.add("Invalid button.");
+		}
+		
+		Collections.sort(errors);
+		for(int i = 1; i< errors.size(); i++) {
+			if(errors.get(i).equals(errors.get(i-1))) {
+				errors.remove(i);
+			}
+		}
 
 		return errors;
 	}

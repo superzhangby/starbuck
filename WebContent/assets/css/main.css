@@ -1607,7 +1607,7 @@
 			}
 
 	h3 {
-		font-size: 1.5em;
+		font-size: 1.2em;
 	}
 
 	header {
@@ -1945,6 +1945,23 @@
 
 /* Button */
 
+	.file::-webkit-file-upload-button {
+		visibility: hidden;
+	}
+
+	.file::before {
+		content: 'Choose File';
+	}
+
+	input[type="file"]::before {
+		margin-left: -2em;
+		margin-top: -0.6em;
+	}
+
+	input[type="file"] {
+		padding-top: 0.6em;
+	}
+
 	input[type="button"],
 	input[type="submit"],
 	input[type="reset"],
@@ -1956,20 +1973,21 @@
 		color: #fff !important;
 		text-decoration: none;
 		padding: 0.25em 1em 0.25em 1em;
-		background-color: #8ebebc;
+	/*	background-color: #8ebebc; */
+		background-color: #eca6a1;
 		border: 0;
 		cursor: pointer;
-		background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), url("images/overlay.png");
-		background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), url("images/overlay.png");
-		background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), url("images/overlay.png");
-		background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), url("images/overlay.png");
+		background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+		background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+		background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+		background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
 		-moz-transition: background-color 0.35s ease-in-out;
 		-webkit-transition: background-color 0.35s ease-in-out;
 		-ms-transition: background-color 0.35s ease-in-out;
 		transition: background-color 0.35s ease-in-out;
 	}
 
-	#start, #upload {
+	#start, #upload, .file::before {
 		padding: 0.4em 2em 0.4em 2em;
 		background-color: #8ebebc;
 		margin:0 1em;
@@ -1979,7 +1997,11 @@
 		input[type="submit"]:hover,
 		input[type="reset"]:hover,
 		button:hover,
-		.button:hover {
+		.button:hover{
+			background-color: #efb8b5;
+		}
+
+		#start:hover, #upload:hover, .file::before:hover, {
 			background-color: #9ececc;
 		}
 
@@ -1988,7 +2010,11 @@
 		input[type="reset"]:active,
 		button:active,
 		.button:active {
-			background-color: #7eaeac;
+			background-color: #efb8b5;
+		}
+
+		#start:hover, #upload:active, .file::before:active {
+			background-color: #9ececc;
 		}
 
 /* Item */
@@ -2040,7 +2066,7 @@
 		width: 375px;
 		height: 100%;
 		color: #fff;
-		background: #222629 url("images/overlay.png");
+		background: #222629;
 		box-shadow: inset -0.25em 0 0.25em 0 rgba(0, 0, 0, 0.1);
 		text-align: right;
 	}
@@ -2176,6 +2202,30 @@
 					margin-left: 0;
 				}
 
+	.balloonstyle{
+		position:absolute;
+		top: -100px;
+		left: 0;
+		padding: 5px;
+		visibility: hidden;
+		border:1px solid black;
+		font:normal 12px Verdana;
+		line-height: 18px;
+		z-index: 100;
+		background-color: lightyellow;
+		width: 500px;
+		/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+		filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135,Strength=5);
+	}
+
+	#arrowhead{
+		z-index: 99;
+		position:absolute;
+		top: -500px;
+		left: 0;
+		visibility: hidden;
+	}
+
 /* Main */
 
 	#main {
@@ -2206,18 +2256,17 @@
 		#main ul li {
 			list-style:disc;
 			margin-left: 1em;
+			text-align: left;
+		}
+
+		#main #pop ul li {
+			margin-left: 4em;
 		}
 
 		#main ul {
 			margin-top: 0.4em;
 			margin-bottom: 0.4em;
 		}
-
-	/*	#main #save {
-			position:absolute;
-			margin-left: 8em;
-			margin-top: 18em;
-		} */
 
 			#main section.dark {
 				color: #ddd;
@@ -2249,12 +2298,23 @@
 			}
 
 			#main section.one {
-				background-color: #81918E;
+				background-image: url("../../images/banner.jpg");
+			}
+
+			#main section.Home {
 				background-image: url("../../images/banner.jpg");
 			}
 
 			#main section.two {
 				background-color: #f5fafa;
+			}
+
+			#main #file {
+				padding:4em 0;
+			}
+
+			#main #pop {
+				padding:2em 0;
 			}
 
 			#main section.three {
@@ -2285,6 +2345,12 @@
 				width: 300px;
 			}
 
+			#header #save {
+				margin-right:1.3em;
+				font-size:0.9em;
+				margin-bottom:1em;
+			}
+
 		/* Footer */
 
 			#footer {
@@ -2310,7 +2376,11 @@
 			}
 
 			#main section.cover {
-				padding: 5em 0;
+				padding: 2em 0;
+			}
+
+			#main section.full {
+				padding: 6em 0;
 			}
 
 	}
@@ -2450,7 +2520,7 @@
 				width: 275px;
 				z-index: 10002;
 				width: 275px;
-				background: #222729 url("images/overlay.png");
+				background: #222729;
 				box-shadow: inset -0.25em 0 0.25em 0 rgba(0, 0, 0, 0.125);
 			}
 

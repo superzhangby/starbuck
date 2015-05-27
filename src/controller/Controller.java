@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.FileInputStream;
@@ -18,7 +17,6 @@ import javax.servlet.http.HttpSession;
 
 import model.Model;
 
-
 /**
  * Servlet implementation class Controller
  */
@@ -26,10 +24,8 @@ import model.Model;
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static final String PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/hi.txt";
-	static final String HTML_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/html.txt";
-
+	static final String HTML_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/html.html";
 	static final String TEMP_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/";
-
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -40,6 +36,7 @@ public class Controller extends HttpServlet {
 		Action.add(new SaveAction(model));
 		Action.add(new ReadAction(model));
 		Action.add(new HTMLAction(model));
+		Action.add(new HTMLPageAction(model));
 
 
 	}
@@ -83,10 +80,12 @@ public class Controller extends HttpServlet {
 		if (nextPage.equals("save")) {
 
 			Date date = Calendar.getInstance().getTime();
-			SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-dd-HH:mm:ss");
+			SimpleDateFormat dateFormat = new SimpleDateFormat(
+					"MMM-dd-HH:mm:ss");
 			String time = dateFormat.format(date);
-			 
-			response.setHeader("content-disposition", "attachment;filename=Privacy-Form-" + time);
+			response.setHeader("Content-Type", "application/json");
+			response.setHeader("content-disposition",
+					"attachment;filename=Privacy-Form-" + time );
 
 			InputStream in = null;
 			OutputStream out = response.getOutputStream();
@@ -95,7 +94,7 @@ public class Controller extends HttpServlet {
 				in = new FileInputStream(PATH);
 				int len = 0;
 				byte[] buffer = new byte[1024];
-				
+
 				while ((len = in.read(buffer)) > 0) {
 					out.write(buffer, 0, len);
 				}
@@ -112,20 +111,22 @@ public class Controller extends HttpServlet {
 
 				}
 			}
-			
+
 			out.close();
-			//response.sendRedirect("save.do?saveok=ok");
+			// response.sendRedirect("save.do?saveok=ok");
 
 			return;
 		}
-		
+
 		if (nextPage.equals("html")) {
 
 			Date date = Calendar.getInstance().getTime();
-			SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-dd-HH:mm:ss");
+			SimpleDateFormat dateFormat = new SimpleDateFormat(
+					"MMM-dd-HH:mm:ss");
 			String time = dateFormat.format(date);
-			 
-			response.setHeader("content-disposition", "attachment;filename=Privacy-HTML-" + time);
+			response.setHeader("Content-Type", "text/html");
+			response.setHeader("content-disposition",
+					"attachment;filename=Privacy-HTML-" + time + ".html");
 
 			InputStream in = null;
 			OutputStream out = response.getOutputStream();
@@ -134,7 +135,7 @@ public class Controller extends HttpServlet {
 				in = new FileInputStream(HTML_PATH);
 				int len = 0;
 				byte[] buffer = new byte[1024];
-				
+
 				while ((len = in.read(buffer)) > 0) {
 					out.write(buffer, 0, len);
 				}
@@ -151,9 +152,9 @@ public class Controller extends HttpServlet {
 
 				}
 			}
-			
+
 			out.close();
-			//response.sendRedirect("save.do?saveok=ok");
+			// response.sendRedirect("save.do?saveok=ok");
 
 			return;
 		}

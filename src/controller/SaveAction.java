@@ -25,34 +25,24 @@ public class SaveAction extends Action {
 
 	public String perform(HttpServletRequest request) {
 		/*
-		if (request.getAttribute("saveok") == null){
-			System.out.println("not save yet");
-		} else {
-			System.out.println("Yeah we save");
-		}
-		*/
+		 * if (request.getAttribute("saveok") == null){
+		 * System.out.println("not save yet"); } else {
+		 * System.out.println("Yeah we save"); }
+		 */
 		DataForm form = null;
 		try {
 			form = formBeanFactory.create(request);
+			form.setArray1();
+			form.setArray2();
 		} catch (FormBeanException e1) {
 			e1.printStackTrace();
 		}
-		//request.setAttribute("form", form);
+		// request.setAttribute("form", form);
 
 		if (!form.isPresent()) {
 			System.out.println("Yeah no form");
 			return "new-form.jsp";
 		}
-		/*
-
-		List<String> errors = new ArrayList<String>();
-		errors.addAll(form.getValidationErrors());
-
-		if (errors.size() > 0) {
-			request.setAttribute("errors", errors);
-			return "new-form.jsp";
-		}
-		*/
 
 		if (form.getAction().equals("Save Application")) {
 			JsonObject obj = form.getJson();
@@ -65,10 +55,26 @@ public class SaveAction extends Action {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
+			return "save";
 		}
-		System.out.println("Yeah there is a form");
-		return "save";
+
+		if (form.getAction().equals("Complete")) {
+
+			List<String> errors = new ArrayList<String>();
+			errors.addAll(form.getValidationErrors());
+
+			if (errors.size() > 0) {
+				request.setAttribute("form", form);
+				request.setAttribute("errors", errors);
+				System.out.println(errors);
+				return "new-form.jsp";
+			}
+
+			request.getSession().setAttribute("form", form);
+			return "result.jsp";
+		}
+
+		return "new-form.jsp";
 
 	}
 }

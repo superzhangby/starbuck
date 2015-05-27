@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 
 		<script type="text/javascript" src="assets/js/additional.js"></script>
+		<script type="text/javascript" src="assets/js/balloon.js"></script>
 	</head>
 	<body>
 
@@ -41,7 +42,7 @@
 							   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
 						-->
 						<ul>
-							<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
+							<li><a href="index.do" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
 							<li><a href="#basic" id="basic-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Basic</span></a></li>
 							<li><a href="#disclosure" id="disclosure-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Disclosure</span></a></li>
 							<li><a href="#protection" id="protection-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Protection</span></a></li>
@@ -49,6 +50,9 @@
 
 						<div>
 							<input id="save" type="submit" name="action" value="Save Application" />
+						</div>
+						<div>
+							<a href="index.do#file" id="save" class="button">Upload Existing File</a>
 						</div>
 					</nav>
 
@@ -79,7 +83,7 @@
 				<div class="container">
 
 					<header>
-						<h2 class="alt">Welcome to the Interactive Form Builder <br>for <a href="#">Privacy Policy Notice</a><br/>
+						<h2 class="alt">Create a <a href="#">Privacy Policy Notice</a> <br>by answering the following questions.
 					</header>
 
 					<footer>
@@ -111,14 +115,32 @@
 						</div>
 
 						<div class="row">
-							<p>1. What is the name of the financial institution providing the notice or a common identity of affiliated institutions jointly providing the notice?</p>
+							<div class="12u 12u$(mobile)">
+								<p>1. What is the name of the financial institution providing the notice?
+									<a rel="balloonq1" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq1" class="balloonstyle">
+									<p>It can also be a common identity of affiliated institutions jointly providing the notice.</p>
+								</div>
+							</div>
+
 							<div class="6u 12u$(mobile)">
 								<input type="text" name="name" placeholder="Name of Financial Institution" value=${form.getName()}>
 							</div>
 						</div>
 
 						<div class="row">
-							<p>2. What is the phone number of your institution for customers to call if they have questions about the privacy notic?</p>
+							<div class="12u 12u$(mobile)">
+								<p>2. What is the phone number of your institution for the privacy notice?
+									<a rel="balloonq2" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq2" class="balloonstyle">
+									<p>Customers can call this number if they have questions about the privacy notice.</p>
+								</div>
+							</div>
+
 							<div class="6u 12u$(mobile)">
 								<input type="text" name="phone" placeholder="Phone Number" value=${form.getPhone()} >
 							</div>
@@ -140,7 +162,16 @@
 						</div>
 
 						<div class="row">
-							<p>4. What is the website of your institution for customers to visit if they have questions about the privacy notic?</p>
+							<div class="12u 12u$(mobile)">
+								<p>4. What is the website of your institution for the privacy notice?
+									<a rel="balloonq4" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq4" class="balloonstyle">
+									<p>Customers can visit the website if they have questions about the privacy notice.</p>
+								</div>
+							</div>
+							
 							<div class="6u 12u$(mobile)">
 								<input type="text" name="website" placeholder="Website Address" value=${form.getWebsite()} >
 							</div>
@@ -176,10 +207,22 @@
 						</div>
 
 						<div class="row">
-							<p>5. What are the types of personal information your institution collects and shares?</p>
+							<div class="12u 12u$(mobile)">
+								<p>5. What are the types of personal information your institution collects and shares? 
+									<a rel="balloonq5" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq5" class="balloonstyle">
+									<p>You must select at least 5 of the following choices up to as many as you want.</p>
+									<p> "Select All" can enable you to select all the checkboxes.</p>
+								</div>
+							</div>
+
+							<div id="checkBox" class="12u 12u$(mobile)">
+								<input type="checkbox" id="all1" onClick="toggle(this,'q5whatData')" /><label for="all1">Select All</label>
+							</div>
 
 							<div id="checkBox" class="4u 12u$(mobile)">
-								<input type="checkbox" id="all1" onClick="toggle(this)" /><label for="all1">Select All</label><br/>
 
 								<input type="checkbox" name="q5whatData" id="data1" value="income" 
 								<c:if test="${fn:contains(form.getArray1(),'income')}"> checked </c:if>/>
@@ -189,91 +232,99 @@
 								<c:if test="${fn:contains(form.getArray1(),'assets')}"> checked </c:if>/>
 								<label for="data2">assets</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data3" value="retireAssets" 
-								<c:if test="${fn:contains(form.getArray1(),'retireAssets')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data3" value="retirement assets" 
+								<c:if test="${fn:contains(form.getArray1(),'retirement assets')}"> checked </c:if>/>
 								<label for="data3">retirement assets</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data4" value="accountBalances" 
-								<c:if test="${fn:contains(form.getArray1(),'accountBalances')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data4" value="account balances" 
+								<c:if test="${fn:contains(form.getArray1(),'account balances')}"> checked </c:if>/>
 								<label for="data4">account balances</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data5" value="investmentExperience" 
-								<c:if test="${fn:contains(form.getArray1(),'investmentExperience')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data5" value="investment experience" 
+								<c:if test="${fn:contains(form.getArray1(),'investment experience')}"> checked </c:if>/>
 								<label for="data5">investment experience</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data6" value="checkingInfo"
-								<c:if test="${fn:contains(form.getArray1(),'checkingInfo')}"> checked </c:if> />
+								<input type="checkbox" name="q5whatData" id="data6" value="checking account information"
+								<c:if test="${fn:contains(form.getArray1(),'cchecking account information')}"> checked </c:if> />
 								<label for="data6">checking account information</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data7" value="wireTransfer" 
-								<c:if test="${fn:contains(form.getArray1(),'wireTransfer')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data7" value="wire transfer instructions" 
+								<c:if test="${fn:contains(form.getArray1(),'wire transfer instructions')}"> checked </c:if>/>
 								<label for="data7">wire transfer instructions</label><br>
 							</div>
 
 							<div id="checkBox" class="4u 12u$(mobile)">
-								<input type="checkbox" name="q5whatData" id="data8" value="paymentHistory" 
-								<c:if test="${fn:contains(form.getArray1(),'paymentHistory')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data8" value="payment history" 
+								<c:if test="${fn:contains(form.getArray1(),'payment history')}"> checked </c:if>/>
 								<label for="data8">payment history</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data9" value="transactionHistory" 
-								<c:if test="${fn:contains(form.getArray1(),'transactionHistory')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data9" value="transaction history" 
+								<c:if test="${fn:contains(form.getArray1(),'transaction history')}"> checked </c:if>/>
 								<label for="data9">transaction history</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data10" value="purchaseHistory" 
-								<c:if test="${fn:contains(form.getArray1(),'purchaseHistory')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data10" value="purchase history" 
+								<c:if test="${fn:contains(form.getArray1(),'purchase history')}"> checked </c:if>/>
 								<label for="data10">purchase history</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data11" value="creditHistory" 
-								<c:if test="${fn:contains(form.getArray1(),'creditHistory')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data11" value="credit history" 
+								<c:if test="${fn:contains(form.getArray1(),'credit history')}"> checked </c:if>/>
 								<label for="data11">credit history</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data12" value="insuranceHistory" 
-								<c:if test="${fn:contains(form.getArray1(),'insuranceHistory')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data12" value="insurance claim history" 
+								<c:if test="${fn:contains(form.getArray1(),'insurance claim history')}"> checked </c:if>/>
 								<label for="data12">insurance claim history</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data13" value="overdraftHistory" 
-								<c:if test="${fn:contains(form.getArray1(),'overdraftHistory')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data13" value="overdraft history" 
+								<c:if test="${fn:contains(form.getArray1(),'overdraft history')}"> checked </c:if>/>
 								<label for="data13">overdraft history</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data14" value="medicalInfo" 
-								<c:if test="${fn:contains(form.getArray1(),'medicalInfo')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data14" value="medical information" 
+								<c:if test="${fn:contains(form.getArray1(),'medical information')}"> checked </c:if>/>
 								<label for="data14">medical information</label><br>
 							</div>
 
 							<div id="checkBox" class="4u 12u$(mobile)">
-								<input type="checkbox" name="q5whatData" id="data15" value="creditScores" 
-								<c:if test="${fn:contains(form.getArray1(),'creditScores')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data15" value="credit scores" 
+								<c:if test="${fn:contains(form.getArray1(),'credit scores')}"> checked </c:if>/>
 								<label for="data15">credit scores</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data16" value="creditInsuranceScores" 
-								<c:if test="${fn:contains(form.getArray1(),'creditInsuranceScores')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data16" value="credit-based insurance scores" 
+								<c:if test="${fn:contains(form.getArray1(),'credit-based insurance scores')}"> checked </c:if>/>
 								<label for="data16">credit-based insurance scores</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data17" value="riskTolerance" 
-								<c:if test="${fn:contains(form.getArray1(),'riskTolerance')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data17" value="risk tolerance" 
+								<c:if test="${fn:contains(form.getArray1(),'risk tolerance')}"> checked </c:if>/>
 								<label for="data17">risk tolerance</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data18" value="medicalDebts" 
-								<c:if test="${fn:contains(form.getArray1(),'medicalDebts')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data18" value="medical-related debts" 
+								<c:if test="${fn:contains(form.getArray1(),'medical-related debts')}"> checked </c:if>/>
 								<label for="data18">medical-related debts</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data19" value="creditDebt" 
-								<c:if test="${fn:contains(form.getArray1(),'creditDebt')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data19" value="credit card or other debt" 
+								<c:if test="${fn:contains(form.getArray1(),'credit card or other debt')}"> checked </c:if>/>
 								<label for="data19">credit card or other debt</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data20" value="mortgage" 
-								<c:if test="${fn:contains(form.getArray1(),'mortgage')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data20" value="mortgage rates and payments" 
+								<c:if test="${fn:contains(form.getArray1(),'mortgage rates and payments')}"> checked </c:if>/>
 								<label for="data20">mortgage rates and payments</label><br>
 
-								<input type="checkbox" name="q5whatData" id="data21" value="employmentInfo" 
-								<c:if test="${fn:contains(form.getArray1(),'employmentInfo')}"> checked </c:if>/>
+								<input type="checkbox" name="q5whatData" id="data21" value="employment information" 
+								<c:if test="${fn:contains(form.getArray1(),'employment information')}"> checked </c:if>/>
 								<label for="data21">employment information</label><br>
 							</div>
 						</div>
 
 	<!-- question 7 does not provide opt-out -->
 						<div class="row">
-							<p>6. Does your institution share customer’s personal information for everyday business purpose? Such as to process customer’s transcations, maintain their accounts, respond to court orders and legal investigations, or report to credit bureaus.</p>
+							<div class="12u 12u$(mobile)">
+								<p>6. Does your institution share customer's personal information for everyday business purpose? 
+									<a rel="balloonq6" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq6" class="balloonstyle">
+									<p>Such as to process customer's transcations, maintain their accounts, respond to court orders and legal investigations, or report to credit bureaus.</p>
+								</div>
+							</div>
 							
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q6" value="yes" 
@@ -287,7 +338,15 @@
 						</div>
 
 						<div class="row">
-							<p>7. Does your institution share customer’s personal information for your marketing purposes to offer your products and services to customers?</p>
+							<div class="12u 12u$(mobile)">
+								<p>7. Does your institution share customer's personal information for your marketing purposes?
+									<a rel="balloonq7" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq7" class="balloonstyle">
+									<p>It is for your own marketing purposes such as to offer your products and services to customers.</p>
+								</div>
+							</div>
 							
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q7" value="yes" onchange="showDiv(this,'yes','7_1')"
@@ -300,7 +359,7 @@
 							</div>
 						</div>
 
-						<div id="7_1" class="row" style="display:none">
+						<div id="7_1" class="row" style="margin-left:1em;display:none">
 							<div class="12u 12u$(mobile)">
 								<p>7.1. Does your institution provide opt-out for customers to limit this sharing?</p>
 							</div>
@@ -320,6 +379,7 @@
 							<div class="12u 12u$(mobile)">
 								<p>8. Does your institution engage in joint marketing?</p>
 							</div>
+							This reason incorporates sharing information under joint marketing agreements between two or more financial institutions and with any service provider used in connection with such agreements pursuant to
 
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q8" value="yes" onchange="show81(this,'yes')" 
@@ -332,8 +392,14 @@
 							</div>
 						</div>
 
-						<div id="8_1" class="row" style="display:none">
-							<p>8.1. Does your institution share customer’s personal information for joint marketing with other financial companies?</p>
+						<div id="8_1" class="row" style="margin-left:1em;display:none">
+							<p>8.1. Does your institution share customer's personal information for joint marketing with other financial companies?
+								<a rel="balloonq8" class="icon fa-question-circle"></a>
+							</p>
+
+								<div id="balloonq8" class="balloonstyle">
+									<p>It incorporates sharing information under joint marketing agreements between two or more financial institutions and with any service provider used in connection with such agreements.</p>
+								</div>
 							
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q8_1" value="yes" onchange="showDiv(this,'yes','8_1_1')" 
@@ -346,7 +412,7 @@
 							</div>
 						</div>
 
-						<div id="8_1_1" class="row" style="display:none">
+						<div id="8_1_1" class="row" style="margin-left:3em;display:none">
 							<div class="12u 12u$(mobile)">
 								<p>8.1.1. Does your institution provide opt-out for customers to limit this sharing?</p>
 							</div>
@@ -362,11 +428,11 @@
 							</div>
 						</div>
 
-						<div id="8_2" class="row" style="display:none">
+						<div id="8_2" class="row" style="margin-left:1em;display:none">
 							<p>8.2. What are the categories of joint marketing companies of your institution that you share personal information with?</p>
 
 							<div class="12u 12u$(mobile)">
-								<textarea name="q8_2" placeholder="List categories of companies such as credit card companies" value=${form.getQ8_2()} ></textarea>
+								<textarea id="t8_2" name="q8_2" placeholder="List categories of companies such as credit card companies" value=${form.getQ8_2()} ></textarea>
 							</div>
 						</div>
 
@@ -385,8 +451,8 @@
 							</div>
 						</div>
 
-						<div id="9_1" class="row" style="display:<c:choose><c:when test="${fn:contains(form.getQ9(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
-							<p>9.1. Does your institution share customer’s personal information about transactions and experiences for your affiliates’ everyday business purposes?</p>
+						<div id="9_1" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ9(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+							<p>9.1. Does your institution share customer's personal information about transactions and experiences for your affiliates' everyday business purposes?</p>
 							
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q9_1" value="yes" onchange="show91(this,'yes')" 
@@ -399,7 +465,7 @@
 							</div>
 						</div>
 
-						<div id="9_1_1" class="row" style="display:<c:choose><c:when test="${fn:contains(form.getQ9_1(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>;   margin-left:1em">
+						<div id="9_1_1" class="row" style="margin-left:3em;display:<c:choose><c:when test="${fn:contains(form.getQ9_1(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>;">
 							<div class="12u 12u$(mobile)">
 								<p>9.1.1. Does your institution provide opt-out for customers to limit this sharing?</p>
 							</div>
@@ -416,8 +482,8 @@
 						</div>
 
 	<!-- question 9_2 must provide opt-out -->
-						<div id="9_2" class="row" style="display:<c:choose><c:when test="${fn:contains(form.getQ9(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
-							<p>9.2. Does your institution share customer’s personal information about creditworthiness for your affiliates’ everyday business purposes?</p>
+						<div id="9_2" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ9(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+							<p>9.2. Does your institution share customer's personal information about creditworthiness for your affiliates' everyday business purposes?</p>
 							
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q9_2" value="yes" onchange="show93()" 
@@ -430,7 +496,7 @@
 							</div>
 						</div>
 
-						<div id="9_2_1" class="row" style="display:<c:choose><c:when test="${fn:contains(form.getQ9_1(),'yes')}"> block </c:when><c:when test="${fn:contains(form.getQ9_2(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+						<div id="9_2_1" class="row" style="margin-left:3em;display:<c:choose><c:when test="${fn:contains(form.getQ9_1(),'yes')}"> block </c:when><c:when test="${fn:contains(form.getQ9_2(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>9.2.1. Does your institution have any financial institution as affiliates?</p>
 							</div>
@@ -441,16 +507,16 @@
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q9_2_1" value="no" onchange="hideDiv(this,'no','9_2_1_1')"
+								<input type="radio" name="q9_2_1" value="no" onchange="hideText(this,'no','9_2_1_1')"
 								<c:if test="${fn:contains(form.getQ9_2_1(),'no')}"> checked </c:if>/>No
 							</div>
 
 							<div id="9_2_1_1" class="12u 12u$(mobile)" style="display:<c:choose><c:when test="${fn:contains(form.getQ9_2_1(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
-								<textarea name="q9_2_1_1" placeholder="List the financial institution of your institution's affiliates"> ${form.getQ9_2_1_1()} </textarea>
+								<textarea id="t9_2_1_1" name="q9_2_1_1" placeholder="List the financial institution of your institution's affiliates">${form.getQ9_2_1_1()}</textarea>
 							</div>
 						</div>
 
-						<div id="9_2_2" class="row" style="display:<c:choose><c:when test="${fn:contains(form.getQ9_1(),'yes')}"> block </c:when><c:when test="${fn:contains(form.getQ9_2(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+						<div id="9_2_2" class="row" style="margin-left:3em;display:<c:choose><c:when test="${fn:contains(form.getQ9_1(),'yes')}"> block </c:when><c:when test="${fn:contains(form.getQ9_2(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>9.2.2. Does your institution have any other companies as affiliates?</p>
 							</div>
@@ -460,19 +526,19 @@
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q9_2_2" value="no" onchange="hideDiv(this,'no','9_2_2_1')"
+								<input type="radio" name="q9_2_2" value="no" onchange="hideText(this,'no','9_2_2_1')"
 								<c:if test="${fn:contains(form.getQ9_2_2(),'no')}"> checked </c:if>/>No
 							</div>
 
 							<div id="9_2_2_1" class="12u 12u$(mobile)" style="display:<c:choose><c:when test="${fn:contains(form.getQ9_2_2(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
-								<textarea name="q9_2_2_1" placeholder="List other companies of your institution's affiliates" value=${form.getQ9_2_2_1()} />${form.getQ9_2_2_1()}</textarea>
+								<textarea id="t9_2_2_1" name="q9_2_2_1" placeholder="List other companies of your institution's affiliates" value=${form.getQ9_2_2_1()} />${form.getQ9_2_2_1()}</textarea>
 							</div>
 						</div>
 
 	<!-- For our affiliates to market to you. This reason incorporates sharing information specified in section 624 of the FCRA. This reason may be omitted from the disclosure table when: the institution does not have affiliates (or does not disclose personal information to its affiliates); the institution's affiliates do not use personal information in a manner that requires an opt-out; or the institution provides the affiliate marketing notice separately. Institutions that include this reason must provide an opt-out of indefinite duration.
 	 -->
-						<div id="9_3" class="row" style="display:<c:choose><c:when test="${fn:contains(form.getQ9_1(),'yes')}"> block </c:when><c:when test="${fn:contains(form.getQ9_2(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
-							<p>9.3. Does your institution's affiliates use customer’s personal information in a manner that requires an opt-out?</p>
+						<div id="9_3" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ9_1(),'yes')}"> block </c:when><c:when test="${fn:contains(form.getQ9_2(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+							<p>9.3. Does your institution's affiliates use customer's personal information in a manner that requires an opt-out?</p>
 							
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q9_3" value="yes" onchange="showDiv(this, 'yes','9_4')"
@@ -485,7 +551,7 @@
 							</div>
 						</div>
 
-						<div id="9_4" class="row" style="display:<c:choose><c:when test="${fn:contains(form.getQ9_3(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+						<div id="9_4" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ9_3(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>9.4. Does your institution provide the affiliate marketing notice separately?</p>
 							</div>
@@ -502,9 +568,9 @@
 						</div>
 						
 
-						<div id="9_5" class="row" style="display:<c:choose><c:when test="${fn:contains(form.getQ9_4(),'no')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+						<div id="9_5" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ9_4(),'no')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
-								<p>9.5. Does your institution share customer’s personal information for your affiliates to market to customers?</p>
+								<p>9.5. Does your institution share customer's personal information for your affiliates to market to customers?</p>
 							</div>
 							
 							<div id="checkBox" class="4u 6u$(mobile)">
@@ -528,16 +594,16 @@
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q10" value="no" onchange="hideDiv(this,'no','10_1')"
+								<input type="radio" name="q10" value="no" onchange="hideText(this,'no','10_1')"
 								<c:if test="${fn:contains(form.getQ10(),'no')}"> checked </c:if>/>No
 							</div>
 						</div>
 
-						<div id="10_1" class="row" style="display:<c:choose><c:when test="${fn:contains(form.getQ10(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+						<div id="10_1" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ10(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<p>10.1. What are the categories of nonaffiliated third party companies of your institution that you share personal information with?</p>
 
 							<div id="10_1_1" class="12u 12u$(mobile)">
-								<textarea name="q10_1_1" placeholder="List categories of companies such as mortgage companies, insurance companies, direct marketing companies, and nonprofit organizations" />${form.getQ10_1_1()}</textarea>
+								<textarea id="t10_1_1" name="q10_1_1" placeholder="List categories of companies such as mortgage companies, insurance companies, direct marketing companies, and nonprofit organizations" />${form.getQ10_1_1()}</textarea>
 							</div>
 						</div>
 
@@ -581,7 +647,7 @@
 								<p>12. Is your institution the only financial institution provides the model form?</p>
 							</div>
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q12" value="yes" onchange="hideDivT(this, 'yes','12_1')"
+								<input type="radio" name="q12" value="yes" onchange="hideText(this, 'yes','12_1')"
 								<c:if test="${fn:contains(form.getQ12(),'yes')}"> checked </c:if>/>Yes
 							</div>
 
@@ -592,18 +658,25 @@
 						</div>
 						
 
-						<div id="12_1" class="row" style="display: <c:choose><c:when test="${fn:contains(form.getQ12(),'no')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+						<div id="12_1" class="row" style="margin-left:1em;display: <c:choose><c:when test="${fn:contains(form.getQ12(),'no')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>12.1. Who are the financial institutions providing this privacy notice?</p>
 							</div>
 							<div class="12u 12u$(mobile)">
-								<textarea name="q12_1" placeholder="List all the financial institutions providing this privacy notice">${form.getQ12_1()}</textarea>
+								<textarea id="t12_1" name="q12_1" placeholder="List all the financial institutions providing this privacy notice">${form.getQ12_1()}</textarea>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="12u 12u$(mobile)">
-								<p>13. Does your institution provide additional information pertaining to your safeguards practices? Such information may include information about your use of cookies or other measures you uses to safeguard personal information.</p>
+								<p>13. Does your institution provide additional information pertaining to your safeguards practices? 
+									<a rel="balloonq13" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq13" class="balloonstyle">
+									<p>Such information may include information about your use of cookies or other measures you uses to safeguard personal information.</p>
+								</div>
+
 							</div>
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q13" value="yes" onchange="showDiv(this,'yes','13_1')"
@@ -611,19 +684,32 @@
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q13" value="no" onchange="hideDivT(this,'no','13_1')"
+								<input type="radio" name="q13" value="no" onchange="hideText(this,'no','13_1')"
 								<c:if test="${fn:contains(form.getQ13(),'no')}"> checked </c:if>/>No
 							</div>
 
 							<div id="13_1" class="12u 12u$(mobile)" style="display:<c:choose><c:when test="${fn:contains(form.getQ13(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
-								<textarea name="q13_1" placeholder="You are limited to a maximum of 30 additional words.">${form.getQ13_1()}</textarea>
+								<textarea id="t13_1" name="q13_1" placeholder="You are limited to a maximum of 30 additional words.">${form.getQ13_1()}</textarea>
 							</div>
 						</div>
 <!--; 
 
 -->
 						<div class="row">
-							<p>14. What are the ways that your institution <strong>DOES NOT</strong> use to collect customers' personal information ?</p>
+							<div class="12u 12u$(mobile)">
+								<p>14. What are the ways that your institution uses to collect customers' personal information ?
+									<a rel="balloonq14" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq14" class="balloonstyle">
+									<p>You must select at least 5 of the following choices up to as many as you want.</p>
+									<p> "Select All" can enable you to select all the checkboxes.</p>
+								</div>
+							</div>
+
+							<div id="checkBox" class="12u 12u$(mobile)">
+								<input type="checkbox" id="all2" onClick="toggle(this,'q14whatWay')" /><label for="all2">Select All</label>
+							</div>
 	 
 							<div id="checkBox" class="6u 12u$(mobile)">
 								<input type="checkbox" name="q14whatWay" id="way1" value="open" 
@@ -778,9 +864,16 @@
 						</div>
 <!-- Institutions that collect personal information from their affiliates and/or credit bureaus must include after the bulleted list the following statement: “We also collect your personal information from others, such as credit bureaus, affiliates, or other companies.” -->
 
-						<div id="15_1" class="row" style="display:<c:choose><c:when test="${fn:contains(form.getQ15(),'no')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+						<div id="15_1" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ15(),'no')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
-								<p>15.1. Does your institution collect personal information from other companies?</p>
+								<p>15.1. Does your institution collect personal information from other companies?
+									<a rel="balloonq15" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq15" class="balloonstyle">
+									<p>These companies are those other than your affiliates and/or credit bureaus.</p>
+								</div>
+
 							</div>
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q15_1" value="yes"
@@ -803,12 +896,12 @@
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q16" value="no" onchange="hideDiv(this,'no','16_1')"
+								<input type="radio" name="q16" value="no" onchange="hideText(this,'no','16_1')"
 								<c:if test="${fn:contains(form.getQ16(),'no')}"> checked </c:if>/>No
 							</div>
 
 							<div id="16_1" class="12u 12u$(mobile)" style="display:<c:choose><c:when test="${fn:contains(form.getQ16(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
-								<textarea name="q16_1" placeholder="Describe state and/or international privacy law provisions" >${form.getQ16_1()}</textarea>
+								<textarea id="t16_1" name="q16_1" placeholder="Describe state and/or international privacy law provisions" >${form.getQ16_1()}</textarea>
 							</div>
 
 						</div>
@@ -822,12 +915,12 @@
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q17" value="no" onchange="hideDiv(this,'no','17recept')"
+								<input type="radio" name="q17" value="no" onchange="hideText(this,'no','17recept')"
 								<c:if test="${fn:contains(form.getQ17(),'no')}"> checked </c:if>/>No
 							</div>
 
 							<div id="17recept" class="12u 12u$(mobile)" style="display:none">
-								<textarea name="q17recept" placeholder="Describe state and/or international privacy law provisions" value=${form.getQ17recept()}/></textarea>
+								<textarea id="t17recept" name="q17recept" placeholder="Describe state and/or international privacy law provisions" value=${form.getQ17recept()}/></textarea>
 							</div>
 
 						</div>
@@ -837,7 +930,8 @@
 								<a href="#disclosure" class="button scrolly">&#60;&#60; Disclosure Info</a>
 							</div>
 							<div id="next" class="6u 6u$(mobile)">
-								<a href="#" class="button scrolly">Complete &#62;&#62;</a>
+							<input id="save" class="button scrolly" type="submit" name="action" value="Complete" />
+					
 							</div>
 						</div>
 				</div>

@@ -40,7 +40,6 @@
                         -->
                         <ul>
                             <li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
-                            <li><a href="read.do" id="upload-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Upload Existing File</span></a></li>
                             <li><a href="save.do" id="new-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Start New Form</span></a></li>
                         </ul>
                     </nav>
@@ -66,7 +65,7 @@
         <div id="main">
 
         <!-- Intro -->
-            <section id="top" class="one dark cover">
+            <section id="top" class="Home dark full">
                 <div class="container">
 
                     <header>
@@ -74,9 +73,32 @@
                     </header>
 
                     <footer>
-                        <a href="read.do" id="upload" class="button scrolly">Upload Existing File</a>
                         <a href="save.do" id="start" class="button scrolly">Start New Form</a>
+                        <a href="#file" id="upload" class="button scrolly">Upload Existing File</a>
                     </footer>
+
+                </div>
+            </section>
+
+            <section id="file" class="two">
+                <div class="container">
+
+                    <header>
+                        <h2>Upload Existing File</h2>
+                    </header>
+
+                    <form action="read.do" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="3u 12u$(mobile)"></div>
+                            <div class="3u 12u$(mobile)">
+                                <input type="file" class="file" name="file" size="30"/>
+                            </div>
+                            <div class="3u 12u$(mobile)">
+                                <input id="upload" type="submit" class="button" name="action" value="Upload File" />
+                            </div>
+                            <div class="3u 12u$(mobile)"></div>
+                        </div>
+                    </form>
 
                 </div>
             </section>
@@ -102,8 +124,6 @@
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
 
-
-    
 </body>
 
 </html>
