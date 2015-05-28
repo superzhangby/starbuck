@@ -30,25 +30,13 @@ import model.Model;
 
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	  static String HOME;
-	  static String PATH;
-	  static  String HTML_PATH; 
-	  static  String ZIP_PATH;
-	  static  String TEMP_PATH;
-	  static  String CSS_PATH;
-
-	  
-	  
-	 
-/*
-	static String HOME ;
-	static  String PATH;
-	static  String HTML_PATH;
-	static  String CSS_PATH;
-	static  String ZIP_PATH;
-	static  String TEMP_PATH;
-*/
-	String time;
+	static String HOME;
+	static String PATH;
+	static String HTML_PATH;
+	static String ZIP_PATH;
+	static String TEMP_PATH;
+	static String CSS_PATH;
+	static String time;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -61,24 +49,13 @@ public class Controller extends HttpServlet {
 		Action.add(new DownloadAction(model));
 		Action.add(new HTMLAction(model));
 		Action.add(new HTMLPageAction(model));
-		
-		HOME = getServletContext().getRealPath("/") + "hi.txt";
-		 PATH = HOME + "hi.txt";
-		 HTML_PATH = HOME + "html.html";
-		// CSS_PATH = "/home/ec2-user/assets";
-		 ZIP_PATH = HOME;
-		 TEMP_PATH = HOME;
-		
 
-		/*
-		 
-		 HOME = getServletContext().getRealPath("/");
-		 PATH = HOME + "hi.txt";
-		 HTML_PATH = HOME + "html.html";
-		 CSS_PATH = "/home/ec2-user/assets";
-		 ZIP_PATH = HOME;
-		 TEMP_PATH = HOME;
-		*/
+		HOME = getServletContext().getRealPath("/") + "hi.txt";
+		PATH = HOME + "hi.txt";
+		HTML_PATH = HOME + "html.html";
+		// CSS_PATH = "/home/ec2-user/assets";
+		ZIP_PATH = HOME;
+		TEMP_PATH = HOME;
 	}
 
 	/**
@@ -272,7 +249,7 @@ public class Controller extends HttpServlet {
 			ArrayList filesToAdd = new ArrayList();
 			filesToAdd.add(new File(PATH));
 			filesToAdd.add(new File(HTML_PATH));
-			
+
 			ZipParameters parameters = new ZipParameters();
 			parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE); // set
 																			// compression
@@ -284,13 +261,12 @@ public class Controller extends HttpServlet {
 			parameters.setRootFolderInZip("Privary Notice-" + time + "/");
 
 			// Now add files to the zip file
-			//zipFile.addFolder(CSS_PATH, parameters);
+			// zipFile.addFolder(CSS_PATH, parameters);
 			zipFile.addFiles(filesToAdd, parameters);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		}
 
 	}
-
 
 }
