@@ -50,7 +50,7 @@ public class Controller extends HttpServlet {
 		Action.add(new HTMLAction(model));
 		Action.add(new HTMLPageAction(model));
 
-		HOME = getServletContext().getRealPath("/") + "hi.txt";
+		HOME = getServletContext().getRealPath("/");
 		PATH = HOME + "hi.txt";
 		HTML_PATH = HOME + "html.html";
 		// CSS_PATH = "/home/ec2-user/assets";
