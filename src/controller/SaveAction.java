@@ -29,11 +29,8 @@ public class SaveAction extends Action {
 	}
 
 	public String perform(HttpServletRequest request) {
-		/*
-		 * if (request.getAttribute("saveok") == null){
-		 * System.out.println("not save yet"); } else {
-		 * System.out.println("Yeah we save"); }
-		 */
+		
+		
 		DataForm form = null;
 		try {
 			form = formBeanFactory.create(request);
@@ -45,13 +42,12 @@ public class SaveAction extends Action {
 		// request.setAttribute("form", form);
 
 		if (!form.isPresent()) {
-			System.out.println("Yeah no form");
 			return "new-form.jsp";
 		}
 
 		if (form.getAction().equals("Save Application")) {
 			JsonObject obj = form.getJson();
-			System.out.println(obj.toString());
+			request.getSession().setAttribute("form", form);
 
 			try {
 				FileWriter fw = new FileWriter(Controller.PATH);
@@ -62,6 +58,8 @@ public class SaveAction extends Action {
 			}
 			return "save";
 		}
+		
+		
 
 		if (form.getAction().equals("Complete")) {
 
@@ -74,7 +72,6 @@ public class SaveAction extends Action {
 				return "new-form.jsp";
 			}
 			
-			request.getSession().setAttribute("form", form);
 			request.setAttribute("errors", errors);
 			ArrayList<String> q5 = new ArrayList<String>(Arrays.asList(form.getQ5whatData()));
 			ArrayList<String> q14 = new ArrayList<String>(Arrays.asList(form.getQ14whatWay()));
@@ -113,6 +110,9 @@ public class SaveAction extends Action {
 			request.getSession().setAttribute("flag95", flag95);
 			request.getSession().setAttribute("flag9192", flag9192);
 			System.out.println(form.getArray1());
+			
+			form.setAction("Save Application");
+			request.getSession().setAttribute("form", form);
 			
 			return "result.jsp";
 		}

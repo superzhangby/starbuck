@@ -1555,6 +1555,7 @@
 		font-weight: 300;
 		line-height: 1.75em;
 		color: #444;
+		margin:0;
 	}
 
 
@@ -2395,6 +2396,19 @@
 			}
 
 	}
+
+
+	#main.download {
+		margin-left:190px;
+		margin-right:190px;
+	}
+
+	#main.download .two {
+		background-color:#fff; 
+	}
+
+
+
 
 /* Narrow */
 

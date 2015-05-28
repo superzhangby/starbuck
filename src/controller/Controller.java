@@ -54,6 +54,7 @@ public class Controller extends HttpServlet {
 		PATH = HOME + "hi.txt";
 		HTML_PATH = HOME + "html.html";
 		//CSS_PATH = "/home/ec2-user/assets";
+		CSS_PATH = "/Users/LEE45/git/starbuck1/WebContent/assets";
 		ZIP_PATH = HOME;
 		TEMP_PATH = HOME;
 	}
@@ -174,7 +175,7 @@ public class Controller extends HttpServlet {
 
 			CharArrayWriterResponse customResponse = new CharArrayWriterResponse(
 					response);
-			request.getRequestDispatcher("WEB-INF/download.jsp").forward(
+			request.getRequestDispatcher("WEB-INF/downloadHTML.jsp").forward(
 					request, customResponse);
 			String resposeString = customResponse.getOutput();
 
@@ -247,7 +248,6 @@ public class Controller extends HttpServlet {
 
 			// Build the list of files to be added in the array list
 			ArrayList filesToAdd = new ArrayList();
-			filesToAdd.add(new File(PATH));
 			filesToAdd.add(new File(HTML_PATH));
 
 			ZipParameters parameters = new ZipParameters();
@@ -261,8 +261,8 @@ public class Controller extends HttpServlet {
 			parameters.setRootFolderInZip("Privary Notice-" + time + "/");
 
 			// Now add files to the zip file
-			zipFile.addFolder(CSS_PATH, parameters);
 			zipFile.addFiles(filesToAdd, parameters);
+			zipFile.addFolder(CSS_PATH, parameters);
 		} catch (ZipException e) {
 			e.printStackTrace();
 		}
