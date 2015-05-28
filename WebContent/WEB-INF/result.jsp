@@ -31,7 +31,7 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a href="download.do?action=edit" id="edit" ><span class="icon fa-th">Edit</span></a></li>
+							<li><a href="download.do?action=edit" id="edit" ><span class="icon fa-edit">Edit</span></a></li>
 							<li><a href="download.do?action=download" id="html" ><span class="icon fa-envelope">Download HTML</span></a></li>
 						</ul>
 					</nav>
@@ -251,7 +251,7 @@
 									</c:if>
 
 									<c:if test="${fn:contains(form.getQ17_1(),'yes')}">
-										<li>Visit us online: ${form.getWebsite()}</li>
+										<li>Visit us online: <a href="redirect.do">${form.getWebsite()}</a></li>
 									</c:if>
 								</ul> <strong>Please note:</strong><br>
 									If you are a new customer, we can begin sharing your information ${form.getQ11()} days from the date we sent this notice. When you are no longer our customer, we continue to share your information as described in this notice.
@@ -267,7 +267,7 @@
 							<tr>
 								<td id="color">Questions?</td>
 								<td>
-									Call ${form.getPhone()} or go to ${form.getWebsite()}
+									Call ${form.getPhone()} or go to <a href="redirect.do">${form.getWebsite()}</a>
 								</td>
 							</tr>
 						</tbody>

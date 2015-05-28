@@ -89,7 +89,7 @@ public class DataForm extends FormBean {
 	}
 
 	public void setName(String name) {
-		this.name = name.trim();
+		this.name = name;
 	}
 
 	public String getPhone() {
@@ -560,6 +560,8 @@ public class DataForm extends FormBean {
 				if(q8_1_1 == null) {
 					errors.add("Question 8.1.1 is required.");
 				}
+				if(q8_2 == null ||q8_2.trim().length() == 0) 
+					errors.add("Question 8.2 is required.");
 			}
 		}
 

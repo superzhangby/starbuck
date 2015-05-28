@@ -73,8 +73,7 @@ public class SaveAction extends Action {
 			}
 			
 			request.setAttribute("errors", errors);
-			ArrayList<String> q5 = new ArrayList<String>(Arrays.asList(form.getQ5whatData()));
-			ArrayList<String> q14 = new ArrayList<String>(Arrays.asList(form.getQ14whatWay()));
+			
 			
 			Date date = Calendar.getInstance().getTime();
 			SimpleDateFormat dateFormat = new SimpleDateFormat(
@@ -118,13 +117,14 @@ public class SaveAction extends Action {
 			request.getSession().setAttribute("flag95", flag95);
 			request.getSession().setAttribute("flag9192", flag9192);
 			request.getSession().setAttribute("flag17", flag17);
+			System.out.println(form.getName());
 			
 			form.setAction("Save Application");
 			request.getSession().setAttribute("form", form);
 			
 			return "result.jsp";
 		}
-
+		System.out.println("refresh: "+ form.getName());
 		return "new-form.jsp";
 
 	}
