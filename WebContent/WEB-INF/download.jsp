@@ -15,43 +15,7 @@
 	
 	
 	<body>
-<!--
-		<!-- Header -->
-		<div id="header">
 
-			<div class="top">
-
-				<!-- Logo -->
-					<div id="logo">
-						<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
-						<h1 id="title">Interactive Form Builder</h1>
-						<p>Team 3 Echo</p>
-					</div>
-
-				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="download.do?action=edit" id="edit" ><span class="icon fa-th">Edit</span></a></li>
-							<li><a href="download.do?action=download" id="html" ><span class="icon fa-envelope">Download HTML</span></a></li>
-						</ul>
-					</nav>
-
-			</div>
-
-			<div class="bottom">
-
-				<!-- Social Icons -->
-					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-						<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-
-			</div>
-
-		</div>
 
 
 	<div id="balloonWhat" class="balloonstyle">
@@ -73,7 +37,7 @@
 
 
 
-	<div id="main">
+	<div id="main" class="download">
 			<section id="result" class="two">
 				<div class="container">
 
@@ -434,11 +398,11 @@
 								<td id="widest">Affiliates</td>
 								<td>
 						<!--
-(i) 9 no: -Â€Âœ[name of financial institution] has no affiliates-Â€Â;
+(i) 9 no: -€œ[name of financial institution] has no affiliates-€;
 
-(ii) 9.1/9.2 both no: -Â€Âœ[name of financial institution] does not share with our affiliates-Â€Â; or
+(ii) 9.1/9.2 both no: -€œ[name of financial institution] does not share with our affiliates-€; or
 
-(iii) 9.1/9.2 one yes: -Â€ÂœOur affiliates include financial companies such as [insert illustrative list of companies]; nonfinancial companies, such as [insert illustrative list of companies;] -->
+(iii) 9.1/9.2 one yes: -€œOur affiliates include financial companies such as [insert illustrative list of companies]; nonfinancial companies, such as [insert illustrative list of companies;] -->
 									Companies related by common ownership or control. They can be Financial and nonfinancial companies.
 									<ul>
 										<c:if test="${fn:contains(form.getQ9(),'no')}"> <li>${form.getName()} has no affiliates.</li> </c:if>
@@ -457,9 +421,9 @@
 										<c:if test="${fn:contains(form.getQ10(),'yes')}"><li>Nonaffiliates we share with can include ${form.getQ10_1_1()}.</li></c:if>
 									</ul>
 <!--
-(i) If it does not share with nonaffiliated third parties, state: -Â€Âœ[name of financial institution] does not share with nonaffiliates so they can market to you-Â€Â; or
+(i) If it does not share with nonaffiliated third parties, state: -€œ[name of financial institution] does not share with nonaffiliates so they can market to you-€; or
 
-(ii) If it shares with nonaffiliated third parties, state, as applicable: -Â€ÂœNonaffiliates we share with can include [list categories of companies such as mortgage companies, insurance companies, direct marketing companies, and nonprofit organizations].-Â€Â -->
+(ii) If it shares with nonaffiliated third parties, state, as applicable: -€œNonaffiliates we share with can include [list categories of companies such as mortgage companies, insurance companies, direct marketing companies, and nonprofit organizations].-€ -->
 									
 								</td>
 							</tr>
@@ -469,9 +433,9 @@
 								<td>
 									A formal agreement between nonaffiliated financial companies that together market financial products or services to you.
 <!-- 
-(i) If it does not engage in joint marketing, state: -Â€Âœ[name of financial institution] doesn't jointly market-Â€Â; or
+(i) If it does not engage in joint marketing, state: -€œ[name of financial institution] doesn't jointly market-€; or
 
-(ii) If it shares personal information for joint marketing, state, as applicable: -Â€ÂœOur joint marketing partners include [list categories of companies such as credit card companies].-Â€Â-->
+(ii) If it shares personal information for joint marketing, state, as applicable: -€œOur joint marketing partners include [list categories of companies such as credit card companies].-€-->
 									<ul>
 										<c:if test="${fn:contains(form.getQ8(),'no')}"><li>${form.getName()} doesn't jointly market.</li></c:if>
 										<c:if test="${fn:contains(form.getQ8_1(),'yes')}"><li>Our joint marketing partners include ${form.getQ8_2()}.</li></c:if>
@@ -504,16 +468,6 @@
 
 		</div>
 
-		<!-- Footer -->
-		<div id="footer">
-
-			<!-- Copyright -->
-				<ul class="copyright">
-					<li>&copy; Interactive Form Builder. All rights reserved.</li>
-					<li>Design: <a href="#">Team3 Echo</a></li>
-				</ul>
-
-		</div>
 		
 	</body>
 </html>

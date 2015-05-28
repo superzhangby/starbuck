@@ -87,11 +87,14 @@ public class SaveAction extends Action {
 			String q9_2 = form.getQ9_2();
 			String q9_3 = form.getQ9_3();
 			String q9_4 = form.getQ9_4();
+			String q17_1 = form.getQ17_1();
+			String q17_2 = form.getQ17_2();
 			
 		
 			boolean flag = true;
 			boolean flag9192 = false;
 			boolean flag95 = false;
+			boolean flag17 = false;
 			if (q9.equals("no")) {
 				flag = false;
 			} 
@@ -106,9 +109,15 @@ public class SaveAction extends Action {
 			else if (q9_3.equals("no") || q9_4.equals("yes")) {
 				flag = false;
 			}
+			
+			if (q17_1 != null && q17_2 != null && q17_1.equals("no") && q17_2.equals("no")) {
+				 flag17 = true;
+			}
+			
 			request.getSession().setAttribute("flag", flag);
 			request.getSession().setAttribute("flag95", flag95);
 			request.getSession().setAttribute("flag9192", flag9192);
+			request.getSession().setAttribute("flag17", flag17);
 			System.out.println(form.getArray1());
 			
 			form.setAction("Save Application");
