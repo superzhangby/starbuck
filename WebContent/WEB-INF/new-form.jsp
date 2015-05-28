@@ -1025,8 +1025,8 @@
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q17_3_2" id="17323" value="none" 
-								<c:if test="${fn:contains(form.getQ17_3_2(),'none')}"> checked </c:if>/>
+								<input type="radio" name="q17_3_2" id="17323" value="account" 
+								<c:if test="${fn:contains(form.getQ17_3_2(),'account')}"> checked </c:if>/>
 								<label for="17321">neither of the above</label>
 							</div>
 						</div>
