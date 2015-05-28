@@ -108,10 +108,6 @@
 						</c:forEach>
 					</div>
 					
-					<div>
-					${form.getName()}
-					</div>
-					
 					<header>
 						<h2>Basic Information</h2>
 					</header>
