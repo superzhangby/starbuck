@@ -523,8 +523,10 @@ public class DataForm extends FormBean {
 			errors.add("Question 2: Phone number is required.");
 
 		for (int i = 0; i < phone.length(); i++) {
-			if (phone.charAt(i) > '9' || phone.charAt(i) < '0')
+			if (phone.charAt(i) > '9' || phone.charAt(i) < '0') {
 				errors.add("Question 2: Invalid Phone Number.");
+				break;
+			}
 		}
 
 		if (q3 == null)
@@ -632,6 +634,20 @@ public class DataForm extends FormBean {
 
 		if (q10 == null)
 			errors.add("Question 10 is required.");
+
+		/*7.1 yes
+		8.1.1 yes
+		9.1.1 yes
+		9.2 yes
+		9.5 yes
+		10 yes
+		*/
+		
+		if (q7_1 != null && q8_1_1 != null && q9_1_1 != null && q9_2 != null && q9_5 != null &&
+				q10 != null && q17 != null &&q7_1.equals("yes") && q8_1_1.equals("yes") && q9_1_1.equals("yes") && q9_2.equals("yes") && q9_5.equals("yes")
+				&& q10.equals("yes") && q17.equals("no")) {
+			errors.add("Question 17 should be yes based on your previous answer.");
+		}
 
 		if (q11 == null || q11.length() == 0)
 			errors.add("Question 11 is required.");

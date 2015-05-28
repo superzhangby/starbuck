@@ -109,6 +109,9 @@ public class ReadAction extends Action {
 				e.printStackTrace();
 			}
 			
+			if (jobject == null) {
+				return "index.jsp";
+			}
 			DataForm form = null;
 			try {
 				form = generateForm(jobject);
