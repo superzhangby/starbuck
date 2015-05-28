@@ -162,7 +162,16 @@ public class ReadAction extends Action {
 		form.setQ16(jobject.optString("q16"));
 		form.setQ16_1(jobject.optString("q16_1"));
 		form.setQ17(jobject.optString("q17"));
-		form.setQ17recept(jobject.optString("q17recept"));
+		form.setQ17_1(jobject.optString("q17_1"));
+		form.setQ17_2(jobject.optString("q17_2"));
+		form.setQ17_3(jobject.optString("q17_3"));
+		form.setQ17_3_1(jobject.optString("q17_3_1"));
+		form.setQ17_3_2(jobject.optString("q17_3_2"));
+		form.setAddress1(jobject.optString("address1"));
+		form.setAddress2(jobject.optString("address2"));
+		form.setCity(jobject.optString("city"));
+		form.setState(jobject.optString("state"));
+		form.setZipcode(jobject.optString("zipcode"));
 		
 		return form;
 	}
