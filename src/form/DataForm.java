@@ -524,106 +524,106 @@ public class DataForm extends FormBean {
 
 		for (int i = 0; i < phone.length(); i++) {
 			if (phone.charAt(i) > '9' || phone.charAt(i) < '0')
-				errors.add("Question 2: Invalid Phone Number!");
+				errors.add("Question 2: Invalid Phone Number.");
 		}
 
 		if (q3 == null)
-			errors.add("Question 3 is required!");
+			errors.add("Question 3 is required.");
 
 		if (website == null || website.trim().length() == 0)
-			errors.add("Question 4: Website name is required!");
+			errors.add("Question 4: Website name is required.");
 
 		if (q5whatData == null || q5whatData.length == 0) {
-			errors.add("Question 5 is required!");
+			errors.add("Question 5 is required.");
 		} else if (q5whatData.length < 5) {
-			errors.add("For Question 5, You must select at least five options!");
+			errors.add("For Question 5, You must select at least five options.");
 		}
 
 		if (q6 == null)
-			errors.add("Question 6 is required!");
+			errors.add("Question 6 is required.");
 
 		if (q7 == null) {
-			errors.add("Question 7 is required!");
+			errors.add("Question 7 is required.");
 		} else if (q7.equals("yes") ) {
 			if (q7_1 == null)
-				errors.add("Question 7.1 is required!");
+				errors.add("Question 7.1 is required.");
 		}
 
 		if (q8 == null) {
-			errors.add("Question 8 is required!");
+			errors.add("Question 8 is required.");
 		} else if (q8.equals("yes")) {
 			if (q8_1 == null) {
-				errors.add("Question 8.1 is required!");
+				errors.add("Question 8.1 is required.");
 			} else if(q8_1.equals("yes")) {
 				if(q8_1_1 == null) {
-					errors.add("Question 8.1.1 is required!");
+					errors.add("Question 8.1.1 is required.");
 				}
 			}
 		}
 
 		if (q9 == null) {
-			errors.add("Question 9 is required!");
+			errors.add("Question 9 is required.");
 		} else if (q9.equals("yes")) {
-			System.out.println("+++++what happened in q9" );
+//			System.out.println("+++++what happened in q9" );
 			if (q9_1 == null) {
-				errors.add("Question 9.1 is required!");
+				errors.add("Question 9.1 is required.");
 			} else if (q9_1.equals("yes")) {
 				if (q9_1_1 == null)
-					errors.add("Question 9.1.1 is required!");
+					errors.add("Question 9.1.1 is required.");
 
 				if (q9_2_1 == null) {
-					errors.add("Question 9.2.1 is required!");
+					errors.add("Question 9.2.1 is required.");
 				} else if (q9_2_1.equals("yes")) {
 					if (q9_2_1_1 == null || q9_2_1_1.trim().length() == 0)
-						errors.add("Question 9.2.1, you must list the financial institution of your institution's affiliates!");
+						errors.add("Question 9.2.1, you must list the financial institution of your institution's affiliates.");
 				}
 
 				if (q9_2_2 == null) {
-					errors.add("Question 9.2.2 is required!");
+					errors.add("Question 9.2.2 is required.");
 				} else if (q9_2_2.equals("yes")) {
 					if (q9_2_2_1 == null || q9_2_2_1.trim().length() == 0)
-						errors.add("Question 9.2.2, you must List other companies of your institution's affiliates!");
+						errors.add("Question 9.2.2, you must List other companies of your institution's affiliates.");
 				}
 
 				if (q9_3 == null) {
-					errors.add("Question 9.3 is required!");
+					errors.add("Question 9.3 is required.");
 				} else if (q9_3.equals("yes")) {
 					if (q9_4 == null) {
-						errors.add("Question 9.4 is required!");
+						errors.add("Question 9.4 is required.");
 					} else if (q9_4.equals("no")) {
 						if (q9_5 == null) {
-							errors.add("Question 9.5 is required!");
+							errors.add("Question 9.5 is required.");
 						}
 					}
 				}
 			}
 
 			if (q9_2 == null) {
-				errors.add("Question 9.2 is required!");
+				errors.add("Question 9.2 is required.");
 			} else if (q9_2.equals("yes")) {
 				if (q9_2_1 == null) {
-					errors.add("Question 9.2.1 is required!");
+					errors.add("Question 9.2.1 is required.");
 				} else if (q9_2_1.equals("yes")) {
 					if (q9_2_1_1 == null || q9_2_1_1.trim().length() == 0) {
-						errors.add("Question 9.2.1, you must list the financial institution of your institution's affiliates!");					
+						errors.add("Question 9.2.1, you must list the financial institution of your institution's affiliates.");					
 					}
 				}
 
 				if (q9_2_2 == null) {
-					errors.add("Question 9.1.2 is required!");
+					errors.add("Question 9.1.2 is required.");
 				} else if (q9_2_2.equals("yes")) {
 					if (q9_2_2_1 == null || q9_2_2_1.trim().length() == 0)
-						errors.add("Question 9.2.2, you must List other companies of your institution's affiliates!");
+						errors.add("Question 9.2.2, you must List other companies of your institution's affiliates.");
 				}
 
 				if (q9_3 == null) {
-					errors.add("Question 9.3 is required!");
+					errors.add("Question 9.3 is required.");
 				} else if (q9_3.equals("yes")) {
 					if (q9_4 == null) {
-						errors.add("Question 9.4 is required!");
+						errors.add("Question 9.4 is required.");
 					} else if (q9_4.equals("no")) {
 						if (q9_5 == null) {
-							errors.add("Question 9.5 is required!");
+							errors.add("Question 9.5 is required.");
 						}
 					}
 				}
@@ -631,14 +631,14 @@ public class DataForm extends FormBean {
 		}
 
 		if (q10 == null)
-			errors.add("Question 10 is required!");
+			errors.add("Question 10 is required.");
 
 		if (q11 == null || q11.length() == 0)
-			errors.add("Question 11 is required!");
+			errors.add("Question 11 is required.");
 
 		for (int i = 0; i < q11.length(); i++) {
 			if (q11.charAt(i) > '9' || q11.charAt(i) < '0') {
-				errors.add("Question 11: Invalid Number input!");
+				errors.add("Question 11: Invalid Number input.");
 				break;
 			}
 		}
@@ -646,21 +646,21 @@ public class DataForm extends FormBean {
 		if (q11 != null && q11.length() != 0) {
 			int res = Integer.parseInt(q11);
 			if (res < 30)
-				errors.add("Question 11: Input number must equal to bigger than 30!");
+				errors.add("Question 11: Input number must equal to bigger than 30.");
 		}
 
 		if (q12 == null) {
-			errors.add("Question 12 is required!");
+			errors.add("Question 12 is required.");
 		} else if (q12.equals("no")) {
 			if (q12_1 == null || q12_1.trim().length() == 0)
 				errors.add("Question 12.1 is required!");
 		}
 
 		if (q13 == null) {
-			errors.add("Question 13 is required!");
+			errors.add("Question 13 is required.");
 		} else if (q13.equals("yes")) {
 			if (q13_1 == null || q13_1.trim().length() == 0)
-				errors.add("Additional information for Question 13 is required!");
+				errors.add("Additional information for Question 13 is required.");
 
 			String[] res = q13.split(" ");
 			if (res.length > 30)
@@ -671,52 +671,52 @@ public class DataForm extends FormBean {
 			errors.add("Question 14 is required!");
 		} else {
 			if (q14whatWay.length < 5) {
-				errors.add("For Question 14, You must select at least five options!");
+				errors.add("For Question 14, You must select at least five options.");
 			}
 		}
 
 		if (q15 == null) {
-			errors.add("Question 15 is required!");
+			errors.add("Question 15 is required.");
 		} else if (q15.equals("no")) {
 			if (q15_1 == null)
-				errors.add("Question 15.1 is required!");
+				errors.add("Question 15.1 is required.");
 		}
 
 		if (q16 == null) {
-			errors.add("Question 16 is required!");
+			errors.add("Question 16 is required.");
 		} else if (q16.equals("yes")) {
 			if (q16_1 == null || q16_1.trim().length() == 0)
-				errors.add("Question 16.1 is required!");
+				errors.add("Question 16.1 is required.");
 		}
 
 		if (q17 == null) {
 			errors.add("Question 17 is required!");
 		} else if (q17.equals("yes")) {
 			if (q17_1 == null || q17_1.length() == 0)
-				errors.add("Question 17.1 is required!");
+				errors.add("Question 17.1 is required.");
 			
 			if (q17_2 == null || q17_2.length() == 0)
-				errors.add("Question 17.2 is required!");
+				errors.add("Question 17.2 is required.");
 			
 			if (q17_3 == null || q17_3.length() == 0)
-				errors.add("Question 17.3 is required!");
+				errors.add("Question 17.3 is required.");
 			
 			if (q17_1 != null && q17_2 != null && q17_3 != null && q17_1.equals("no") && q17_2.equals("no") && q17_3.equals("no"))
 				errors.add("At least one answer of question 17.1, 17.2, and 17.3 must be YES.");
 			
 			if (q17_3 != null && q17_3.equals("yes")) {
 				if (q17_3_1 == null || q17_3_1.length() == 0)
-					errors.add("Question 17.3.1 is required!");
+					errors.add("Question 17.3.1 is required.");
 				if (q17_3_2 == null || q17_3_2.length() == 0)
-					errors.add("Question 17.3.2 is required!");
-				if (address1 == null || address1.trim().length() == 0);
-					errors.add("Question 17.3.3 Stree Address 1 is required!");
-				if (city == null || city.trim().length() == 0);
-					errors.add("Question 17.3.3 City is required!");
-				if (state == null || state.trim().length() == 0);
-					errors.add("Question 17.3.3 State is required!");
-				if (zipcode == null || zipcode.trim().length() != 5);
-					errors.add("Question 17.3.3: please provide a valid zipcode!");
+					errors.add("Question 17.3.2 is required.");
+				if (address1 == null || address1.length() == 0)
+					errors.add("Question 17.3.3 Stree Address 1 is required.");
+				if (city == null || city.trim().length() == 0)
+					errors.add("Question 17.3.3 City is required.");
+				if (state == null || state.trim().length() == 0)
+					errors.add("Question 17.3.3 State is required.");
+				if (zipcode == null || zipcode.trim().length() != 5)
+					errors.add("Question 17.3.3: please provide a valid zipcode.");
 			}
 		}
 

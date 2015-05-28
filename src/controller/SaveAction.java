@@ -71,7 +71,6 @@ public class SaveAction extends Action {
 			if (errors.size() > 0) {
 				request.setAttribute("form", form);
 				request.setAttribute("errors", errors);
-				System.out.println(errors);
 				return "new-form.jsp";
 			}
 			
@@ -86,9 +85,6 @@ public class SaveAction extends Action {
 			String time = dateFormat.format(date);
 			request.getSession().setAttribute("time", time);
 			
-			
-			request.getSession().setAttribute("q5", q5);
-			request.getSession().setAttribute("q14", q14);
 			return "result.jsp";
 		}
 

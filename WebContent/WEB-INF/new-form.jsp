@@ -112,9 +112,6 @@
 						<h2>Basic Information</h2>
 					</header>
 					
-					<div>test ${form.getQ13_1()}</div>
-					
-					
 						<div class="row">
 							<div id="prev" class="6u 6u$(mobile)">
 							</div>
@@ -1051,7 +1048,7 @@
 
 							<div id="labelLeft" class="6u 12u$(mobile)">
 								<label for="t17333">City</label>
-								<input type="text" id="t17333" name="city" placeholder="Enter City Name" value=${form.getCity()} >
+								<input type="text" id="t17333" name="city" placeholder="Enter City Name" value=${form.getCity()}>
 							</div>
 
 							<div id="labelLeft" class="6u 12u$(mobile)">

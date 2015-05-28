@@ -17,10 +17,7 @@
 	<%
 		DataForm form = (DataForm) request.getSession().getAttribute("form");
 		String q5 = form.getArray1();
-		String[] q5Array = form.getQ5whatData();
 		
-		String q14 = form.getArray2();
-		String[] q14Array = form.getQ14whatWay();
 		String q9 = form.getQ9();
 		String q9_1 = form.getQ9_1();
 		String q9_2 = form.getQ9_2();
@@ -93,10 +90,7 @@
 	<div id="balloonWhat" class="balloonstyle">
 		<h3>Full List of Personal Information We Collect and Share</h3>
 		<ul style="margin-left: 1em">
-			<li>income; account balances; payment history;</li>
-			<li>transaction history; transaction or loss history;</li>
-			<li>credit history; credit scores; assets;</li>
-			<li>investment experience; credit-based insurance scores;</li>
+			<li>${q5}</li>
 			<!-- there are many many more!! -->
 		</ul>
 	</div>
@@ -112,11 +106,9 @@
 						<h2>U.S. Consumer Privacy Notice<h2>
 					</header>
 					
-					<div>test ${length}</div>
-					
 
 					<div class="row" style="text-align:right">
-						Rev. ${ XXX }   <!-- the time of submission -->
+						Rev. ${time}   <!-- the time of submission -->
 					</div>
 
 					<table class="default">
@@ -269,7 +261,7 @@
 					</table>
 	<!-- --To DO -->>
 					<!-- if all column of "can you limit this sharing" is either NO or We don't share, the following table should be omitted -->
-					<table class="default">
+					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 						<tbody>
 							<tr>
 								<td id="color">To limit our sharing</td>
@@ -297,7 +289,74 @@
 							</tr>
 						</tbody>
 					</table>
+					
+					
+					<!-- can be omitted if all answer in the last column of "can you limit this sharing" is either NO or We don't share -->
+	<!-- should be omitted if q17.3 is NO -->
+					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ17(),'no')}"> none </c:when><c:when test="${fn:contains(form.getQ17_3(),'no')}"> none </c:when> <c:otherwise>block</c:otherwise></c:choose>">
+						<thead>
+							<tr>
+								<th colspan="4">Mail-in Form</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="6" style="width:9em">
+								<!-- omit this content if q17.3.1 is NO -->
+									If you have a joint account, your choice(s) will apply to everyone on your account unless you mark below.<br>
+									<input type="checkbox" name="mail-in"/>Apply my choices only to me
+								</td>
 
+								<td colspan="3">
+									Mark any/all you want to limit:<br>
+
+								<!-- if answer is yes of that block, otherwise, hide it -->
+									<input type="checkbox" name="mail-in"/>Do not share my personal information to market to me.<br>
+
+									<input type="checkbox" name="mail-in"/>Do not share my personal information with other financial institutions to jointly market to me.<br>
+
+									<input type="checkbox" name="mail-in"/>Do not share information about my transactions and experience with your affiliates for their everyday business purposes.<br>
+
+									<input type="checkbox" name="mail-in"/>Do not share information about my creditworth with your affiliates for their everyday business purposes.<br>
+
+									<input type="checkbox" name="mail-in"/>Do not allow your affiliates to use my personal information to market to me.<br>
+
+									<input type="checkbox" name="mail-in"/>Do not share my personal information with nonaffiliates to market their products and services to me.
+
+								</td>
+							</tr>
+
+							<tr>
+								<td id="smaller">Name</td>
+								<td>&nbsp;</td>
+								<td rowspan="5" style="width:12em">
+									Mail to:<br>
+									${form.getName()}<br>
+									${form.getAddress1()} ${form.getAddress2()}<br>
+									${form.getCity()}, ${form.getState()}, ${form.getZipcode()}  
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="3" id="smaller">
+									Adress<br><br><br><br>
+									City, State, Zip
+								</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td id="smaller">Account#</td>
+								<td>&nbsp;</td>
+							</tr>
+
+						</tbody>
+					</table>
+					
 
 					<!-- can be omitted if it is the only institution -->
 					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ12(),'yes')}">none</c:when> <c:otherwise>block</c:otherwise></c:choose>">
