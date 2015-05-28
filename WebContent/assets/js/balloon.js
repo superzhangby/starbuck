@@ -3,15 +3,9 @@
 //Updated: May 9th, 10 for window edge bug
 var disappeardelay = 250 //tooltip disappear delay (in miliseconds)
 var verticaloffset = 0 //vertical offset of tooltip from anchor link, if any
-var enablearrowhead = 1 //0 or 1, to disable or enable the arrow image
-var arrowheadimg = ["arrowdown.gif", "arrowup.gif"] //path to down and up arrow images
-var arrowheadheight = 11 //height of arrow image (amount to reveal)
-
-/////No further editting needed
 
 var ie = document.all
 var ns6 = document.getElementById && !document.all
-verticaloffset = (enablearrowhead) ? verticaloffset + arrowheadheight : verticaloffset
 
 function getposOffset(what, offsettype) {
     var totaloffset = (offsettype == "left") ? what.offsetLeft : what.offsetTop;
@@ -67,23 +61,11 @@ function displayballoontip(obj, e) { //main ballooon tooltip function
     dropmenuobj.y = getposOffset(obj, "top") + verticaloffset
     dropmenuobj.style.left = dropmenuobj.x - clearbrowseredge(obj, "rightedge") + "px"
     dropmenuobj.style.top = dropmenuobj.y - clearbrowseredge(obj, "bottomedge") + obj.offsetHeight + "px"
-    if (enablearrowhead)
-        displaytiparrow()
-}
 
-function displaytiparrow() { //function to display optional arrow image associated with tooltip
-    tiparrow = document.getElementById("arrowhead")
-    tiparrow.src = (edgeoffsety != 0) ? arrowheadimg[0] : arrowheadimg[1]
-    var ieshadowwidth = (dropmenuobj.filters && dropmenuobj.filters[0]) ? dropmenuobj.filters[0].Strength - 1 : 0
-        //modify "left" value depending on whether there's no room on right edge of browser to display it, respectively
-    tiparrow.style.left = (edgeoffsetx != 0) ? parseInt(dropmenuobj.style.left) + dropmenuobj.offsetWidth - tiparrow.offsetWidth - 10 + "px" : parseInt(dropmenuobj.style.left) + 5 + "px"
-        //modify "top" value depending on whether there's no room on right edge of browser to display it, respectively
-    tiparrow.style.top = (edgeoffsety != 0) ? parseInt(dropmenuobj.style.top) + dropmenuobj.offsetHeight - tiparrow.offsetHeight - ieshadowwidth + arrowheadheight + "px" : parseInt(dropmenuobj.style.top) - arrowheadheight + "px"
-    tiparrow.style.visibility = "visible"
 }
 
 function delayhidemenu() {
-    delayhide = setTimeout("dropmenuobj.style.visibility='hidden'; dropmenuobj.style.left=0; if (enablearrowhead) tiparrow.style.visibility='hidden'", disappeardelay)
+    delayhide = setTimeout("dropmenuobj.style.visibility='hidden'; dropmenuobj.style.left=0;", disappeardelay)
 }
 
 function clearhidemenu() {
@@ -98,12 +80,7 @@ function reltoelement(linkobj) { //tests if a link has "rel" defined and it's th
 
 function initalizetooltip() {
     var all_links = document.getElementsByTagName("a")
-    if (enablearrowhead) {
-        tiparrow = document.createElement("img")
-        tiparrow.setAttribute("src", arrowheadimg[0])
-        tiparrow.setAttribute("id", "arrowhead")
-        document.body.appendChild(tiparrow)
-    }
+
     for (var i = 0; i < all_links.length; i++) {
         if (reltoelement(all_links[i])) { //if link has "rel" defined and it's the ID of an element on page
             all_links[i].onmouseover = function(e) {

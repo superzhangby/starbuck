@@ -2252,7 +2252,7 @@
 			background-image: url("images/overlay.png");
 		}
 
-		#main p, #main input, #main #checkBox, #main #prev, #main label {
+		#main p, #main input, #main #checkBox, #main #prev, #main #labelLeft {
 			text-align: left;
 		}
 
