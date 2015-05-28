@@ -69,8 +69,14 @@ public class SaveAction extends Action {
 				System.out.println(errors);
 				return "new-form.jsp";
 			}
-
+			
 			request.getSession().setAttribute("form", form);
+			request.setAttribute("errors", errors);
+			ArrayList<String> q5 = new ArrayList<String>(Arrays.asList(form.getQ5whatData()));
+			ArrayList<String> q14 = new ArrayList<String>(Arrays.asList(form.getQ14whatWay()));
+			
+			request.getSession().setAttribute("q5", q5);
+			request.getSession().setAttribute("q14", q14);
 			return "result.jsp";
 		}
 

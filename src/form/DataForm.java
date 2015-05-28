@@ -48,7 +48,16 @@ public class DataForm extends FormBean {
 	private String q16;
 	private String q16_1;
 	private String q17;
-	private String q17recept;
+	private String q17_1;
+	private String q17_2;
+	private String q17_3;
+	private String q17_3_1;
+	private String q17_3_2;
+	private String address1;
+	private String address2;//opt
+	private String city;
+	private String state;
+	private String zipcode;
 	private String action;
 	private String array1;
 	private String array2;
@@ -363,20 +372,93 @@ public class DataForm extends FormBean {
 		this.q17 = q17.trim();
 	}
 
-	public String getQ17recept() {
-		return q17recept;
-	}
-
-	public void setQ17recept(String q17recept) {
-		this.q17recept = q17recept.trim();
-	}
-
 	public String getAction() {
 		return action;
 	}
 
 	public void setAction(String action) {
 		this.action = action;
+	}
+	
+	public String getQ17_1() {
+		return q17_1;
+	}
+
+	public void setQ17_1(String q17_1) {
+		this.q17_1 = q17_1;
+	}
+
+	public String getQ17_2() {
+		return q17_2;
+	}
+
+	public void setQ17_2(String q17_2) {
+		this.q17_2 = q17_2;
+	}
+
+	public String getQ17_3() {
+		return q17_3;
+	}
+
+	public void setQ17_3(String q17_3) {
+		this.q17_3 = q17_3;
+	}
+
+	public String getQ17_3_1() {
+		return q17_3_1;
+	}
+
+	public void setQ17_3_1(String q17_3_1) {
+		this.q17_3_1 = q17_3_1;
+	}
+
+	public String getQ17_3_2() {
+		return q17_3_2;
+	}
+
+	public void setQ17_3_2(String q17_3_2) {
+		this.q17_3_2 = q17_3_2;
+	}
+
+
+	public String getAddress1() {
+		return address1;
+	}
+
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2.trim();
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city.trim();
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state.trim();
+	}
+
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode.trim();
 	}
 
 	public JsonObject getJson() {
@@ -417,7 +499,16 @@ public class DataForm extends FormBean {
 		object.addProperty("q16", q16);
 		object.addProperty("q16_1", q16_1);
 		object.addProperty("q17", q17);
-		object.addProperty("q17recept", q17recept);
+		object.addProperty("q17_1", q17_1);
+		object.addProperty("q17_2", q17_2);
+		object.addProperty("q17_3", q17_3);
+		object.addProperty("q17_3_1", q17_3_1);
+		object.addProperty("q17_3_2", q17_3_2);
+		object.addProperty("address1", address1);
+		object.addProperty("address2", address2);
+		object.addProperty("state", state);
+		object.addProperty("city", city);
+		object.addProperty("zipcode", zipcode);
 
 		return object;
 	}
@@ -601,8 +692,32 @@ public class DataForm extends FormBean {
 		if (q17 == null) {
 			errors.add("Question 17 is required!");
 		} else if (q17.equals("yes")) {
-			if (q17recept == null || q17recept.trim().length() == 0)
+			if (q17_1 == null || q17_1.length() == 0)
 				errors.add("Question 17.1 is required!");
+			
+			if (q17_2 == null || q17_2.length() == 0)
+				errors.add("Question 17.2 is required!");
+			
+			if (q17_3 == null || q17_3.length() == 0)
+				errors.add("Question 17.3 is required!");
+			
+			if (q17_1 != null && q17_2 != null && q17_3 != null && q17_1.equals("no") && q17_2.equals("no") && q17_3.equals("no"))
+				errors.add("At least one answer of question 17.1, 17.2, and 17.3 must be YES.");
+			
+			if (q17_3 != null && q17_3.equals("yes")) {
+				if (q17_3_1 == null || q17_3_1.length() == 0)
+					errors.add("Question 17.3.1 is required!");
+				if (q17_3_2 == null || q17_3_2.length() == 0)
+					errors.add("Question 17.3.2 is required!");
+				if (address1 == null || address1.trim().length() == 0);
+					errors.add("Question 17.3.3 Stree Address 1 is required!");
+				if (city == null || city.trim().length() == 0);
+					errors.add("Question 17.3.3 City is required!");
+				if (state == null || state.trim().length() == 0);
+					errors.add("Question 17.3.3 State is required!");
+				if (zipcode == null || zipcode.trim().length() != 5);
+					errors.add("Question 17.3.3: please provide a valid zipcode!");
+			}
 		}
 
 		if (action == null || action.length() == 0) {
