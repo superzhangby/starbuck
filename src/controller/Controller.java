@@ -51,7 +51,7 @@ public class Controller extends HttpServlet {
 		PATH = HOME + "hi.txt";
 		HTML_PATH = HOME + "html.html";
 		//CSS_PATH = "/home/ec2-user/assets";
-		CSS_PATH = "/home";
+		CSS_PATH = "/assets";
 
 		//CSS_PATH = "/Users/LEE45/git/starbuck1/WebContent/assets";
 		ZIP_PATH = HOME;
