@@ -213,8 +213,8 @@
 								</p>
 
 								<div id="balloonq5" class="balloonstyle">
-									<p>You must select at least 5 of the following choices up to as many as you want.</p>
-									<p> "Select All" can enable you to select all the checkboxes.</p>
+									<p>You must select at least 5 of the following choices up to as many as you want. "Select All" can enable you to select all the checkboxes.</p>
+									<p>In the final Privacy Notice, the standard form will display the first 5 types, with a hyperlink showing the full list of types when clicking it.</p>
 								</div>
 							</div>
 
@@ -377,9 +377,15 @@
 
 						<div class="row">
 							<div class="12u 12u$(mobile)">
-								<p>8. Does your institution engage in joint marketing?</p>
+								<p>8. Does your institution engage in joint marketing with other companies?
+									<a rel="balloonq8" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq8" class="balloonstyle">
+									<p>It is joint marketing agreements between two or more financial institutions and with any service provider.</p>
+								</div>
+								
 							</div>
-							This reason incorporates sharing information under joint marketing agreements between two or more financial institutions and with any service provider used in connection with such agreements pursuant to
 
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q8" value="yes" onchange="show81(this,'yes')" 
@@ -394,10 +400,10 @@
 
 						<div id="8_1" class="row" style="margin-left:1em;display:none">
 							<p>8.1. Does your institution share customer's personal information for joint marketing with other financial companies?
-								<a rel="balloonq8" class="icon fa-question-circle"></a>
+								<a rel="balloonq81" class="icon fa-question-circle"></a>
 							</p>
 
-								<div id="balloonq8" class="balloonstyle">
+								<div id="balloonq81" class="balloonstyle">
 									<p>It incorporates sharing information under joint marketing agreements between two or more financial institutions and with any service provider used in connection with such agreements.</p>
 								</div>
 							
@@ -702,8 +708,8 @@
 								</p>
 
 								<div id="balloonq14" class="balloonstyle">
-									<p>You must select at least 5 of the following choices up to as many as you want.</p>
-									<p> "Select All" can enable you to select all the checkboxes.</p>
+									<p>You must select at least 5 of the following choices up to as many as you want. "Select All" can enable you to select all the checkboxes.</p>
+									<p>In the final Privacy Notice, the standard form will display the first 5 types, with a hyperlink showing the full list of types when clicking it.</p>
 								</div>
 							</div>
 
@@ -712,138 +718,138 @@
 							</div>
 	 
 							<div id="checkBox" class="6u 12u$(mobile)">
-								<input type="checkbox" name="q14whatWay" id="way1" value="open" 
-								<c:if test="${fn:contains(form.getArray2(),'open')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way1" value="open an account" 
+								<c:if test="${fn:contains(form.getArray2(),'open an account')}"> checked </c:if>/>
 								<label for="way1">open an account</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way2" value="deposit" 
-								<c:if test="${fn:contains(form.getArray2(),'deposit')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way2" value="deposit money" 
+								<c:if test="${fn:contains(form.getArray2(),'deposit money')}"> checked </c:if>/>
 								<label for="way2">deposit money</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way3" value="payBill" 
-								<c:if test="${fn:contains(form.getArray2(),'payBill')}"> checked </c:if>/>
-								<label for="way3">pay Your bills</label><br>
+								<input type="checkbox" name="q14whatWay" id="way3" value="pay your bills" 
+								<c:if test="${fn:contains(form.getArray2(),'pay your bills')}"> checked </c:if>/>
+								<label for="way3">pay your bills</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way4" value="applyLoan" 
-								<c:if test="${fn:contains(form.getArray2(),'applyLoan')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way4" value="apply for a loan" 
+								<c:if test="${fn:contains(form.getArray2(),'apply for a loan')}"> checked </c:if>/>
 								<label for="way4">apply for a loan</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way5" value="applyInsur" 
-								<c:if test="${fn:contains(form.getArray2(),'applyInsur')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way5" value="apply for insurance" 
+								<c:if test="${fn:contains(form.getArray2(),'apply for insurance')}"> checked </c:if>/>
 								<label for="way5">apply for insurance</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way6" value="payInsur" 
-								<c:if test="${fn:contains(form.getArray2(),'payInsur')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way6" value="pay insurance premiums" 
+								<c:if test="${fn:contains(form.getArray2(),'pay insurance premiums')}"> checked </c:if>/>
 								<label for="way6">pay insurance premiums</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way7" value="insurClaim" 
-								<c:if test="${fn:contains(form.getArray2(),'insurClaim')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way7" value="file an insurance claim" 
+								<c:if test="${fn:contains(form.getArray2(),'file an insurance claim')}"> checked </c:if>/>
 								<label for="way7">file an insurance claim</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way8" value="buySecu" 
-								<c:if test="${fn:contains(form.getArray2(),'buySecu')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way8" value="buy securities from us" 
+								<c:if test="${fn:contains(form.getArray2(),'buy securities from us')}"> checked </c:if>/>
 								<label for="way8">buy securities from us</label><br>
 								
-								<input type="checkbox" name="q14whatWay" id="way9" value="useCard" 
-								<c:if test="${fn:contains(form.getArray2(),'useCard')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way9" value="use your credit or debit card" 
+								<c:if test="${fn:contains(form.getArray2(),'use your credit or debit card')}"> checked </c:if>/>
 								<label for="way9">use your credit or debit card</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way10" value="finAdvice" 
-								<c:if test="${fn:contains(form.getArray2(),'finAdvice')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way10" value="seek financial or tax advice" 
+								<c:if test="${fn:contains(form.getArray2(),'seek financial or tax advice')}"> checked </c:if>/>
 								<label for="way10">seek financial or tax advice</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way11" value="investAdvice" 
-								<c:if test="${fn:contains(form.getArray2(),'investAdvice')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way11" value="seek advice about your investments" 
+								<c:if test="${fn:contains(form.getArray2(),'seek advice about your investments')}"> checked </c:if>/>
 								<label for="way11">seek advice about your investments</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way12" value="investContract" 
-								<c:if test="${fn:contains(form.getArray2(),'investContract')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way12" value="enter into an investment advisory contract" 
+								<c:if test="${fn:contains(form.getArray2(),'enter into an investment advisory contract')}"> checked </c:if>/>
 								<label for="way12">enter into an investment advisory contract</label><br>
 								
-								<input type="checkbox" name="q14whatWay" id="way13" value="dirBuySecu" 
-								<c:if test="${fn:contains(form.getArray2(),'dirBuySecu')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way13" value="direct us to buy securities" 
+								<c:if test="${fn:contains(form.getArray2(),'direct us to buy securities')}"> checked </c:if>/>
 								<label for="way13">direct us to buy securities</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way14" value="dirSelSecu" 
-								<c:if test="${fn:contains(form.getArray2(),'dirSelSecu')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way14" value="direct us to sell your securities" 
+								<c:if test="${fn:contains(form.getArray2(),'direct us to sell your securities')}"> checked </c:if>/>
 								<label for="way14">direct us to sell your securities</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way15" value="income" 
-								<c:if test="${fn:contains(form.getArray2(),'income')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way15" value="give us your income information" 
+								<c:if test="${fn:contains(form.getArray2(),'give us your income information')}"> checked </c:if>/>
 								<label for="way15">give us your income information</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way16" value="employInfo" 
-								<c:if test="${fn:contains(form.getArray2(),'employInfo')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way16" value="provide employment information" 
+								<c:if test="${fn:contains(form.getArray2(),'provide employment information')}"> checked </c:if>/>
 								<label for="way16">provide employment information</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way17" value="employHistory" 
-								<c:if test="${fn:contains(form.getArray2(),'employHistory')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way17" value="give us your employment history" 
+								<c:if test="${fn:contains(form.getArray2(),'give us your employment history')}"> checked </c:if>/>
 								<label for="way17">give us your employment history</label><br>
 							</div>
 
 							<div id="checkBox" class="6u 12u$(mobile)">
-								<input type="checkbox" name="q14whatWay" id="way18" value="sellSecu" 
-								<c:if test="${fn:contains(form.getArray2(),'sellSecu')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way18" value="sell securities to us" 
+								<c:if test="${fn:contains(form.getArray2(),'sell securities to us')}"> checked </c:if>/>
 								<label for="way18">sell securities to us</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way19" value="applyFin" 
-								<c:if test="${fn:contains(form.getArray2(),'applyFin')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way19" value="apply for financing" 
+								<c:if test="${fn:contains(form.getArray2(),'apply for financing')}"> checked </c:if>/>
 								<label for="way19">apply for financing</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way20" value="applyLease" 
-								<c:if test="${fn:contains(form.getArray2(),'applyLease')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way20" value="apply for a lease" 
+								<c:if test="${fn:contains(form.getArray2(),'apply for a lease')}"> checked </c:if>/>
 								<label for="way20">apply for a lease</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way21" value="accInfo" 
-								<c:if test="${fn:contains(form.getArray2(),'accInfo')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way21" value="provide account information" 
+								<c:if test="${fn:contains(form.getArray2(),'provide account information')}"> checked </c:if>/>
 								<label for="way21">provide account information</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way22" value="payCheck" 
-								<c:if test="${fn:contains(form.getArray2(),'payCheck')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way22" value="pay us by check" 
+								<c:if test="${fn:contains(form.getArray2(),'pay us by check')}"> checked </c:if>/>
 								<label for="way22">pay us by check</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way23" value="wageState" 
-								<c:if test="${fn:contains(form.getArray2(),'wageState')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way23" value="give us your wage statements" 
+								<c:if test="${fn:contains(form.getArray2(),'give us your wage statements')}"> checked </c:if>/>
 								<label for="way23">give us your wage statements</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way24" value="wireTran" 
-								<c:if test="${fn:contains(form.getArray2(),'wireTran')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way24" value="make a wire transfer" 
+								<c:if test="${fn:contains(form.getArray2(),'make a wire transfer')}"> checked </c:if>/>
 								<label for="way24">make a wire transfer</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way25" value="mortgage" 
-								<c:if test="${fn:contains(form.getArray2(),'mortgage')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way25" value="provide your mortgage information" 
+								<c:if test="${fn:contains(form.getArray2(),'provide your mortgage information')}"> checked </c:if>/>
 								<label for="way25">provide your mortgage information</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way26" value="contact" 
-								<c:if test="${fn:contains(form.getArray2(),'contact')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way26" value="give us your contact information" 
+								<c:if test="${fn:contains(form.getArray2(),'give us your contact information')}"> checked </c:if>/>
 								<label for="way26">give us your contact information</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way27" value="receive" 
-								<c:if test="${fn:contains(form.getArray2(),'receive')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way27" value="tell us who receives the money" 
+								<c:if test="${fn:contains(form.getArray2(),'tell us who receives the money')}"> checked </c:if>/>
 								<label for="way27">tell us who receives the money</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way28" value="sendMoney" 
-								<c:if test="${fn:contains(form.getArray2(),'sendMoney')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way28" value="tell us where to send the money" 
+								<c:if test="${fn:contains(form.getArray2(),'tell us where to send the money')}"> checked </c:if>/>
 								<label for="way28">tell us where to send the money</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way29" value="governID" 
-								<c:if test="${fn:contains(form.getArray2(),'governID')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way29" value="show your government-issued ID" 
+								<c:if test="${fn:contains(form.getArray2(),'show your government-issued ID')}"> checked </c:if>/>
 								<label for="way29">show your government-issued ID</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way30" value="DL" 
-								<c:if test="${fn:contains(form.getArray2(),'DL')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way30" value="show your driver license" 
+								<c:if test="${fn:contains(form.getArray2(),'show your driver license')}"> checked </c:if>/>
 								<label for="way30">show your driver license</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way31" value="commodity" 
-								<c:if test="${fn:contains(form.getArray2(),'commodity')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way31" value="order a commodity futures or option trade" 
+								<c:if test="${fn:contains(form.getArray2(),'order a commodity futures or option trade')}"> checked </c:if>/>
 								<label for="way31">order a commodity futures or option trade</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way32" value="portfolio" 
-								<c:if test="${fn:contains(form.getArray2(),'portfolio')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way32" value="tell us about your investment or retirement portfolio" 
+								<c:if test="${fn:contains(form.getArray2(),'tell us about your investment or retirement portfolio')}"> checked </c:if>/>
 								<label for="way32">tell us about your investment or retirement portfolio</label><br>
 
-								<input type="checkbox" name="q14whatWay" id="way33" value="withdrawal" 
-								<c:if test="${fn:contains(form.getArray2(),'withdrawal')}"> checked </c:if>/>
+								<input type="checkbox" name="q14whatWay" id="way33" value="make deposits or withdrawals from your account" 
+								<c:if test="${fn:contains(form.getArray2(),'make deposits or withdrawals from your account')}"> checked </c:if>/>
 								<label for="way33">make deposits or withdrawals from your account</label>
 							</div>
 						</div>
@@ -907,20 +913,133 @@
 						</div>
 
 						<div class="row">
-							<p>17. Will your institution provide other important information such as Acknowledgment of receipt form?</p>
+							<div class="12u 12u$(mobile)">
+								<p>17. Based on above questions, if applicable, does your institution allows customers to limit sharing personal information of any kind above?</p>
+							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q17" value="yes" onchange="showDiv(this,'yes','17recept')"
+								<input type="radio" name="q17" value="yes" onchange="show17(this,'yes')"
 								<c:if test="${fn:contains(form.getQ17(),'yes')}"> checked </c:if>/>Yes
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q17" value="no" onchange="hideText(this,'no','17recept')"
+								<input type="radio" name="q17" value="no" onchange="hide17(this,'no')"
 								<c:if test="${fn:contains(form.getQ17(),'no')}"> checked </c:if>/>No
 							</div>
+						</div>
 
-							<div id="17recept" class="12u 12u$(mobile)" style="display:none">
-								<textarea id="t17recept" name="q17recept" placeholder="Describe state and/or international privacy law provisions" value=${form.getQ17recept()}/></textarea>
+						<div id="17_1" class="row" style="margin-left:1em;display:none">
+							<div class="12u 12u$(mobile)">
+								<p>17.1. Does your institution enable Opt-Out by telphone?</p>
+							</div>
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_1" value="yes"
+								<c:if test="${fn:contains(form.getQ17_1(),'yes')}"> checked </c:if>/>Yes
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_1" value="no"
+								<c:if test="${fn:contains(form.getQ17_1(),'no')}"> checked="true" </c:if>/>No
+							</div>
+						</div>
+
+						<div id="17_2" class="row" style="margin-left:1em;display:none">
+							<div class="12u 12u$(mobile)">
+								<p>17.2. Does your institution enable Opt-Out Online?</p>
+							</div>
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_2" value="yes"
+								<c:if test="${fn:contains(form.getQ17_2(),'yes')}"> checked </c:if>/>Yes
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_2" value="no"
+								<c:if test="${fn:contains(form.getQ17_2(),'no')}"> checked="true" </c:if>/>No
+							</div>
+						</div>
+
+						<div id="17_3" class="row" style="margin-left:1em;display:none">
+							<div class="12u 12u$(mobile)">
+								<p>17.3. Does your institution enable Opt-Out with Mail-In Form?</p>
+							</div>
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3" value="yes" onchange="showMail(this,'yes')"
+								<c:if test="${fn:contains(form.getQ17_3(),'yes')}"> checked </c:if>/>Yes
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3" value="no" onchange="hideMail(this,'no')"
+								<c:if test="${fn:contains(form.getQ17_3(),'no')}"> checked="true" </c:if>/>No
+							</div>
+						</div>
+
+						<div class="row" id="17_3_1" style="margin-left:3em;display:none">
+							<div class="12u 12u$(mobile)">
+								<p>17.3.1. Does your institution provide your joint accountholders the choice to opt-out for only one accountholder?</p>
+							</div>
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3_1" value="yes"
+								<c:if test="${fn:contains(form.getQ17_3_1(),'yes')}"> checked </c:if>/>Yes
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3_1" value="no"
+								<c:if test="${fn:contains(form.getQ17_3_1(),'no')}"> checked="true" </c:if>/>No
+							</div>
+						</div>
+
+						<div class="row" id="17_3_2" style="margin-left:3em;display:none">
+							<div class="12u 12u$(mobile)">
+								<p>17.3.2. Does your institution require customers to provide additional or different information other than name and address, such as a random opt-out number or a truncated account number?</p>
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3_2" id="17321" value="random opt-out" 
+								<c:if test="${fn:contains(form.getQ17_3_2(),'random opt-out')}"> checked </c:if>/>
+								<label for="17321">random opt-out number</label>
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3_2" id="17322" value="truncated account" 
+								<c:if test="${fn:contains(form.getQ17_3_2(),'truncated account')}"> checked </c:if>/>
+								<label for="17321">truncated account number</label>
+							</div>
+
+							<div id="checkBox" class="4u 6u$(mobile)">
+								<input type="radio" name="q17_3_2" id="17323" value="none" 
+								<c:if test="${fn:contains(form.getQ17_3_2(),'none')}"> checked </c:if>/>
+								<label for="17321">neither of the above</label>
+							</div>
+						</div>
+
+						<div class="row" id="17_3_3" style="margin-left:3em;display:none">
+							<div class="12u 12u$(mobile)">
+								<p>17.3.3. What is your institution's mailing address?</p>
+							</div>
+
+							<div class="8u 12u$(mobile)">
+								<label for="t17331">Street Address 1</label>
+								<input type="text" id="t17331" name="address1" placeholder="Enter Street Name and Number" value=${form.getAddress1()} >
+							</div>
+
+							<div class="8u 12u$(mobile)">
+								<label for="t17332">Street Address 2</label>
+								<input type="text" id="t17332" name="address2" placeholder="Enter Apt Number or Building Name" value=${form.getAddress2()} >
+							</div>
+
+							<div class="8u 12u$(mobile)">
+								<label for="t17333">City</label>
+								<input type="text" id="t17333" name="city" placeholder="Enter City Name" value=${form.getCity()} >
+							</div>
+
+							<div class="8u 12u$(mobile)">
+								<label for="t17334">State</label>
+								<input type="text" id="t17334" name="state" placeholder="Enter State Name" value=${form.getState()} >
+							</div>
+
+							<div class="8u 12u$(mobile)">
+								<label for="t17335">Zipcode</label>
+								<input type="text" id="t17335" name="zipcode" placeholder="Enter Zipcode" value=${form.getZipcode()} >
 							</div>
 
 						</div>
@@ -930,7 +1049,7 @@
 								<a href="#disclosure" class="button scrolly">&#60;&#60; Disclosure Info</a>
 							</div>
 							<div id="next" class="6u 6u$(mobile)">
-							<input id="save" class="button scrolly" type="submit" name="action" value="Complete" />
+							<input id="start" class="button scrolly" type="submit" name="action" value="Complete" />
 					
 							</div>
 						</div>
