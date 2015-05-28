@@ -140,9 +140,12 @@
 								<td>
 									The types of personal information we collect and share depend on the product or service you have with us. This information can <a rel="balloonWhat" >include:</a>
 									<ul>
-										<li>Social Security number and ${q5Array[0]} </li>
-										<li>${q5Array[1]} and ${q5Array[2]}</li>
-										<li>${q5Array[3]} and ${q5Array[4]}</li>
+										<li>Social Security number </li>
+										<c:forEach var = "item"  items="${form.getQ5whatData()}" varStatus="status">
+										    <c:if test="${status.index  < 5}">
+										        <li>${item}</li>
+										    </c:if>
+										</c:forEach>
 									</ul>
 								</td>
 							</tr>
@@ -337,9 +340,11 @@
 								<td>
 									We collect your personal information, <a href="" title="A full list of ways that we can use to collect personal information include: &#13;Open an account; deposit money; pay your bills; apply for a loan; use your credit or debit card; seek financial or tax advice; apply for insurance; pay insurance premiums; file an insurance claim; seek advice about your investments; buy securities from us; sell securities to us; direct us to buy securities; direct us to sell your securities; make deposits or withdrawals from your account; enter into an investment advisory contract; give us your income information; provide employment information; give us your employment history; tell us about your investment or retirement portfolio; tell us about your investment or retirement earnings; apply for financing; apply for a lease; provide account information; give us your contact information; pay us by check; give us your wage statements; provide your mortgage information; make a wire transfer; tell us who receives the money; tell us where to send the money; show your government-issued ID; show your driver's license; order a commodity futures or option trade. ">for example</a>, when you:
 									<ul>
-										<li>${q14Array[0]} or ${q14Array[1]}</li>
-										<li>${q14Array[2]} or ${q14Array[3]}</li>
-										<li>${q14Array[4]}</li>
+										<c:forEach var = "item"  items="${form.getQ14whatWay()}" varStatus="status">
+										    <c:if test="${status.index  < 5}">
+										        <li>${item}</li>
+										    </c:if>
+										</c:forEach>
 									</ul>
 									<!-- q15 q15.1 answers-->
 									<c:if test="${fn:contains(form.getQ15(),'yes')}"> We also collect your personal information from others, such as credit bureaus, affiliates, or other companies. </c:if>

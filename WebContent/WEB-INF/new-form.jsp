@@ -447,7 +447,7 @@
 							<p>8.2. What are the categories of joint marketing companies of your institution that you share personal information with?</p>
 
 							<div class="12u 12u$(mobile)">
-								<textarea id="t8_2" name="q8_2" placeholder="List categories of companies such as credit card companies" value=${form.getQ8_2()} ></textarea>
+								<textarea id="t8_2" name="q8_2" placeholder="List categories of companies such as credit card companies">${form.getQ8_2()}</textarea>
 							</div>
 						</div>
 
