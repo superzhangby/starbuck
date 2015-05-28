@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import="form.DataForm"%>
-<%@ page language="java" import="java.util.*"%>
 <!DOCTYPE HTML>
 
 <html>
@@ -13,11 +12,6 @@
 		
 		<script type="text/javascript" src="assets/js/balloon.js"></script>
 	</head>
-	
-	<%
-		DataForm form = (DataForm) request.getSession().getAttribute("form");
-		String q5 = form.getArray1();
-	%>
 	
 	
 	<body>
@@ -37,9 +31,8 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a href="#" id="edit" ><span class="icon fa-th">Edit</span></a></li>
-							<li><a href="#" id="pdf" ><span class="icon fa-user">Download PDF</span></a></li>
-							<li><a href="#" id="html" ><span class="icon fa-envelope">Download HTML</span></a></li>
+							<li><a href="download.do" id="edit" ><span class="icon fa-th">Edit</span></a></li>
+							<li><a href="download.do" id="html" ><span class="icon fa-envelope">Download HTML</span></a></li>
 						</ul>
 					</nav>
 
@@ -64,11 +57,19 @@
 	<div id="balloonWhat" class="balloonstyle">
 		<h3>Full List of Personal Information We Collect and Share</h3>
 		<ul style="margin-left: 1em">
-			<li>${q5}</li>
+			<li>${form.getArray1()}</li>
 			<!-- there are many many more!! -->
 		</ul>
 	</div>
 
+
+	<div id="balloon14" class="balloonstyle">
+		<h3>A full list of ways that we can use to collect personal information include:</h3>
+		<ul style="margin-left: 1em">
+			<li>${form.getArray2()}</li>
+			<!-- there are many many more!! -->
+		</ul>
+	</div>
 
 
 
@@ -106,11 +107,13 @@
 								<td>
 									The types of personal information we collect and share depend on the product or service you have with us. This information can <a rel="balloonWhat" >include:</a>
 									<ul>
-										<li>Social Security number </li>
+										
 										<c:forEach var = "item"  items="${form.getQ5whatData()}" varStatus="status">
-										    <c:if test="${status.index  < 5}">
-										        <li>${item}</li>
+										    <c:if test="${status.index < 1}">
+										        <li>Social Security number and ${item} </li>
 										    </c:if>
+										    <c:if test="${status.index == 1}"><li>${item}</c:if> <c:if test="${status.index == 2}">and ${item}</li></c:if>
+											<c:if test="${status.index == 3}"><li>${item}</c:if> <c:if test="${status.index == 4}">and ${item}</li></c:if>
 										</c:forEach>
 									</ul>
 								</td>
@@ -379,10 +382,12 @@
 							<tr>
 								<td  id="widest">How does ${form.getName()} collect my personal information?</td>
 								<td>
-									We collect your personal information, <a href="" title="A full list of ways that we can use to collect personal information include: &#13;Open an account; deposit money; pay your bills; apply for a loan; use your credit or debit card; seek financial or tax advice; apply for insurance; pay insurance premiums; file an insurance claim; seek advice about your investments; buy securities from us; sell securities to us; direct us to buy securities; direct us to sell your securities; make deposits or withdrawals from your account; enter into an investment advisory contract; give us your income information; provide employment information; give us your employment history; tell us about your investment or retirement portfolio; tell us about your investment or retirement earnings; apply for financing; apply for a lease; provide account information; give us your contact information; pay us by check; give us your wage statements; provide your mortgage information; make a wire transfer; tell us who receives the money; tell us where to send the money; show your government-issued ID; show your driver's license; order a commodity futures or option trade. ">for example</a>, when you:
+									We collect your personal information, <a rel="balloon14">for example</a>, when you:
 									<ul>
 										<c:forEach var = "item"  items="${form.getQ14whatWay()}" varStatus="status">
-										    <c:if test="${status.index  < 5}">
+										    <c:if test="${status.index == 0}"><li>${item}</c:if> <c:if test="${status.index == 1}">and ${item}</li></c:if>
+											<c:if test="${status.index == 2}"><li>${item}</c:if> <c:if test="${status.index == 3}">and ${item}</li></c:if>
+											<c:if test="${status.index == 4}">
 										        <li>${item}</li>
 										    </c:if>
 										</c:forEach>
