@@ -44,8 +44,8 @@
 						<ul>
 							<li><a href="index.do" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
 							<li><a href="#basic" id="basic-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Basic</span></a></li>
-							<li><a href="#disclosure" id="disclosure-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Disclosure</span></a></li>
-							<li><a href="#protection" id="protection-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Protection</span></a></li>
+							<li><a href="#disclosure" id="disclosure-link" class="skel-layers-ignoreHref"><span class="icon fa-folder">Disclosure</span></a></li>
+							<li><a href="#protection" id="protection-link" class="skel-layers-ignoreHref"><span class="icon fa-warning">Protection</span></a></li>
 						</ul>
 
 						<div>
@@ -102,10 +102,14 @@
 					
 					<div class="row" style="text-align: left">
 						<c:forEach var="error" items="${errors}">
-							<div class="12u 12u$(mobile)" style="color:red">
+							<div class="12u 12u$(mobile)" style="color:rgb(172, 32, 0); font-weight: bold">
 	                            ${error}
 	                        </div>
 						</c:forEach>
+					</div>
+					
+					<div>
+					${form.getName()}
 					</div>
 					
 					<header>
@@ -132,7 +136,7 @@
 							</div>
 
 							<div class="6u 12u$(mobile)">
-								<input type="text" name="name" placeholder="Name of Financial Institution" value=${form.getName()}>
+								<input type="text" name="name" placeholder="Name of Financial Institution" value="${form.getName()}">
 							</div>
 						</div>
 
@@ -148,7 +152,7 @@
 							</div>
 
 							<div class="6u 12u$(mobile)">
-								<input type="text" name="phone" placeholder="Phone Number" value=${form.getPhone()} >
+								<input type="text" name="phone" placeholder="Phone Number" value="${form.getPhone()}">
 							</div>
 						</div>
 
@@ -179,7 +183,7 @@
 							</div>
 							
 							<div class="6u 12u$(mobile)">
-								<input type="text" name="website" placeholder="Website Address" value=${form.getWebsite()} >
+								<input type="text" name="website" placeholder="Website Address" value="${form.getWebsite()}" >
 							</div>
 						</div>
 
@@ -543,7 +547,7 @@
 							</div>
 
 							<div id="9_2_2_1" class="12u 12u$(mobile)" style="display:<c:choose><c:when test="${fn:contains(form.getQ9_2_2(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
-								<textarea id="t9_2_2_1" name="q9_2_2_1" placeholder="List other companies of your institution's affiliates" value=${form.getQ9_2_2_1()} />${form.getQ9_2_2_1()}</textarea>
+								<textarea id="t9_2_2_1" name="q9_2_2_1" placeholder="List other companies of your institution's affiliates" />${form.getQ9_2_2_1()}</textarea>
 							</div>
 						</div>
 
@@ -624,7 +628,7 @@
 								<p>11. For new customers, how long does your institution begin sharing their information from the date you send this notice?</p>
 							</div>
 							<div class="6u 12u$(mobile)">
-								<input type="text" name="q11" placeholder="Input a number equal to or bigger than 30" value=${form.getQ11()}>
+								<input type="text" name="q11" placeholder="Input a number equal to or bigger than 30" value="${form.getQ11()}">
 							</div>
 						</div>
 
@@ -927,10 +931,11 @@
 								<div id="balloonq17" class="balloonstyle">
 									<p>You cannot answer NO if at least one answer of the following questions is yes:</p>
 									<ul style="margin-left:1em">
-				                        <li>Question 6</li>
-				                        <li>Question 7</li>
-				                        <li>Question 8.1</li>
-				                        <li>Question 9.1, 9.2</li>
+				                        <li>Question 7.1</li>				           
+				                        <li>Question 8.1.1</li>
+				                        <li>Question 9.1.1</li>
+				                        <li>Question 9.2</li>
+				                        <li>Question 9.5</li>
 				                        <li>Question 10</li>
 				                    </ul>
 								</div>
@@ -1036,29 +1041,29 @@
 								<p>17.3.3. What is your institution's mailing address?</p>
 							</div>
 
-							<div id="labelLeft" class="6u 12u$(mobile)">
+							<div id="labelLeft" class="7u 12u$(mobile)">
 								<label for="t17331">Street Address 1</label>
-								<input type="text" id="t17331" name="address1" placeholder="Enter Street Name and Number" value=${form.getAddress1()} >
+								<input type="text" id="t17331" name="address1" placeholder="Enter Street Name and Number" value="${form.getAddress1()}" >
 							</div>
 
-							<div id="labelLeft" class="6u 12u$(mobile)">
+							<div id="labelLeft" class="7u 12u$(mobile)">
 								<label for="t17332">Street Address 2</label>
-								<input type="text" id="t17332" name="address2" placeholder="Enter Apt Number or Building Name" value=${form.getAddress2()} >
+								<input type="text" id="t17332" name="address2" placeholder="Enter Apt Number or Building Name" value="${form.getAddress2()}" >
 							</div>
 
-							<div id="labelLeft" class="6u 12u$(mobile)">
+							<div id="labelLeft" class="7u 12u$(mobile)">
 								<label for="t17333">City</label>
-								<input type="text" id="t17333" name="city" placeholder="Enter City Name" value=${form.getCity()}>
+								<input type="text" id="t17333" name="city" placeholder="Enter City Name" value="${form.getCity()}">
 							</div>
 
-							<div id="labelLeft" class="6u 12u$(mobile)">
+							<div id="labelLeft" class="7u 12u$(mobile)">
 								<label for="t17334">State</label>
-								<input type="text" id="t17334" name="state" placeholder="Enter State Name" value=${form.getState()} >
+								<input type="text" id="t17334" name="state" placeholder="Enter State Name" value="${form.getState()}" >
 							</div>
 
-							<div id="labelLeft" class="6u 12u$(mobile)">
+							<div id="labelLeft" class="7u 12u$(mobile)">
 								<label for="t17335">Zipcode</label>
-								<input type="text" id="t17335" name="zipcode" placeholder="Enter Zipcode" value=${form.getZipcode()} >
+								<input type="text" id="t17335" name="zipcode" placeholder="Enter Zipcode" value="${form.getZipcode()}" >
 							</div>
 
 						</div>
