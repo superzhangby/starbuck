@@ -26,7 +26,8 @@ public class RedirectAction extends Action {
                
         if (url != null) {
         	String begin = url.substring(0,7);
-     		if ((!begin.equals("http://")) ) {
+        	String begin2 = url.substring(0,8);
+     		if ((!begin.equals("http://")) && (!begin2.equals("https://"))) {
      			url = "http://" + url;			
      		}
         	return url;
