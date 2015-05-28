@@ -118,7 +118,6 @@ public class SaveAction extends Action {
 			request.getSession().setAttribute("flag95", flag95);
 			request.getSession().setAttribute("flag9192", flag9192);
 			request.getSession().setAttribute("flag17", flag17);
-			System.out.println(form.getArray1());
 			
 			form.setAction("Save Application");
 			request.getSession().setAttribute("form", form);
