@@ -81,7 +81,7 @@ public class SaveAction extends Action {
 			
 			Date date = Calendar.getInstance().getTime();
 			SimpleDateFormat dateFormat = new SimpleDateFormat(
-					"yyyy-MMM-dd-HH:mm:ss");
+					"yyyy-MMM");
 			String time = dateFormat.format(date);
 			request.getSession().setAttribute("time", time);
 			
@@ -112,6 +112,7 @@ public class SaveAction extends Action {
 			request.getSession().setAttribute("flag", flag);
 			request.getSession().setAttribute("flag95", flag95);
 			request.getSession().setAttribute("flag9192", flag9192);
+			System.out.println(form.getArray1());
 			
 			return "result.jsp";
 		}

@@ -47,11 +47,20 @@
 /* show or hide questions about joint marketing based on q8 */
 	function show81(elem, ans){
 		showDiv(elem, ans, '8_1');
-		showDiv(elem, ans, '8_2');
 	}
 
 	function hide81(elem, ans) {
 		hideDiv(elem, ans, '8_1');
+		hideDiv(elem, ans, '8_1_1');
+		hideText(elem, ans, '8_2');
+	}
+
+	function show82(elem, ans){
+		showDiv(elem, ans, '8_1_1');
+		showDiv(elem, ans, '8_2');
+	}
+
+	function hide82(elem, ans) {
 		hideDiv(elem, ans, '8_1_1');
 		hideText(elem, ans, '8_2');
 	}

@@ -20,9 +20,8 @@
 	%>
 	
 	
-	
 	<body>
-
+<!--
 		<!-- Header -->
 		<div id="header">
 
@@ -62,7 +61,6 @@
 		</div>
 
 
-<!---TO DO----->
 	<div id="balloonWhat" class="balloonstyle">
 		<h3>Full List of Personal Information We Collect and Share</h3>
 		<ul style="margin-left: 1em">
@@ -77,8 +75,6 @@
 	<div id="main">
 			<section id="result" class="two">
 				<div class="container">
-				
-				<div>test ${flag}</div>
 
 					<header>
 						<h2>U.S. Consumer Privacy Notice<h2>
@@ -238,18 +234,23 @@
 						</tbody>
 
 					</table>
-	<!-- --To DO -->>
 					<!-- if all column of "can you limit this sharing" is either NO or We don't share, the following table should be omitted -->
-					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> default </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 						<tbody>
 							<tr>
 								<td id="color">To limit our sharing</td>
 								<td>
 									<ul>
-										<li>Call <c:if test="${fn:contains(form.getQ3(),'yes')}"> (Toll Free) </c:if> ${form.getPhone()} - our menu will prompt you through your choices</li>
+									<c:if test="${fn:contains(form.getQ17_1(),'yes')}">
+										<li>Call <c:if test="${fn:contains(form.getQ3(),'yes')}"> (Toll Free) </c:if>
+											${form.getPhone()} - our menu will prompt you through your choices
+										</li>
+									</c:if>
+
+									<c:if test="${fn:contains(form.getQ17_1(),'yes')}">
 										<li>Visit us online: ${form.getWebsite()}</li>
-									</ul>
-									<strong>Please note:</strong><br>
+									</c:if>
+								</ul> <strong>Please note:</strong><br>
 									If you are a new customer, we can begin sharing your information ${form.getQ11()} days from the date we sent this notice. When you are no longer our customer, we continue to share your information as described in this notice.
 									<br>However, you can contact us at any time to limit our sharing.
 								</td>
@@ -272,7 +273,7 @@
 					
 					<!-- can be omitted if all answer in the last column of "can you limit this sharing" is either NO or We don't share -->
 	<!-- should be omitted if q17.3 is NO -->
-					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ17(),'no')}"> none </c:when><c:when test="${fn:contains(form.getQ17_3(),'no')}"> none </c:when> <c:otherwise>block</c:otherwise></c:choose>">
+					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ17(),'no')}"> none </c:when><c:when test="${fn:contains(form.getQ17_3(),'no')}"> none </c:when> <c:otherwise>default</c:otherwise></c:choose>">
 						<thead>
 							<tr>
 								<th colspan="4">Mail-in Form</th>
@@ -282,8 +283,10 @@
 							<tr>
 								<td rowspan="6" style="width:9em">
 								<!-- omit this content if q17.3.1 is NO -->
+									<c:if test="${fn:contains(form.getQ17_3_1(),'yes')}">
 									If you have a joint account, your choice(s) will apply to everyone on your account unless you mark below.<br>
 									<input type="checkbox" name="mail-in"/>Apply my choices only to me
+									</c:if>
 								</td>
 
 								<td colspan="3">
@@ -311,7 +314,7 @@
 								<td rowspan="5" style="width:12em">
 									Mail to:<br>
 									${form.getName()}<br>
-									${form.getAddress1()} ${form.getAddress2()}<br>
+									${form.getAddress1()}<br>${form.getAddress2()}<br>
 									${form.getCity()}, ${form.getState()}, ${form.getZipcode()}  
 								</td>
 							</tr>
@@ -338,7 +341,7 @@
 					
 
 					<!-- can be omitted if it is the only institution -->
-					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ12(),'yes')}">none</c:when> <c:otherwise>block</c:otherwise></c:choose>">
+					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ12(),'yes')}">none</c:when> <c:otherwise>default</c:otherwise></c:choose>">
 						<thead>
 							<tr>
 								<th colspan="2">Who we are</th>
@@ -475,7 +478,7 @@
 					</table>
 
 
-					<table class="default" id="important" style="display:<c:choose><c:when test="${fn:contains(form.getQ16(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+					<table class="default" id="important" style="display:<c:choose><c:when test="${fn:contains(form.getQ16(),'yes')}"> default </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 						<thead>
 							<tr>
 								<th>Other important information</th>

@@ -414,12 +414,12 @@
 								</div>
 							
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q8_1" value="yes" onchange="showDiv(this,'yes','8_1_1')" 
+								<input type="radio" name="q8_1" value="yes" onchange="show82(this,'yes')" 
 								<c:if test="${fn:contains(form.getQ8_1(),'yes')}"> checked </c:if>/>Yes
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
-								<input type="radio" name="q8_1" value="no" onchange="hideDiv(this,'no','8_1_1')" 
+								<input type="radio" name="q8_1" value="no" onchange="hide82(this,'no')" 
 								<c:if test="${fn:contains(form.getQ8_1(),'no')}"> checked </c:if>/>No
 							</div>
 						</div>
@@ -440,7 +440,7 @@
 							</div>
 						</div>
 
-						<div id="8_2" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ8(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+						<div id="8_2" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ8_1(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<p>8.2. What are the categories of joint marketing companies of your institution that you share personal information with?</p>
 
 							<div class="12u 12u$(mobile)">
