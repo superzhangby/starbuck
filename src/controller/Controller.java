@@ -30,11 +30,12 @@ import model.Model;
 
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static String PATH;
-	  static  String HTML_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/html.html"; 
-	  static  String ZIP_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/Form/";
-	  static  String TEMP_PATH ="/Users/LEE45/Desktop/eBusiness/Task_14/";
-	  static  String CSS_PATH ="/Users/LEE45/Desktop/eBusiness/Task_14/Form/assets";
+	  static String HOME;
+	  static String PATH;
+	  static  String HTML_PATH; 
+	  static  String ZIP_PATH;
+	  static  String TEMP_PATH;
+	  static  String CSS_PATH;
 
 	  
 	  
@@ -60,7 +61,14 @@ public class Controller extends HttpServlet {
 		Action.add(new DownloadAction(model));
 		Action.add(new HTMLAction(model));
 		Action.add(new HTMLPageAction(model));
-		PATH = getServletContext().getRealPath("/") + "hi.txt";
+		
+		HOME = getServletContext().getRealPath("/") + "hi.txt";
+		 PATH = HOME + "hi.txt";
+		 HTML_PATH = HOME + "html.html";
+		// CSS_PATH = "/home/ec2-user/assets";
+		 ZIP_PATH = HOME;
+		 TEMP_PATH = HOME;
+		
 
 		/*
 		 
@@ -276,7 +284,7 @@ public class Controller extends HttpServlet {
 			parameters.setRootFolderInZip("Privary Notice-" + time + "/");
 
 			// Now add files to the zip file
-			zipFile.addFolder(CSS_PATH, parameters);
+			//zipFile.addFolder(CSS_PATH, parameters);
 			zipFile.addFiles(filesToAdd, parameters);
 		} catch (ZipException e) {
 			e.printStackTrace();
@@ -284,10 +292,5 @@ public class Controller extends HttpServlet {
 
 	}
 
-	public String context() {
-		String path = getServletContext().getRealPath("/") + "/WEB-INF/xxx.txt";
-		return path;
-
-	}
 
 }

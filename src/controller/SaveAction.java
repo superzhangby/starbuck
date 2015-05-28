@@ -2,13 +2,18 @@ package controller;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+
 import javax.servlet.http.HttpServletRequest;
+
 import model.Model;
+
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
 import com.google.gson.JsonObject;
+
 import form.DataForm;
 
 public class SaveAction extends Action {
@@ -74,6 +79,13 @@ public class SaveAction extends Action {
 			request.setAttribute("errors", errors);
 			ArrayList<String> q5 = new ArrayList<String>(Arrays.asList(form.getQ5whatData()));
 			ArrayList<String> q14 = new ArrayList<String>(Arrays.asList(form.getQ14whatWay()));
+			
+			Date date = Calendar.getInstance().getTime();
+			SimpleDateFormat dateFormat = new SimpleDateFormat(
+					"yyyy-MMM-dd-HH:mm:ss");
+			String time = dateFormat.format(date);
+			request.getSession().setAttribute("time", time);
+			
 			
 			request.getSession().setAttribute("q5", q5);
 			request.getSession().setAttribute("q14", q14);
