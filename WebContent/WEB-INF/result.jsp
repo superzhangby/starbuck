@@ -17,36 +17,11 @@
 	<%
 		DataForm form = (DataForm) request.getSession().getAttribute("form");
 		String q5 = form.getArray1();
-		
-		String q9 = form.getQ9();
-		String q9_1 = form.getQ9_1();
-		String q9_2 = form.getQ9_2();
-		String q9_3 = form.getQ9_3();
-		String q9_4 = form.getQ9_4();
-		
-	
-		boolean flag = true;
-		boolean flag9192 = false;
-		if (q9.equals("no")) {
-			flag = false;
-		} 
-		
-		else if (q9_1.equals("no") && q9_2.equals("no")) {
-			flag = false;
-			flag9192 = true;
-		}
-		else if (q9_3.equals("no") || q9_4.equals("yes")) {
-			flag = false;
-		}
-		
-		int length = form.getQ5whatData().length;
-		String[] test = new String[form.getQ5whatData().length];
 	%>
 	
 	
-	
 	<body>
-
+<!--
 		<!-- Header -->
 		<div id="header">
 
@@ -86,7 +61,6 @@
 		</div>
 
 
-<!---TO DO----->
 	<div id="balloonWhat" class="balloonstyle">
 		<h3>Full List of Personal Information We Collect and Share</h3>
 		<ul style="margin-left: 1em">
@@ -193,6 +167,7 @@
 								<td>
 									<c:if test="${fn:contains(form.getQ8(),'no')}"> No </c:if>
 									<c:if test="${fn:contains(form.getQ8_1(),'yes')}"> Yes </c:if>
+									<c:if test="${fn:contains(form.getQ8_1(),'no')}"> No </c:if>
 								</td>
 								<td>
 									<c:if test="${fn:contains(form.getQ8(),'no')}"> We don't share </c:if>
@@ -259,18 +234,23 @@
 						</tbody>
 
 					</table>
-	<!-- --To DO -->>
 					<!-- if all column of "can you limit this sharing" is either NO or We don't share, the following table should be omitted -->
-					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> default </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 						<tbody>
 							<tr>
 								<td id="color">To limit our sharing</td>
 								<td>
 									<ul>
-										<li>Call ${form.getPhone()} - our menu will prompt you through your choices</li>
+									<c:if test="${fn:contains(form.getQ17_1(),'yes')}">
+										<li>Call <c:if test="${fn:contains(form.getQ3(),'yes')}"> (Toll Free) </c:if>
+											${form.getPhone()} - our menu will prompt you through your choices
+										</li>
+									</c:if>
+
+									<c:if test="${fn:contains(form.getQ17_1(),'yes')}">
 										<li>Visit us online: ${form.getWebsite()}</li>
-									</ul>
-									<strong>Please note:</strong><br>
+									</c:if>
+								</ul> <strong>Please note:</strong><br>
 									If you are a new customer, we can begin sharing your information ${form.getQ11()} days from the date we sent this notice. When you are no longer our customer, we continue to share your information as described in this notice.
 									<br>However, you can contact us at any time to limit our sharing.
 								</td>
@@ -293,7 +273,7 @@
 					
 					<!-- can be omitted if all answer in the last column of "can you limit this sharing" is either NO or We don't share -->
 	<!-- should be omitted if q17.3 is NO -->
-					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ17(),'no')}"> none </c:when><c:when test="${fn:contains(form.getQ17_3(),'no')}"> none </c:when> <c:otherwise>block</c:otherwise></c:choose>">
+					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ17(),'no')}"> none </c:when><c:when test="${fn:contains(form.getQ17_3(),'no')}"> none </c:when> <c:otherwise>default</c:otherwise></c:choose>">
 						<thead>
 							<tr>
 								<th colspan="4">Mail-in Form</th>
@@ -303,25 +283,27 @@
 							<tr>
 								<td rowspan="6" style="width:9em">
 								<!-- omit this content if q17.3.1 is NO -->
+									<c:if test="${fn:contains(form.getQ17_3_1(),'yes')}">
 									If you have a joint account, your choice(s) will apply to everyone on your account unless you mark below.<br>
 									<input type="checkbox" name="mail-in"/>Apply my choices only to me
+									</c:if>
 								</td>
 
 								<td colspan="3">
 									Mark any/all you want to limit:<br>
 
 								<!-- if answer is yes of that block, otherwise, hide it -->
-									<input type="checkbox" name="mail-in"/>Do not share my personal information to market to me.<br>
+									<c:if test="${fn:contains(form.getQ7_1(),'yes')}"> <input type="checkbox" name="mail-in"/>Do not share my personal information to market to me.<br> </c:if>
 
-									<input type="checkbox" name="mail-in"/>Do not share my personal information with other financial institutions to jointly market to me.<br>
+									<c:if test="${fn:contains(form.getQ8_1_1(),'yes')}"> <input type="checkbox" name="mail-in"/>Do not share my personal information with other financial institutions to jointly market to me.<br> </c:if>
 
-									<input type="checkbox" name="mail-in"/>Do not share information about my transactions and experience with your affiliates for their everyday business purposes.<br>
+									<c:if test="${fn:contains(form.getQ9_1_1(),'yes')}"> <input type="checkbox" name="mail-in"/>Do not share information about my transactions and experience with your affiliates for their everyday business purposes.<br> </c:if>
 
-									<input type="checkbox" name="mail-in"/>Do not share information about my creditworth with your affiliates for their everyday business purposes.<br>
+									<c:if test="${fn:contains(form.getQ9_2(),'yes')}"> <input type="checkbox" name="mail-in"/>Do not share information about my creditworth with your affiliates for their everyday business purposes.<br> </c:if>
 
-									<input type="checkbox" name="mail-in"/>Do not allow your affiliates to use my personal information to market to me.<br>
+									<c:if test="${flag}"> <input type="checkbox" name="mail-in"/>Do not allow your affiliates to use my personal information to market to me.<br> </c:if>
 
-									<input type="checkbox" name="mail-in"/>Do not share my personal information with nonaffiliates to market their products and services to me.
+									<c:if test="${fn:contains(form.getQ10(),'yes')}"><input type="checkbox" name="mail-in"/>Do not share my personal information with nonaffiliates to market their products and services to me.</c:if>
 
 								</td>
 							</tr>
@@ -332,7 +314,7 @@
 								<td rowspan="5" style="width:12em">
 									Mail to:<br>
 									${form.getName()}<br>
-									${form.getAddress1()} ${form.getAddress2()}<br>
+									${form.getAddress1()}<br>${form.getAddress2()}<br>
 									${form.getCity()}, ${form.getState()}, ${form.getZipcode()}  
 								</td>
 							</tr>
@@ -350,7 +332,7 @@
 								<td>&nbsp;</td>
 							</tr>
 							<tr>
-								<td id="smaller">Account#</td>
+								<td id="smaller">${form.getQ17_3_2()}#</td>
 								<td>&nbsp;</td>
 							</tr>
 
@@ -359,7 +341,7 @@
 					
 
 					<!-- can be omitted if it is the only institution -->
-					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ12(),'yes')}">none</c:when> <c:otherwise>block</c:otherwise></c:choose>">
+					<table class="default" style="display:<c:choose><c:when test="${fn:contains(form.getQ12(),'yes')}">none</c:when> <c:otherwise>default</c:otherwise></c:choose>">
 						<thead>
 							<tr>
 								<th colspan="2">Who we are</th>
@@ -456,7 +438,7 @@
 									<ul>
 										<c:if test="${fn:contains(form.getQ9(),'no')}"> <li>${form.getName()} has no affiliates.</li> </c:if>
 										<c:if test="${flag9192}"><li>${form.getName()} does not share with our affiliates.</li></c:if>
-										<c:if test="${!flag9192} && ${flag}"><li>Our affiliates include financial companies such as ${form.getQ9_2_1()}; nonfinancial companies, such as ${form.getQ9_2_2()}.</li></c:if>
+										<c:if test="${flag95}"><li>Our affiliates include <c:if test="${fn:contains(form.getQ9_2_1(),'yes')}">financial companies such as ${form.getQ9_2_1_1()};</c:if> <c:if test="${fn:contains(form.getQ9_2_2(),'yes')}">nonfinancial companies, such as ${form.getQ9_2_2_1()}.</c:if></li></c:if>
 									</ul>
 								</td>
 							</tr>
@@ -487,20 +469,16 @@
 (ii) If it shares personal information for joint marketing, state, as applicable: -Our joint marketing partners include [list categories of companies such as credit card companies].--->
 									<ul>
 										<c:if test="${fn:contains(form.getQ8(),'no')}"><li>${form.getName()} doesn't jointly market.</li></c:if>
-										<c:if test="${fn:contains(form.getQ8(),'yes')}"><li>Our joint marketing partners include ${form.getQ8_2()}.</li></c:if>
+										<c:if test="${fn:contains(form.getQ8_1(),'yes')}"><li>Our joint marketing partners include ${form.getQ8_2()}.</li></c:if>
+										<c:if test="${fn:contains(form.getQ8_1(),'no')}"><li>${form.getName()} doesn't share personal information for joint marketing.</li></c:if>
 									</ul>
 								</td>
 							</tr>
 						</tbody>
 					</table>
-					
-					<% 
-						String q16 = form.getQ16();
-						String q17 = form.getQ17();
-						boolean important = q16.contains("yes") || q17.contains("yes");
-					%>
 
-					<table class="default" id="important" style="display:<c:choose><c:when test="${important}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
+
+					<table class="default" id="important" style="display:<c:choose><c:when test="${fn:contains(form.getQ16(),'yes')}"> default </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 						<thead>
 							<tr>
 								<th>Other important information</th>
@@ -509,8 +487,7 @@
 
 						<tbody>
 							<tr>
-								<td>${form.getQ16()}</td>
-								<td>${form.getQ17()}</td>
+								<td>${form.getQ16_1()}</td>
 							</tr>
 						</tbody>
 					</table>

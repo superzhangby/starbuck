@@ -81,9 +81,38 @@ public class SaveAction extends Action {
 			
 			Date date = Calendar.getInstance().getTime();
 			SimpleDateFormat dateFormat = new SimpleDateFormat(
-					"yyyy-MMM-dd-HH:mm:ss");
+					"yyyy-MMM");
 			String time = dateFormat.format(date);
 			request.getSession().setAttribute("time", time);
+			
+			String q9 = form.getQ9();
+			String q9_1 = form.getQ9_1();
+			String q9_2 = form.getQ9_2();
+			String q9_3 = form.getQ9_3();
+			String q9_4 = form.getQ9_4();
+			
+		
+			boolean flag = true;
+			boolean flag9192 = false;
+			boolean flag95 = false;
+			if (q9.equals("no")) {
+				flag = false;
+			} 
+			
+			else if (q9_1.equals("no") && q9_2.equals("no")) {
+				flag = false;
+				flag9192 = true;
+			}
+			else if (q9_1.equals("yes") || q9_2.equals("yes")) {
+				flag95 = true;
+			}
+			else if (q9_3.equals("no") || q9_4.equals("yes")) {
+				flag = false;
+			}
+			request.getSession().setAttribute("flag", flag);
+			request.getSession().setAttribute("flag95", flag95);
+			request.getSession().setAttribute("flag9192", flag9192);
+			System.out.println(form.getArray1());
 			
 			return "result.jsp";
 		}
