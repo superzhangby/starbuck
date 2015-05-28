@@ -83,7 +83,7 @@
             <section id="file" class="two">
                 <div class="container">
 
-                    <header>
+                    <header style="margin-bottom:2em">
                         <h2>Upload Existing File</h2>
                     </header>
 
