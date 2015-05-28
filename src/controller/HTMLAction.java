@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.jsoup.Jsoup;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
+
 
 
 
@@ -54,9 +56,16 @@ public class HTMLAction extends Action {
 			e1.printStackTrace();
 		}
 		request.getSession().setAttribute("form", form);
-		request.getSession().getAttribute("form");
+		
+		Date date = Calendar.getInstance().getTime();
+		SimpleDateFormat dateFormat = new SimpleDateFormat(
+				"yyyy-MMM-dd-HH:mm:ss");
+		String time = dateFormat.format(date);
+		request.getSession().setAttribute("time", time);
+		
+		
 		if (!form.isPresent()) {
-			return "new-form.jsp";
+			return "html-form.jsp";
 		}
 
 		/*
@@ -76,35 +85,36 @@ public class HTMLAction extends Action {
 
 				// System.out.println(html.toString());
 				String url = "http://localhost:8080/Privacy/HTMLPage.do";
-
+/*
 				URL url1 =  new URL(url);
 				//url1.openConnection().get;
 				BufferedReader reader = new BufferedReader(new InputStreamReader(
 						url1.openStream()));
+*/						
 				ArrayList<String> result = new ArrayList<String>();
 
-				/*
+				
 
-		        CloseableHttpClient client = HttpClients.createDefault();
+		        HttpClient client = HttpClients.createDefault();
 				HttpGet urlRequest = new HttpGet(url);
 
 				HttpResponse response = client.execute(urlRequest);
-				BufferedReader reader = new BufferedReader(new InputStreamReader(
+				BufferedReader reader1 = new BufferedReader(new InputStreamReader(
 				response.getEntity().getContent()));
-*/
+
 				String line;
-				while ((line = reader.readLine()) != null) {
+				while ((line = reader1.readLine()) != null) {
 					result.add(line);
 				}
-				if (reader != null) {
-					reader.close();
+				if (reader1 != null) {
+					reader1.close();
 				}
 
 
 				//String response = run(url);
 
 				FileWriter fw = new FileWriter(Controller.HTML_PATH);
-				fw.write(request.toString());
+				fw.write(result.toString());
 				fw.close();
 
 			} catch (IOException e) {
@@ -124,6 +134,6 @@ public class HTMLAction extends Action {
 		Response response = client.newCall(request).execute();
 		ResponseBody resBody = response.body();
 		// return response.toString();
-		return resBody.toString();
+		return resBody.string();
 	}
 }

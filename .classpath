@@ -35,5 +35,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/LEE45/Downloads/httpcomponents-client-4.4/lib/httpclient-4.4.jar"/>
+	<classpathentry kind="lib" path="/Users/LEE45/Documents/workspace/Task113/WebContent/WEB-INF/lib/gson-2.2.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

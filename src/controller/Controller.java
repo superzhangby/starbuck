@@ -1,10 +1,13 @@
 package controller;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -15,6 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.lingala.zip4j.core.ZipFile;
+import net.lingala.zip4j.exception.ZipException;
+import net.lingala.zip4j.model.ZipParameters;
+import net.lingala.zip4j.util.Zip4jConstants;
 import model.Model;
 
 /**
@@ -23,9 +30,24 @@ import model.Model;
 
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static final String PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/hi.txt";
-	static final String HTML_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/html.html";
-	static final String TEMP_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/";
+	static String PATH;
+	  static  String HTML_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/html.html"; 
+	  static  String ZIP_PATH = "/Users/LEE45/Desktop/eBusiness/Task_14/Form/";
+	  static  String TEMP_PATH ="/Users/LEE45/Desktop/eBusiness/Task_14/";
+	  static  String CSS_PATH ="/Users/LEE45/Desktop/eBusiness/Task_14/Form/assets";
+
+	  
+	  
+	 
+/*
+	static String HOME ;
+	static  String PATH;
+	static  String HTML_PATH;
+	static  String CSS_PATH;
+	static  String ZIP_PATH;
+	static  String TEMP_PATH;
+*/
+	String time;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -35,10 +57,20 @@ public class Controller extends HttpServlet {
 		Action.add(new IndexAction(model));
 		Action.add(new SaveAction(model));
 		Action.add(new ReadAction(model));
+		Action.add(new DownloadAction(model));
 		Action.add(new HTMLAction(model));
 		Action.add(new HTMLPageAction(model));
+		PATH = getServletContext().getRealPath("/") + "hi.txt";
 
-
+		/*
+		 
+		 HOME = getServletContext().getRealPath("/");
+		 PATH = HOME + "hi.txt";
+		 HTML_PATH = HOME + "html.html";
+		 CSS_PATH = "/home/ec2-user/assets";
+		 ZIP_PATH = HOME;
+		 TEMP_PATH = HOME;
+		*/
 	}
 
 	/**
@@ -77,15 +109,14 @@ public class Controller extends HttpServlet {
 			return;
 		}
 
-		if (nextPage.equals("save")) {
+		Date date = Calendar.getInstance().getTime();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-dd-HH:mm:ss");
+		time = dateFormat.format(date);
 
-			Date date = Calendar.getInstance().getTime();
-			SimpleDateFormat dateFormat = new SimpleDateFormat(
-					"MMM-dd-HH:mm:ss");
-			String time = dateFormat.format(date);
+		if (nextPage.equals("save")) {
 			response.setHeader("Content-Type", "application/json");
 			response.setHeader("content-disposition",
-					"attachment;filename=Privacy-Form-" + time );
+					"attachment;filename=Privacy-Form-" + time);
 
 			InputStream in = null;
 			OutputStream out = response.getOutputStream();
@@ -119,11 +150,6 @@ public class Controller extends HttpServlet {
 		}
 
 		if (nextPage.equals("html")) {
-
-			Date date = Calendar.getInstance().getTime();
-			SimpleDateFormat dateFormat = new SimpleDateFormat(
-					"MMM-dd-HH:mm:ss");
-			String time = dateFormat.format(date);
 			response.setHeader("Content-Type", "text/html");
 			response.setHeader("content-disposition",
 					"attachment;filename=Privacy-HTML-" + time + ".html");
@@ -159,6 +185,58 @@ public class Controller extends HttpServlet {
 			return;
 		}
 
+		if (nextPage.equals("download")) {
+
+			CharArrayWriterResponse customResponse = new CharArrayWriterResponse(
+					response);
+			request.getRequestDispatcher("WEB-INF/dhtml-form.jsp").forward(
+					request, customResponse);
+			String resposeString = customResponse.getOutput();
+
+			FileWriter fw = new FileWriter(HTML_PATH);
+			fw.write(resposeString.toString());
+			fw.close();
+
+			String zipPath = ZIP_PATH + "Privary-Notice-" + time + ".zip";
+			System.out.println(zipPath);
+
+			AddFilesToFolderInZip(zipPath);
+
+			// ///////////////////////////////////////////
+			response.setHeader("Content-Type", "application/zip");
+			response.setHeader("content-disposition",
+					"attachment;filename=Privary-Notice-" + time + ".zip");
+
+			InputStream in = null;
+			OutputStream out = response.getOutputStream();
+
+			try {
+				in = new FileInputStream(zipPath);
+				int len = 0;
+				byte[] buffer = new byte[1024];
+
+				while ((len = in.read(buffer)) > 0) {
+					out.write(buffer, 0, len);
+				}
+
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			} finally {
+				if (in != null) {
+					try {
+						in.close();
+					} catch (Exception e) {
+						throw new RuntimeException(e);
+					}
+
+				}
+			}
+
+			out.close();
+
+			return;
+		}
+
 		if (nextPage.endsWith(".do")) {
 			response.sendRedirect(nextPage);
 			return;
@@ -177,4 +255,39 @@ public class Controller extends HttpServlet {
 		int slash = path.lastIndexOf('/');
 		return path.substring(slash + 1);
 	}
+
+	public void AddFilesToFolderInZip(String zipString) {
+		try {
+			ZipFile zipFile = new ZipFile(zipString);
+
+			// Build the list of files to be added in the array list
+			ArrayList filesToAdd = new ArrayList();
+			filesToAdd.add(new File(PATH));
+			filesToAdd.add(new File(HTML_PATH));
+			
+			ZipParameters parameters = new ZipParameters();
+			parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE); // set
+																			// compression
+																			// method
+																			// to
+																			// deflate
+																			// compression
+			parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
+			parameters.setRootFolderInZip("Privary Notice-" + time + "/");
+
+			// Now add files to the zip file
+			zipFile.addFolder(CSS_PATH, parameters);
+			zipFile.addFiles(filesToAdd, parameters);
+		} catch (ZipException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public String context() {
+		String path = getServletContext().getRealPath("/") + "/WEB-INF/xxx.txt";
+		return path;
+
+	}
+
 }

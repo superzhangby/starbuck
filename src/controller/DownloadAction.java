@@ -1,31 +1,28 @@
 package controller;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
 import model.Model;
 
-import org.jsoup.Jsoup;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
-import com.google.gson.JsonObject;
 
 import form.DataForm;
 
-public class HTMLPageAction extends Action {
+public class DownloadAction extends Action {
 	private FormBeanFactory<DataForm> formBeanFactory = FormBeanFactory
 			.getInstance(DataForm.class);
 
-	public HTMLPageAction(Model model) {
+	public DownloadAction(Model model) {
 
 	}
 
 	public String getName() {
-		return "HTMLPage.do";
+		return "download.do";
 	}
 
 	public String perform(HttpServletRequest request) {
@@ -36,7 +33,17 @@ public class HTMLPageAction extends Action {
 		} catch (FormBeanException e1) {
 			e1.printStackTrace();
 		}
+	
 		request.getSession().setAttribute("form", form);
+		
+		
+		Date date = Calendar.getInstance().getTime();
+		SimpleDateFormat dateFormat = new SimpleDateFormat(
+				"yyyy-MMM-dd-HH:mm:ss");
+		String time = dateFormat.format(date);
+		request.getSession().setAttribute("time", time);
+
+		
 
 		if (!form.isPresent()) {
 			return "new-form.jsp";
