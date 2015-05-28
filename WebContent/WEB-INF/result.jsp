@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import="form.DataForm"%>
+<%@ page language="java" import="java.util.*"%>
 <!DOCTYPE HTML>
 
 <html>
@@ -9,15 +10,43 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		
+		<script type="text/javascript" src="assets/js/balloon.js"></script>
 	</head>
 	
 	<%
 		DataForm form = (DataForm) request.getSession().getAttribute("form");
 		String q5 = form.getArray1();
-		String[] q5Array = q5.substring(1, q5.length() - 1).split(",");
+		String[] q5Array = form.getQ5whatData();
+		
 		String q14 = form.getArray2();
-		String[] q14Array = q14.substring(1, q14.length() - 1).split(",");
+		String[] q14Array = form.getQ14whatWay();
+		String q9 = form.getQ9();
+		String q9_1 = form.getQ9_1();
+		String q9_2 = form.getQ9_2();
+		String q9_3 = form.getQ9_3();
+		String q9_4 = form.getQ9_4();
+		
+	
+		boolean flag = true;
+		boolean flag9192 = false;
+		if (q9.equals("no")) {
+			flag = false;
+		} 
+		
+		else if (q9_1.equals("no") && q9_2.equals("no")) {
+			flag = false;
+			flag9192 = true;
+		}
+		else if (q9_3.equals("no") || q9_4.equals("yes")) {
+			flag = false;
+		}
+		
+		int length = form.getQ5whatData().length;
+		String[] test = new String[form.getQ5whatData().length];
 	%>
+	
+	
 	
 	<body>
 
@@ -59,13 +88,32 @@
 
 		</div>
 
-		<div id="main">
+
+<!---TO DO----->
+	<div id="balloonWhat" class="balloonstyle">
+		<h3>Full List of Personal Information We Collect and Share</h3>
+		<ul style="margin-left: 1em">
+			<li>income; account balances; payment history;</li>
+			<li>transaction history; transaction or loss history;</li>
+			<li>credit history; credit scores; assets;</li>
+			<li>investment experience; credit-based insurance scores;</li>
+			<!-- there are many many more!! -->
+		</ul>
+	</div>
+
+
+
+
+	<div id="main">
 			<section id="result" class="two">
 				<div class="container">
 
 					<header>
 						<h2>U.S. Consumer Privacy Notice<h2>
 					</header>
+					
+					<div>test ${length}</div>
+					
 
 					<div class="row" style="text-align:right">
 						Rev. ${ XXX }   <!-- the time of submission -->
@@ -90,7 +138,7 @@
 							<tr>
 								<td id="left">What?</td>
 								<td>
-									The types of personal information we collect and share depend on the product or service you have with us. This information can <a href="" title="A full list of personal information we collect and share can include:&#13;income; account balances; payment history; &#13;transaction history; transaction or loss history; &#13;credit history; credit scores; assets; &#13;investment experience; credit-based insurance scores; &#13;insurance claim history; medical information; overdraft history; &#13;purchase history; account transactions; risk tolerance;&#13; medical-related debts; credit card or other debt; &#13;mortgage rates and payments; retirement assets; &#13;checking account information; employment information; &#13;wire transfer instructions.">include</a>:
+									The types of personal information we collect and share depend on the product or service you have with us. This information can <a rel="balloonWhat" >include:</a>
 									<ul>
 										<li>Social Security number and ${q5Array[0]} </li>
 										<li>${q5Array[1]} and ${q5Array[2]}</li>
@@ -98,11 +146,12 @@
 									</ul>
 								</td>
 							</tr>
-
+							
+							
 							<tr>
 								<td id="left">How?</td>
 								<td>
-									All financial companies need to share customers' personal information to run their everyday business. In the section below, we list the reasons financial companies can share their customers' personal information; the reasons [name of institution] chooses to share; and whether you can limit this sharing.
+									All financial companies need to share customers' personal information to run their everyday business. In the section below, we list the reasons financial companies can share their customers' personal information; the reasons ${form.getName()} chooses to share; and whether you can limit this sharing.
 								</td>
 							</tr>
 						</tbody>
@@ -120,7 +169,7 @@
 
 						<tbody id="centre">
 							<tr>
-								<td><strong>For our everyday business purposes</strong> — such as to process your transactions, maintain your account(s), respond to court orders and legal investigations, or report to credit bureaus</td>
+								<td><strong>For our everyday business purposes</strong> - such as to process your transactions, maintain your account(s), respond to court orders and legal investigations, or report to credit bureaus</td>
 								<td>
 									<c:if test="${fn:contains(form.getQ6(),'yes')}"> Yes </c:if>
 									<c:if test="${fn:contains(form.getQ6(),'no')}"> No </c:if>
@@ -132,7 +181,7 @@
 							</tr>
 
 							<tr>
-								<td><strong>For our marketing purposes</strong> — with service providers we use to offer our products and services to you</td>
+								<td><strong>For our marketing purposes</strong> - with service providers we use to offer our products and services to you</td>
 								<td>
 									<c:if test="${fn:contains(form.getQ7(),'yes')}"> Yes </c:if>
 									<c:if test="${fn:contains(form.getQ7(),'no')}"> No </c:if>
@@ -160,32 +209,43 @@
 
 							<!-- can be omitted if no affiliates -->
 							<tr>
-								<td><strong>For our affiliates' everyday business purposes</strong> — Information about your transactions and experiences</td>
+								<td><strong>For our affiliates' everyday business purposes</strong> - Information about your transactions and experiences</td>
 								<td>
-									[Yes]
+									<c:if test="${fn:contains(form.getQ9(),'no')}"> No </c:if>
+									<c:if test="${fn:contains(form.getQ9_1(),'yes')}"> Yes </c:if>
+									<c:if test="${fn:contains(form.getQ9_1(),'no')}"> No </c:if>
 								</td>
 								<td>
-									[No]
-								</td>
-							</tr>
-
-							<tr>
-								<td><strong>For our affiliates' everyday business purposes</strong> — Information about your creditworthiness</td>
-								<td>
-									[Yes]
-								</td>
-								<td>
-									[No]
+									<c:if test="${fn:contains(form.getQ9(),'no')}"> We don't share </c:if>
+									<c:if test="${fn:contains(form.getQ9_1(),'no')}"> We don't share </c:if>
+									<c:if test="${fn:contains(form.getQ9_1_1(),'yes')}"> Yes </c:if>
+									<c:if test="${fn:contains(form.getQ9_1_1(),'no')}"> No </c:if>
 								</td>
 							</tr>
 
 							<tr>
+								<td><strong>For our affiliates' everyday business purposes</strong> - Information about your creditworthiness</td>
+								<td>
+									<c:if test="${fn:contains(form.getQ9(),'no')}"> No </c:if>
+									<c:if test="${fn:contains(form.getQ9_2(),'yes')}"> Yes </c:if>
+									<c:if test="${fn:contains(form.getQ9_2(),'no')}"> No </c:if>
+								</td>
+								<td>
+									<c:if test="${fn:contains(form.getQ9(),'no')}"> We don't share </c:if>
+									<c:if test="${fn:contains(form.getQ9_2(),'yes')}"> Yes </c:if>
+									<c:if test="${fn:contains(form.getQ9_2(),'no')}"> We don't share </c:if>
+								</td>
+							</tr>
+							
+							<tr style="display:<c:choose><c:when test="${flag}"> default </c:when> <c:otherwise>none</c:otherwise></c:choose>;">
 								<td><strong>For our affiliates to market to you</strong></td>
 								<td>
-									[Yes]
+									<c:if test="${fn:contains(form.getQ9_5(),'yes')}"> Yes </c:if>
+									<c:if test="${fn:contains(form.getQ9_5(),'no')}"> No </c:if>
 								</td>
 								<td>
-									[No]
+									<c:if test="${fn:contains(form.getQ9_5(),'yes')}"> Yes </c:if>
+									<c:if test="${fn:contains(form.getQ9_5(),'no')}"> We don't share </c:if>
 								</td>
 							</tr>
 
@@ -204,7 +264,7 @@
 						</tbody>
 
 					</table>
-
+	<!-- --To DO -->>
 					<!-- if all column of "can you limit this sharing" is either NO or We don't share, the following table should be omitted -->
 					<table class="default">
 						<tbody>
@@ -292,7 +352,7 @@
 								<td>
 									Federal law gives you the right to limit only
 									<ul>
-										<li>sharing for affiliates' everyday business purposes—information about your creditworthiness</li>
+										<li>sharing for affiliates' everyday business purposes - information about your creditworthiness</li>
 										<li>affiliates from using your information to market to you</li>
 										<li>sharing for nonaffiliates to market to you</li>
 									</ul>
@@ -305,7 +365,7 @@
 							<tr>
 								<td id="widest">What happens when I limit sharing for an account I hold jointly with someone else?</td>
 								<td>
-									Your choices will apply individually—unless you tell us otherwise.
+									Your choices will apply individually - unless you tell us otherwise.
 								</td>
 							</tr>
 						</tbody>
@@ -323,14 +383,16 @@
 								<td id="widest">Affiliates</td>
 								<td>
 						<!--
-(i) 9 no: “[name of financial institution] has no affiliates”;
+(i) 9 no: -[name of financial institution] has no affiliates-;
 
-(ii) 9.1/9.2 both no: “[name of financial institution] does not share with our affiliates”; or
+(ii) 9.1/9.2 both no: -[name of financial institution] does not share with our affiliates-; or
 
-(iii) 9.1/9.2 one yes: “Our affiliates include financial companies such as [insert illustrative list of companies]; nonfinancial companies, such as [insert illustrative list of companies;] -->
+(iii) 9.1/9.2 one yes: -Our affiliates include financial companies such as [insert illustrative list of companies]; nonfinancial companies, such as [insert illustrative list of companies;] -->
 									Companies related by common ownership or control. They can be Financial and nonfinancial companies.
 									<ul>
-										<li>[XXXXXX]</li>
+										<c:if test="${fn:contains(form.getQ9(),'no')}"> <li>${form.getName()} has no affiliates.</li> </c:if>
+										<c:if test="${flag9192}"><li>${form.getName()} does not share with our affiliates.</li></c:if>
+										<c:if test="${!flag9192} && ${flag}"><li>Our affiliates include financial companies such as ${form.getQ9_2_1()}; nonfinancial companies, such as ${form.getQ9_2_2()}.</li></c:if>
 									</ul>
 								</td>
 							</tr>
@@ -340,13 +402,13 @@
 								<td>
 									Companies not related by common ownership or control. They can be Financial and nonfinancial companies.
 									<ul>
-										<li><c:if test="${fn:contains(form.getQ10(),'no')}">${form.getName()} does not share with nonaffiliates so they can market to you.</c:if></li>
-										<li><c:if test="${fn:contains(form.getQ10(),'yes')}">Nonaffiliates we share with can include ${form.getQ10_1()}.</c:if></li>
+										<c:if test="${fn:contains(form.getQ10(),'no')}"><li>${form.getName()} does not share with nonaffiliates so they can market to you.</li></c:if>
+										<c:if test="${fn:contains(form.getQ10(),'yes')}"><li>Nonaffiliates we share with can include ${form.getQ10_1_1()}.</li></c:if>
 									</ul>
 <!--
-(i) If it does not share with nonaffiliated third parties, state: “[name of financial institution] does not share with nonaffiliates so they can market to you”; or
+(i) If it does not share with nonaffiliated third parties, state: -[name of financial institution] does not share with nonaffiliates so they can market to you-; or
 
-(ii) If it shares with nonaffiliated third parties, state, as applicable: “Nonaffiliates we share with can include [list categories of companies such as mortgage companies, insurance companies, direct marketing companies, and nonprofit organizations].” -->
+(ii) If it shares with nonaffiliated third parties, state, as applicable: -Nonaffiliates we share with can include [list categories of companies such as mortgage companies, insurance companies, direct marketing companies, and nonprofit organizations].- -->
 									
 								</td>
 							</tr>
@@ -356,12 +418,12 @@
 								<td>
 									A formal agreement between nonaffiliated financial companies that together market financial products or services to you.
 <!-- 
-(i) If it does not engage in joint marketing, state: “[name of financial institution] doesn't jointly market”; or
+(i) If it does not engage in joint marketing, state: -[name of financial institution] doesn't jointly market-; or
 
-(ii) If it shares personal information for joint marketing, state, as applicable: “Our joint marketing partners include [list categories of companies such as credit card companies].”-->
+(ii) If it shares personal information for joint marketing, state, as applicable: -Our joint marketing partners include [list categories of companies such as credit card companies].--->
 									<ul>
-										<li><c:if test="${fn:contains(form.getQ8(),'no')}">${form.getName()} doesn't jointly market.</c:if></li>
-										<li><c:if test="${fn:contains(form.getQ8(),'yes')}">Our joint marketing partners include [].</c:if></li>
+										<c:if test="${fn:contains(form.getQ8(),'no')}"><li>${form.getName()} doesn't jointly market.</li></c:if>
+										<c:if test="${fn:contains(form.getQ8(),'yes')}"><li>Our joint marketing partners include ${form.getQ8_2()}.</li></c:if>
 									</ul>
 								</td>
 							</tr>

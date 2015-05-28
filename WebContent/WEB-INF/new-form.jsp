@@ -96,9 +96,18 @@
 			
 
 		<!-- Basic Information -->
+		
 			<section id="basic" class="two">
 				<div class="container">
-
+					
+					<div class="row" style="text-align: left">
+						<c:forEach var="error" items="${errors}">
+							<div class="12u 12u$(mobile)" style="color:red">
+	                            ${error}
+	                        </div>
+						</c:forEach>
+					</div>
+					
 					<header>
 						<h2>Basic Information</h2>
 					</header>
@@ -359,7 +368,7 @@
 							</div>
 						</div>
 
-						<div id="7_1" class="row" style="margin-left:1em;display:none">
+						<div id="7_1" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ7(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>7.1. Does your institution provide opt-out for customers to limit this sharing?</p>
 							</div>
@@ -398,7 +407,7 @@
 							</div>
 						</div>
 
-						<div id="8_1" class="row" style="margin-left:1em;display:none">
+						<div id="8_1" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ8(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<p>8.1. Does your institution share customer's personal information for joint marketing with other financial companies?
 								<a rel="balloonq81" class="icon fa-question-circle"></a>
 							</p>
@@ -418,7 +427,7 @@
 							</div>
 						</div>
 
-						<div id="8_1_1" class="row" style="margin-left:3em;display:none">
+						<div id="8_1_1" class="row" style="margin-left:3em;display:<c:choose><c:when test="${fn:contains(form.getQ8_1(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>8.1.1. Does your institution provide opt-out for customers to limit this sharing?</p>
 							</div>
@@ -434,7 +443,7 @@
 							</div>
 						</div>
 
-						<div id="8_2" class="row" style="margin-left:1em;display:none">
+						<div id="8_2" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ8(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<p>8.2. What are the categories of joint marketing companies of your institution that you share personal information with?</p>
 
 							<div class="12u 12u$(mobile)">
@@ -914,7 +923,20 @@
 
 						<div class="row">
 							<div class="12u 12u$(mobile)">
-								<p>17. Based on above questions, if applicable, does your institution allows customers to limit sharing personal information of any kind above?</p>
+								<p>17. Based on above questions, if applicable, does your institution allows customers to limit sharing personal information of any kind above?
+									<a rel="balloonq17" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq17" class="balloonstyle">
+									<p>You cannot answer NO if at least one answer of the following questions is yes:</p>
+									<ul style="margin-left:1em">
+				                        <li>Question 6</li>
+				                        <li>Question 7</li>
+				                        <li>Question 8.1</li>
+				                        <li>Question 9.1, 9.2</li>
+				                        <li>Question 10</li>
+				                    </ul>
+								</div>
 							</div>
 
 							<div id="checkBox" class="4u 6u$(mobile)">
@@ -928,7 +950,7 @@
 							</div>
 						</div>
 
-						<div id="17_1" class="row" style="margin-left:1em;display:none">
+						<div id="17_1" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>17.1. Does your institution enable Opt-Out by telphone?</p>
 							</div>
@@ -943,7 +965,7 @@
 							</div>
 						</div>
 
-						<div id="17_2" class="row" style="margin-left:1em;display:none">
+						<div id="17_2" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>17.2. Does your institution enable Opt-Out Online?</p>
 							</div>
@@ -958,7 +980,7 @@
 							</div>
 						</div>
 
-						<div id="17_3" class="row" style="margin-left:1em;display:none">
+						<div id="17_3" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>17.3. Does your institution enable Opt-Out with Mail-In Form?</p>
 							</div>
@@ -973,7 +995,7 @@
 							</div>
 						</div>
 
-						<div class="row" id="17_3_1" style="margin-left:3em;display:none">
+						<div class="row" id="17_3_1" style="margin-left:3em;display:<c:choose><c:when test="${fn:contains(form.getQ17_3(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>17.3.1. Does your institution provide your joint accountholders the choice to opt-out for only one accountholder?</p>
 							</div>
@@ -988,7 +1010,7 @@
 							</div>
 						</div>
 
-						<div class="row" id="17_3_2" style="margin-left:3em;display:none">
+						<div class="row" id="17_3_2" style="margin-left:3em;display:<c:choose><c:when test="${fn:contains(form.getQ17_3(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>17.3.2. Does your institution require customers to provide additional or different information other than name and address, such as a random opt-out number or a truncated account number?</p>
 							</div>
@@ -1012,32 +1034,32 @@
 							</div>
 						</div>
 
-						<div class="row" id="17_3_3" style="margin-left:3em;display:none">
+						<div class="row" id="17_3_3" style="margin-left:3em;display:<c:choose><c:when test="${fn:contains(form.getQ17_3(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
 								<p>17.3.3. What is your institution's mailing address?</p>
 							</div>
 
-							<div class="8u 12u$(mobile)">
+							<div id="labelLeft" class="6u 12u$(mobile)">
 								<label for="t17331">Street Address 1</label>
 								<input type="text" id="t17331" name="address1" placeholder="Enter Street Name and Number" value=${form.getAddress1()} >
 							</div>
 
-							<div class="8u 12u$(mobile)">
+							<div id="labelLeft" class="6u 12u$(mobile)">
 								<label for="t17332">Street Address 2</label>
 								<input type="text" id="t17332" name="address2" placeholder="Enter Apt Number or Building Name" value=${form.getAddress2()} >
 							</div>
 
-							<div class="8u 12u$(mobile)">
+							<div id="labelLeft" class="6u 12u$(mobile)">
 								<label for="t17333">City</label>
 								<input type="text" id="t17333" name="city" placeholder="Enter City Name" value=${form.getCity()} >
 							</div>
 
-							<div class="8u 12u$(mobile)">
+							<div id="labelLeft" class="6u 12u$(mobile)">
 								<label for="t17334">State</label>
 								<input type="text" id="t17334" name="state" placeholder="Enter State Name" value=${form.getState()} >
 							</div>
 
-							<div class="8u 12u$(mobile)">
+							<div id="labelLeft" class="6u 12u$(mobile)">
 								<label for="t17335">Zipcode</label>
 								<input type="text" id="t17335" name="zipcode" placeholder="Enter Zipcode" value=${form.getZipcode()} >
 							</div>
