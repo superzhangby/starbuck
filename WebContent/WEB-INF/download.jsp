@@ -281,7 +281,7 @@
 								<td rowspan="5" style="width:12em">
 									Mail to:<br>
 									${form.getName()}<br>
-									${form.getAddress1()}<br>${form.getAddress2()}<br>
+									${form.getAddress1()} ${form.getAddress2()}<br>
 									${form.getCity()}, ${form.getState()}, ${form.getZipcode()}  
 								</td>
 							</tr>
