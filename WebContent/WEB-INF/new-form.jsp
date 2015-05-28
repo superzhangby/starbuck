@@ -152,7 +152,7 @@
 							</div>
 
 							<div class="6u 12u$(mobile)">
-								<input type="text" name="phone" placeholder="Phone Number" value="${form.getPhone()}">
+								<input type="text" name="phone" placeholder="Number only, without space or dash, eg., 4122682828" value="${form.getPhone()}">
 							</div>
 						</div>
 
@@ -183,7 +183,7 @@
 							</div>
 							
 							<div class="6u 12u$(mobile)">
-								<input type="text" name="website" placeholder="Website Address" value="${form.getWebsite()}" >
+								<input type="text" name="website" placeholder="example: https://www.bankofamerica.com" value="${form.getWebsite()}" >
 							</div>
 						</div>
 
@@ -954,7 +954,13 @@
 
 						<div id="17_1" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
-								<p>17.1. Does your institution enable Opt-Out by telphone?</p>
+								<p>17.1. Does your institution enable Opt-Out by telphone?
+									<a rel="balloonq171" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq171" class="balloonstyle">
+									<p>For question 17.1, 17.2, 17.2, you must answer YES to at least one of them.</p>
+								</div>
 							</div>
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q17_1" value="yes"
@@ -969,7 +975,13 @@
 
 						<div id="17_2" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
-								<p>17.2. Does your institution enable Opt-Out Online?</p>
+								<p>17.2. Does your institution enable Opt-Out Online?
+									<a rel="balloonq172" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq172" class="balloonstyle">
+									<p>For question 17.1, 17.2, 17.2, you must answer YES to at least one of them.</p>
+								</div>
 							</div>
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q17_2" value="yes"
@@ -984,7 +996,13 @@
 
 						<div id="17_3" class="row" style="margin-left:1em;display:<c:choose><c:when test="${fn:contains(form.getQ17(),'yes')}"> block </c:when> <c:otherwise>none</c:otherwise></c:choose>">
 							<div class="12u 12u$(mobile)">
-								<p>17.3. Does your institution enable Opt-Out with Mail-In Form?</p>
+								<p>17.3. Does your institution enable Opt-Out with Mail-In Form?
+									<a rel="balloonq173" class="icon fa-question-circle"></a>
+								</p>
+
+								<div id="balloonq173" class="balloonstyle">
+									<p>For question 17.1, 17.2, 17.2, you must answer YES to at least one of them.</p>
+								</div>
 							</div>
 							<div id="checkBox" class="4u 6u$(mobile)">
 								<input type="radio" name="q17_3" value="yes" onchange="showMail(this,'yes')"
