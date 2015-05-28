@@ -45,7 +45,8 @@ public class Controller extends HttpServlet {
 		Action.add(new IndexAction(model));
 		Action.add(new SaveAction(model));
 		Action.add(new ReadAction(model));
-		Action.add(new DownloadAction(model)); 
+		Action.add(new DownloadAction(model));
+		Action.add(new RedirectAction(model));
 
 		HOME = getServletContext().getRealPath("/");
 		PATH = HOME + "hi.txt";
