@@ -16,7 +16,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
@@ -46,15 +45,15 @@ public class Controller extends HttpServlet {
 		Action.add(new IndexAction(model));
 		Action.add(new SaveAction(model));
 		Action.add(new ReadAction(model));
-		Action.add(new DownloadAction(model));
-		Action.add(new HTMLAction(model));
-		Action.add(new HTMLPageAction(model));
+		Action.add(new DownloadAction(model)); 
 
 		HOME = getServletContext().getRealPath("/");
 		PATH = HOME + "hi.txt";
 		HTML_PATH = HOME + "html.html";
 		//CSS_PATH = "/home/ec2-user/assets";
-		CSS_PATH = "/Users/LEE45/git/starbuck1/WebContent/assets";
+		CSS_PATH = "/home";
+
+		//CSS_PATH = "/Users/LEE45/git/starbuck1/WebContent/assets";
 		ZIP_PATH = HOME;
 		TEMP_PATH = HOME;
 	}
@@ -80,7 +79,6 @@ public class Controller extends HttpServlet {
 	}
 
 	private String performTheAction(HttpServletRequest request) {
-		HttpSession session = request.getSession(true);
 		String servletPath = request.getServletPath();
 		String action = getActionName(servletPath);
 
@@ -135,47 +133,12 @@ public class Controller extends HttpServlet {
 			return;
 		}
 
-		if (nextPage.equals("html")) {
-			response.setHeader("Content-Type", "text/html");
-			response.setHeader("content-disposition",
-					"attachment;filename=Privacy-HTML-" + time + ".html");
-
-			InputStream in = null;
-			OutputStream out = response.getOutputStream();
-
-			try {
-				in = new FileInputStream(HTML_PATH);
-				int len = 0;
-				byte[] buffer = new byte[1024];
-
-				while ((len = in.read(buffer)) > 0) {
-					out.write(buffer, 0, len);
-				}
-
-			} catch (Exception e) {
-				throw new RuntimeException(e);
-			} finally {
-				if (in != null) {
-					try {
-						in.close();
-					} catch (Exception e) {
-						throw new RuntimeException(e);
-					}
-
-				}
-			}
-
-			out.close();
-			// response.sendRedirect("save.do?saveok=ok");
-
-			return;
-		}
 
 		if (nextPage.equals("download")) {
 
 			CharArrayWriterResponse customResponse = new CharArrayWriterResponse(
 					response);
-			request.getRequestDispatcher("WEB-INF/downloadHTML.jsp").forward(
+			request.getRequestDispatcher("WEB-INF/download.jsp").forward(
 					request, customResponse);
 			String resposeString = customResponse.getOutput();
 
@@ -247,7 +210,7 @@ public class Controller extends HttpServlet {
 			ZipFile zipFile = new ZipFile(zipString);
 
 			// Build the list of files to be added in the array list
-			ArrayList filesToAdd = new ArrayList();
+			ArrayList<File> filesToAdd = new ArrayList<File>();
 			filesToAdd.add(new File(HTML_PATH));
 
 			ZipParameters parameters = new ZipParameters();

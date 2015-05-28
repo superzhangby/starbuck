@@ -31,8 +31,8 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a href="download.do" id="edit" ><span class="icon fa-th">Edit</span></a></li>
-							<li><a href="download.do" id="html" ><span class="icon fa-envelope">Download HTML</span></a></li>
+							<li><a href="download.do?action=edit" id="edit" ><span class="icon fa-th">Edit</span></a></li>
+							<li><a href="download.do?action=download" id="html" ><span class="icon fa-envelope">Download HTML</span></a></li>
 						</ul>
 					</nav>
 

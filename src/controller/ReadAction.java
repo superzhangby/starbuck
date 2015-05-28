@@ -1,28 +1,19 @@
 package controller;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import model.Model;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.mybeans.form.FormBeanException;
-import org.mybeans.form.FormBeanFactory;
-
-import com.google.gson.JsonObject;
 
 import form.DataForm;
 
@@ -54,8 +45,8 @@ public class ReadAction extends Action {
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		upload.setSizeMax(maxFileSize);
 		try {
-			List fileItems = upload.parseRequest(request);
-			Iterator i = fileItems.iterator();
+			List<FileItem> fileItems = upload.parseRequest(request);
+			Iterator<FileItem> i = fileItems.iterator();
 			
 			while (i.hasNext()) {
 				FileItem fi = (FileItem) i.next();
