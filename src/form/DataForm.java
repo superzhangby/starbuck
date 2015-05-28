@@ -369,7 +369,7 @@ public class DataForm extends FormBean {
 	}
 
 	public void setQ17(String q17) {
-		this.q17 = q17.trim();
+		this.q17 = q17;
 	}
 
 	public String getAction() {
@@ -644,12 +644,13 @@ public class DataForm extends FormBean {
 		9.5 yes
 		10 yes
 		*/
+	
 		
-		if (q7_1 != null && q8_1_1 != null && q9_1_1 != null && q9_2 != null && q9_5 != null &&
-				q10 != null && q17 != null &&q7_1.equals("yes") && q8_1_1.equals("yes") && q9_1_1.equals("yes") && q9_2.equals("yes") && q9_5.equals("yes")
-				&& q10.equals("yes") && q17.equals("no")) {
-			errors.add("Question 17 should be yes based on your previous answer.");
-		}
+//		if ((q7_1 != null && q7_1.equals("yes")) || (q8_1_1 != null && q8_1_1.equals("yes")) || 
+//			(q9_1_1 != null && q9_1_1.equals("yes")) || (q9_2 != null && q9_2.equals("yes")) || 
+//			(q9_5 != null && q9_5.equals("yes")) || (q10 != null && q10.equals("yes"))) {
+//			errors.add("Question 17 should be YES based on your previous answer.");
+//		}
 
 		if (q11 == null || q11.length() == 0)
 			errors.add("Question 11 is required.");
@@ -736,6 +737,22 @@ public class DataForm extends FormBean {
 				if (zipcode == null || zipcode.trim().length() != 5)
 					errors.add("Question 17.3.3: please provide a valid zipcode.");
 			}
+		}
+		
+		
+		if(q17 != null && q17.equals("no")) {
+			System.err.println("Q17 error");
+			if (
+					(q7_1 != null && q7_1.equals("yes")) || 
+					(q8_1_1 != null && q8_1_1.equals("yes")) || 
+					(q9_1_1 != null && q9_1_1.equals("yes")) || 
+					(q9_2 != null && q9_2.equals("yes")) || 
+					(q9_5 != null && q9_5.equals("yes")) || 
+					(q10 != null && q10.equals("yes"))
+			) {
+				errors.add("Question 17 should be YES based on your previous answer.");
+			}
+			
 		}
 
 		if (action == null || action.length() == 0) {
