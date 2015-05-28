@@ -53,7 +53,7 @@ public class Controller extends HttpServlet {
 		HOME = getServletContext().getRealPath("/");
 		PATH = HOME + "hi.txt";
 		HTML_PATH = HOME + "html.html";
-		// CSS_PATH = "/home/ec2-user/assets";
+		//CSS_PATH = "/home/ec2-user/assets";
 		ZIP_PATH = HOME;
 		TEMP_PATH = HOME;
 	}
@@ -174,7 +174,7 @@ public class Controller extends HttpServlet {
 
 			CharArrayWriterResponse customResponse = new CharArrayWriterResponse(
 					response);
-			request.getRequestDispatcher("WEB-INF/dhtml-form.jsp").forward(
+			request.getRequestDispatcher("WEB-INF/download.jsp").forward(
 					request, customResponse);
 			String resposeString = customResponse.getOutput();
 
@@ -261,7 +261,7 @@ public class Controller extends HttpServlet {
 			parameters.setRootFolderInZip("Privary Notice-" + time + "/");
 
 			// Now add files to the zip file
-			// zipFile.addFolder(CSS_PATH, parameters);
+			zipFile.addFolder(CSS_PATH, parameters);
 			zipFile.addFiles(filesToAdd, parameters);
 		} catch (ZipException e) {
 			e.printStackTrace();
