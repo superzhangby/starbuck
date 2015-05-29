@@ -83,7 +83,9 @@
 				<div class="container">
 
 					<header>
-						<h2 class="alt">Create a <a href="#">Privacy Policy Notice</a> <br>by answering the following questions.
+						<h2 class="alt">Create a <a href="#">Privacy Policy Notice</a> <br>by answering the following questions. </h2>
+						<h3>All the shown questions are required and must be answered.</h3>
+
 					</header>
 
 					<footer>
@@ -100,9 +102,9 @@
 			<section id="basic" class="two">
 				<div class="container">
 					
-					<div class="row" style="text-align: left">
+					<div class="row" style="text-align: left;color:rgb(172, 32, 0); font-weight: bold">
 						<c:forEach var="error" items="${errors}">
-							<div class="12u 12u$(mobile)" style="color:rgb(172, 32, 0); font-weight: bold">
+							<div class="12u 12u$(mobile)">
 	                            ${error}
 	                        </div>
 						</c:forEach>
@@ -1080,6 +1082,9 @@
 								<input type="text" id="t17335" name="zipcode" placeholder="Enter Zipcode" value="${form.getZipcode()}" >
 							</div>
 
+						</div>
+						<div class="12u 12u$(mobile)" style="text-align:right;color:rgb(172, 32, 0)">
+							Reminder: All the shown questions are required and must be answered.
 						</div>
 
 						<div class="row">

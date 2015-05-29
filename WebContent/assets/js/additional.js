@@ -98,10 +98,10 @@
 			hideDiv(elem, 'no', '9_3');
 			hideDiv(elem, 'no', '9_4');
 			hideDiv(elem, 'no', '9_5');
-			hideDivT(elem, ans, '9_2_1_1');
-			hideDivT(elem, ans, '9_2_2_1');
-			hideDiv(elem, ans, '9_2_1');
-			hideDiv(elem, ans, '9_2_2');
+			hideDivT(elem, 'no', '9_2_1_1');
+			hideDivT(elem, 'no', '9_2_2_1');
+			hideDiv(elem, 'no', '9_2_1');
+			hideDiv(elem, 'no', '9_2_2');
 		}
 	}
 
