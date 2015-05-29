@@ -1,6 +1,7 @@
-//Rich HTML Balloon Tooltip: http://www.dynamicdrive.com/dynamicindex5/balloontooltip.htm
-//Created: September 10th, 2006
-//Updated: May 9th, 10 for window edge bug
+/*
+ * Author: Team3 Echo
+ * This is the Javascript for popup window when hovering over the Question Mark.
+ */
 var disappeardelay = 250 //tooltip disappear delay (in miliseconds)
 var verticaloffset = 0 //vertical offset of tooltip from anchor link, if any
 

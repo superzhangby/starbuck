@@ -1,3 +1,7 @@
+/*
+ * Author: Team3 Echo
+ * This is the Javascript for the questionnaire.
+ */
 
 /* generic function to show or hide a div of radio buttons */
 	function showDiv(elem, ans, id) {
