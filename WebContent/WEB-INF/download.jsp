@@ -215,7 +215,7 @@
 									</c:if>
 
 									<c:if test="${fn:contains(form.getQ17_1(),'yes')}">
-										<li>Visit us online: <a href="redirect.do">${form.getWebsite()}</a></li>
+										<li>Visit us online: <a href="${form.getWebsite()}">${form.getWebsite()}</a></li>
 									</c:if>
 								</ul> <strong>Please note:</strong><br>
 									If you are a new customer, we can begin sharing your information ${form.getQ11()} days from the date we sent this notice. When you are no longer our customer, we continue to share your information as described in this notice.
@@ -231,7 +231,7 @@
 							<tr>
 								<td id="color">Questions?</td>
 								<td>
-									Call ${form.getPhone()} or go to <a href="redirect.do">${form.getWebsite()}</a>
+									Call ${form.getPhone()} or go to <a href="${form.getWebsite()}">${form.getWebsite()}</a>
 								</td>
 							</tr>
 						</tbody>
